@@ -1,25 +1,13 @@
 import * as types from './actionTypes';
-
-function url() {
-    return 'www.url.com';
-}
+import { fetchUser as fetchUserCall} from "../services/userService";
 
 export function receiveUser(json) {
-    return { type: types.RECEIVE_USER, user: json.user };
+    return { type: types.RECEIVE_USER, userName: json.userName };
 }
 
 export function fetchUser() {
     return dispatch => {
-        return fetch(url(), {
-            method: 'GET',
-            mode: 'cors',
-            credentials: 'include',
-            headers: {
-                'x-api-key': apiKey,
-                Accept: 'application/json',
-            },
-        })
-            .then(response => response.json())
-            .then(json => dispatch(receiveUser(json)));
+        return fetchUserCall()
+            .then(response => dispatch(receiveUser(response.data)));
     };
 }

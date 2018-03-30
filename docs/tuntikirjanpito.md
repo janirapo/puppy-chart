@@ -9,4 +9,4 @@
 | 29.3 | 2    | Yritetty lisätä express.js:ää olemassa olevaan koodiin |
 | 30.3 | 3    | Rakennettu ohjelman alusta uudelleen eri tavalla (yksinkertaisemmin ja hyödyntäen alusta asti express.js:ää) |
 | 30.3 | 1    | Lisätty Redux-tilanhallinta ja uusi käyttäjäkomponentti ohjelmaan |
-|  |     |  |
+| 30.3 | 1    | Ensimmäisen API-funktion toteutus |

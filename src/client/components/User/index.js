@@ -17,15 +17,19 @@ function mapDispatchToProps(dispatch) {
 }
 
 class User extends Component {
+    componentWillMount() {
+        // HERE WE ARE TRIGGERING THE ACTION
+        this.props.userActions.fetchUser();
+    }
     render() {
-        const { userName } = this.props;
+        const { user: { userName } } = this.props;
 
         return <div className="content-container">{`Welcome ${userName ? userName : 'Unknown user'}`}</div>;
     }
 }
 
 User.propTypes = {
-    userName: PropTypes.string,
+    user: PropTypes.shape({ userName: PropTypes.string }),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);
