@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import User from './User';
 
 class App extends Component {
     render() {
-        return <span>Hello World</span>;
+        return (
+            <div className="content">
+                <User />
+            </div>
+        );
     }
 }
 
