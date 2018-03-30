@@ -23,7 +23,7 @@ const plugins = [
     new CleanWebpackPlugin(pathsToClean, cleanOptions),
     new LodashModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-        template: join("src", "index.html")
+        template: join("src/client", "index.html")
     }),
     new ExtractTextPlugin(join(dist, "bundle.css"), {
         allChunks: true

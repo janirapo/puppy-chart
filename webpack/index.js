@@ -10,7 +10,7 @@ const settings = {
     },
     context: resolve(__dirname, '..'),
     entry: {
-        app: ['react-hot-loader/patch', 'babel-polyfill', './src/index'],
+        app: ['react-hot-loader/patch', 'babel-polyfill', './src/client/index'],
         vendor,
     },
     output: {
