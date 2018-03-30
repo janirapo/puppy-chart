@@ -68,8 +68,8 @@ if (isProduction) {
         new WorkboxPlugin({
             globDirectory: dist,
             globPatterns: ["**/*.{html,js,css}"],
-            swSrc: join("src", "service-worker.js"),
-            swDest: join(dist, "service-worker.js"),
+            swSrc: join("src", "services-worker.js"),
+            swDest: join(dist, "services-worker.js"),
             clientsClaim: true,
             skipWaiting: true,
             navigateFallback: "/index.html"

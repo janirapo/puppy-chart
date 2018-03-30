@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { AppBar, Checkbox, IconButton, Layout, NavDrawer, Panel, Sidebar } from 'react-toolbox';
+import { Panel } from 'react-toolbox/lib/layout/Panel';
+import Checkbox from 'react-toolbox/lib/checkbox/Checkbox';
+import AppBar from 'react-toolbox/lib/app_bar/AppBar';
+import { Layout } from 'react-toolbox/lib/layout/Layout';
+import { NavDrawer } from 'react-toolbox/lib/layout/NavDrawer';
+import {Sidebar} from "react-toolbox/lib/layout/Sidebar";
+import {IconButton} from "react-toolbox/lib/button/IconButton";
 
 class App extends Component {
     state = {
@@ -58,4 +64,4 @@ class App extends Component {
     }
 }
 
-module.exports = App;
+export default App;
