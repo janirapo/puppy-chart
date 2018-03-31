@@ -10,7 +10,7 @@ export default function user(state = initialState.user, action) {
             console.log('RECEIVE_USER Action', action);
             return {
                 ...state,
-                userName: action.userName,
+                name: action.user.name,
             };
         default:
             return state;

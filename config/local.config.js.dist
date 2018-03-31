@@ -1,0 +1,12 @@
+// copy this file into config/local.config.js in order to set local config
+config = {
+    mysql: {
+        host: '',
+        user: '',
+        password: '',
+        database: '',
+    },
+    environment: 'production',
+};
+
+module.exports = config;

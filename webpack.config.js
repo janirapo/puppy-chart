@@ -1,11 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const localConfig = require('./config/local.config');
 
 const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './src/client');
 
 const config = {
-    mode: 'development',
+    mode: localConfig.environment,
     entry: {
         main: APP_DIR + '/index.js',
     },

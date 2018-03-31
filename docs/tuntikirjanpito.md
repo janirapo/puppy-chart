@@ -10,3 +10,20 @@
 | 30.3 | 3    | Rakennettu ohjelman alusta uudelleen eri tavalla (yksinkertaisemmin ja hyödyntäen alusta asti express.js:ää) |
 | 30.3 | 1    | Lisätty Redux-tilanhallinta ja uusi käyttäjäkomponentti ohjelmaan |
 | 30.3 | 1    | Ensimmäisen API-funktion toteutus |
+| 31.3 | 3.5  | Asennettu mysql, konfiguroitu tietokantayhteys ja toteutettu ensimmäiset tietokantaan liitetyt API-kutsut |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |

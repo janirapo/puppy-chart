@@ -22,9 +22,9 @@ class User extends Component {
         this.props.userActions.fetchUser();
     }
     render() {
-        const { user: { userName } } = this.props;
+        const { user: { name } } = this.props;
 
-        return <div className="content-container">{`Welcome ${userName ? userName : 'Unknown user'}`}</div>;
+        return <div className="content-container">{`Welcome ${name ? name : 'Unknown user'}`}</div>;
     }
 }
 

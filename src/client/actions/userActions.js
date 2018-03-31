@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import { fetchUser as fetchUserCall} from "../services/userService";
 
 export function receiveUser(json) {
-    return { type: types.RECEIVE_USER, userName: json.userName };
+    return { type: types.RECEIVE_USER, user: json.user };
 }
 
 export function fetchUser() {
