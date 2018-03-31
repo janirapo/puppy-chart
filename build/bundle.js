@@ -1196,7 +1196,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.receiveUser = receiveUser;\nexports.fetchUser = fetchUser;\n\nvar _actionTypes = __webpack_require__(/*! ./actionTypes */ \"./src/client/actions/actionTypes.js\");\n\nvar types = _interopRequireWildcard(_actionTypes);\n\nvar _userService = __webpack_require__(/*! ../services/userService */ \"./src/client/services/userService.js\");\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction receiveUser(json) {\n    return { type: types.RECEIVE_USER, user: json.user };\n}\n\nfunction fetchUser() {\n    return function (dispatch) {\n        return (0, _userService.fetchUser)().then(function (response) {\n            return dispatch(receiveUser(response.data));\n        });\n    };\n}\n\n//# sourceURL=webpack:///./src/client/actions/userActions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.receiveUser = receiveUser;\nexports.fetchUser = fetchUser;\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _appConstants = __webpack_require__(/*! ../constants/appConstants */ \"./src/client/constants/appConstants.js\");\n\nvar _actionTypes = __webpack_require__(/*! ./actionTypes */ \"./src/client/actions/actionTypes.js\");\n\nvar types = _interopRequireWildcard(_actionTypes);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar USER_URL = _appConstants.BASE_URL + '/user';\n\nfunction receiveUser(json) {\n    return { type: types.RECEIVE_USER, user: json.user };\n}\n\nfunction fetchUser() {\n    return function (dispatch) {\n        return _axios2.default.get(USER_URL).then(function (response) {\n            return dispatch(receiveUser(response.data));\n        });\n    };\n}\n\n//# sourceURL=webpack:///./src/client/actions/userActions.js?");
 
 /***/ }),
 
@@ -1232,7 +1232,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar BASE_URL = '/api';\n\nvar GET_USER_URL = exports.GET_USER_URL = BASE_URL + '/user';\n\nvar GET_PET_URL = exports.GET_PET_URL = BASE_URL + '/pet';\n\n//# sourceURL=webpack:///./src/client/constants/appConstants.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar BASE_URL = exports.BASE_URL = '/api';\n\n//# sourceURL=webpack:///./src/client/constants/appConstants.js?");
 
 /***/ }),
 
@@ -1292,18 +1292,6 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("\nvar content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./application.scss */ \"./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/client/scss/application.scss\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./src/client/scss/application.scss?");
-
-/***/ }),
-
-/***/ "./src/client/services/userService.js":
-/*!********************************************!*\
-  !*** ./src/client/services/userService.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.fetchUser = fetchUser;\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _appConstants = __webpack_require__(/*! ../constants/appConstants */ \"./src/client/constants/appConstants.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction fetchUser() {\n    return _axios2.default.get(_appConstants.GET_USER_URL);\n}\n\n//# sourceURL=webpack:///./src/client/services/userService.js?");
 
 /***/ }),
 
