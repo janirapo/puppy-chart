@@ -2,21 +2,19 @@ const express = require('express');
 const app = express();
 
 const userService = require('./services/userService');
-
-function nocache(req, res, next) {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.header('Expires', '-1');
-    res.header('Pragma', 'no-cache');
-    next();
-}
+const middleWare = require('./middleware');
 
 app.use(express.static(__dirname + './../../')); //serves the index.html
 
-// TODO: Refactor to return all if no id is given
-app.get('/api/user', nocache, function(req, res) {
-    userService.getUser((dbResult) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify({ user: dbResult[0] }));
+app.get('/api/user', middleWare.noCache, middleWare.jsonContent, function(req, res) {
+    userService.getAllUsers(dbResult => {
+        res.send(JSON.stringify({ users: dbResult }));
+    });
+});
+
+app.get('/api/user/:userId', middleWare.noCache, middleWare.jsonContent, function(req, res) {
+    userService.getUser(req.params.userId, dbResult => {
+        res.send(JSON.stringify({ user: dbResult }));
     });
 });
 

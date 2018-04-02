@@ -8,9 +8,9 @@ export function receiveUser(json) {
     return { type: types.RECEIVE_USER, user: json.user };
 }
 
-export function fetchUser() {
+export function fetchUser(userId) {
     return dispatch => {
-        return axios.get(USER_URL)
+        return axios.get(`${USER_URL}/${userId}`)
             .then(response => dispatch(receiveUser(response.data)));
     };
 }

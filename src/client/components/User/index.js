@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch) {
 class User extends Component {
     componentWillMount() {
         // HERE WE ARE TRIGGERING THE ACTION
-        this.props.userActions.fetchUser();
+        this.props.userActions.fetchUser(1); // TODO: Replace static userID
     }
     render() {
         const { user: { name } } = this.props;
