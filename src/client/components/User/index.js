@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import * as userActions from '../../actions/userActions';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PetList from '../Pet/PetList';
 
 function mapStateToProps(state) {
     return {
@@ -22,9 +23,9 @@ class User extends Component {
         this.props.userActions.fetchUser(1); // TODO: Replace static userID
     }
     render() {
-        const { user: { name } } = this.props;
+        const { user: { id, name } } = this.props;
 
-        return <div className="content-container">{`Welcome ${name ? name : 'Unknown user'}`}</div>;
+        return <div className="content-container">{`Welcome ${name ? name : 'Unknown user'}`}<div>{id && <PetList/>}</div></div>;
     }
 }
 

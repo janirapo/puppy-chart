@@ -10,6 +10,7 @@ export default function user(state = initialState.user, action) {
             console.log('RECEIVE_USER Action', action);
             return {
                 ...state,
+                id: action.user.id,
                 name: action.user.name,
             };
         default:

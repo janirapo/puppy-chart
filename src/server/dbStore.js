@@ -9,4 +9,12 @@ const store = new Store({
     autoLoad: true,
 });
 
+store.Model('User', function() {
+    this.hasMany('pets', { foreign_key: 'user_id', autoSave: true });
+});
+
+store.Model('Pet', function() {
+    this.hasOne('User');
+});
+
 module.exports = store;
