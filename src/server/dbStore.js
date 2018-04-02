@@ -6,6 +6,7 @@ const store = new Store({
     user: dbConfig.user,
     password: dbConfig.password,
     database: dbConfig.database,
+    autoLoad: true,
 });
 
-export default store;
+module.exports = store;

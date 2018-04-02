@@ -20,12 +20,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table pet
+# Dump of table pets
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `pet`;
+DROP TABLE IF EXISTS `pets`;
 
-CREATE TABLE `pet` (
+CREATE TABLE `pets` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` mediumtext COLLATE utf8_swedish_ci NOT NULL,
   `birth_date` date DEFAULT NULL,
@@ -33,12 +33,12 @@ CREATE TABLE `pet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 
-# Dump of table user
+# Dump of table users
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` mediumtext COLLATE utf8_swedish_ci NOT NULL,
   PRIMARY KEY (`id`)
