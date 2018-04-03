@@ -35,6 +35,7 @@
         "babel-preset-env": "^1.6.1",
         "cps": "^1.0.2",
         "express": "^4.16.3",
+        "moment": "^2.22.0",
         "mysql": "^2.15.0",
         "node-mysql": "^0.4.2",
         "openrecord": "^2.0.0-rc10",

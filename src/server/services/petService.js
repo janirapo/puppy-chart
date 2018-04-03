@@ -4,8 +4,7 @@ exports.getAllByUser = function(userId, cb) {
     store.ready(async () => {
         store
             .Model('Pet')
-            .join('users')
-            .where({ users: { id: userId } })
+            .where({ user_id: userId })
             .then(cb);
     });
 };

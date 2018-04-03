@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import * as petActions from '../../actions/petActions';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Pet from './index';
 
 function mapStateToProps(state) {
     return {
@@ -25,7 +26,12 @@ class PetList extends Component {
     render() {
         const { pets } = this.props;
 
-        return <div className="content-container">Amount of pets: {pets ? pets.length : 0}</div>;
+        return (
+            <div className="content-container">
+                <span>Amount of pets: {pets ? pets.length : 0}</span>
+                {pets && pets.map(pet => <Pet key={pet.id} pet={pet} />)}
+            </div>
+        );
     }
 }
 

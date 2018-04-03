@@ -8,10 +8,7 @@ export default function pets(state = initialState.pets, action) {
             return state;
         case RECEIVE_ALL_PETS:
             console.log('RECEIVE_ALL_PETS Action', action);
-            return {
-                ...state,
-                pets: action.pets,
-            };
+            return action.pets;
         default:
             return state;
     }

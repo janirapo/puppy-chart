@@ -12,7 +12,7 @@
 | 30.3 | 1    | Ensimmäisen API-funktion toteutus |
 | 31.3 | 3.5  | Asennettu mysql, konfiguroitu tietokantayhteys ja toteutettu ensimmäiset tietokantaan liitetyt API-kutsut |
 | 2.4  | 3    | Asennettu openrecord ORM ja lisätty parametreilla varustettuja tietokantakutsuja  |
-|  |   |  |
+| 3.4  | 1    | Refaktorointia ja Pet-componentin lisäys |
 |  |   |  |
 |  |   |  |
 |  |   |  |
