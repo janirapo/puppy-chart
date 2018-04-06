@@ -1,6 +1,7 @@
 body {
     background: #ebebeb;
     text-align: center;
+    font-family: arial, sans-serif;
 }
 
 #root {
@@ -26,4 +27,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.icon-pre {
+    margin-right: 5px;
 }

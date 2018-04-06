@@ -1,0 +1,17 @@
+.Pet {
+    margin: 10px 20px;
+
+    .pet-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 14px;
+        line-height: 18px;
+
+        .icon-pre {
+            color: tan;
+        }
+    }
+}
+

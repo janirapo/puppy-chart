@@ -3,5 +3,7 @@ export default {
         id: undefined,
         userName: undefined,
     },
-    pets: [],
+    pet: {
+        pets: [],
+    },
 };

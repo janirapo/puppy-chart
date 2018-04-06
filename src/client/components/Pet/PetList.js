@@ -7,7 +7,7 @@ import Pet from './index';
 
 function mapStateToProps(state) {
     return {
-        pets: state.pets,
+        ...state.pet,
         user: state.user,
     };
 }
@@ -36,6 +36,7 @@ class PetList extends Component {
 }
 
 PetList.propTypes = {
+    user: PropTypes.object,
     pets: PropTypes.array,
 };
 

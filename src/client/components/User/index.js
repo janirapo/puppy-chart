@@ -6,9 +6,7 @@ import React, { Component } from 'react';
 import PetList from '../Pet/PetList';
 
 function mapStateToProps(state) {
-    return {
-        user: state.user,
-    };
+    return state.user;
 }
 
 function mapDispatchToProps(dispatch) {
@@ -23,14 +21,20 @@ class User extends Component {
         this.props.userActions.fetchUser(1); // TODO: Replace static userID
     }
     render() {
-        const { user: { id, name } } = this.props;
+        const { id, name } = this.props;
 
-        return <div className="content-container">{`Welcome ${name ? name : 'Unknown user'}`}<div>{id && <PetList/>}</div></div>;
+        return (
+            <div className="content-container">
+                {`Welcome ${name ? name : 'Unknown user'}`}
+                {id && <PetList />}
+            </div>
+        );
     }
 }
 
 User.propTypes = {
-    user: PropTypes.shape({ userName: PropTypes.string }),
+    id: PropTypes.number,
+    name: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);
