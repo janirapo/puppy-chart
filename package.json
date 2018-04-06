@@ -7,7 +7,10 @@
     },
     "main": "index.js",
     "scripts": {
-        "start": "nodemon src/server/index.js",
+
+        "start"        : "npm-run-all --parallel watch:server watch:build",
+        "watch:build"  : "./node_modules/.bin/webpack -w",
+        "watch:server" : "nodemon src/server/index.js",
         "webpack": "./node_modules/.bin/webpack -w",
         "test": "mocha --compilers babel-core/register ./test/*test.js",
         "lint-staged": {
@@ -38,6 +41,7 @@
         "moment": "^2.22.0",
         "mysql": "^2.15.0",
         "node-mysql": "^0.4.2",
+        "npm-run-all": "^4.1.2",
         "openrecord": "^2.0.0-rc10",
         "prettier": "^1.11.1",
         "prop-types": "^15.6.1",
