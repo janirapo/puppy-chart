@@ -3,7 +3,6 @@ const path = require('path');
 const localConfig = require('./config/local.config');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const RefreshBrowserPlugin = require('refresh-browser-webpack-plugin');
 
 const OpenrecordCache = require('openrecord/webpack');
 const myStore = require('./src/server/dbStore');
@@ -56,7 +55,7 @@ const config = {
             filename: 'index.html',
             inject: 'body',
         }),
-    ]
+    ],
 };
 
 module.exports = config;
