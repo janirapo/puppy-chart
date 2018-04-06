@@ -6,7 +6,7 @@ const petService = require('./services/petService');
 
 const middleWare = require('./middleware');
 
-app.use(express.static(__dirname + './../../')); //serves the index.html
+app.use(express.static(__dirname + './../../build/')); //serves the index.html
 
 app.get('/api/user', middleWare.noCache, middleWare.jsonContent, function(req, res) {
     userService.getAllUsers(dbResult => {

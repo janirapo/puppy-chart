@@ -2,6 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const localConfig = require('./config/local.config');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const RefreshBrowserPlugin = require('refresh-browser-webpack-plugin');
+
 const OpenrecordCache = require('openrecord/webpack');
 const myStore = require('./src/server/dbStore');
 
@@ -10,9 +13,7 @@ const APP_DIR = path.resolve(__dirname, './src/client');
 
 const config = {
     mode: localConfig.environment,
-    entry: {
-        main: APP_DIR + '/index.js',
-    },
+    entry: APP_DIR + '/index.js',
     output: {
         filename: 'bundle.js',
         path: BUILD_DIR,
@@ -50,6 +51,11 @@ const config = {
     },
     plugins: [
         new OpenrecordCache(myStore),
+        new HtmlWebpackPlugin({
+            template: __dirname + '/index.html',
+            filename: 'index.html',
+            inject: 'body',
+        }),
     ]
 };
 
