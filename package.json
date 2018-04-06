@@ -12,15 +12,16 @@
         "watch:server": "nodemon src/server/index.js",
         "webpack": "./node_modules/.bin/webpack -w",
         "test": "mocha --compilers babel-core/register ./test/*test.js",
-        "lint-staged": {
-            "linters": {
-                "src/**/*.{js,jsx,json,css}": [
-                    "prettier --single-quote --tab-width 4 --print-width 120 --trailing-comma all --write",
-                    "git add"
-                ]
-            }
-        }
+        "precommit": "lint-staged",
     },
+    "lint-staged": {
+        "linters": {
+            "src/**/*.{js,jsx,json,css}": [
+                "prettier --single-quote --tab-width 4 --print-width 120 --trailing-comma all --write",
+                "git add"
+            ]
+        }
+    }
     "repository": {
         "type": "git",
         "url": "git+https://github.com/janirapo/puppy-chart.git"
