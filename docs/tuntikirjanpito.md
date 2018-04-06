@@ -14,7 +14,7 @@
 | 2.4  | 3    | Asennettu openrecord ORM ja lisätty parametreilla varustettuja tietokantakutsuja  |
 | 3.4  | 1    | Refaktorointia ja Pet-componentin lisäys |
 | 6.4  | 2.5  | Ulkoasuparannuksia, refaktorointia, ikonipaketin etsiminen ja asennus, scss-opiskelua |
-|  |   |  |
+| 6.4  | 1    | Konfiguroit webpack ja nodemon käynnistymään yhdellä komennolla |
 |  |   |  |
 |  |   |  |
 |  |   |  |
