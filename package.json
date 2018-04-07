@@ -12,7 +12,7 @@
         "watch:server": "nodemon src/server/index.js",
         "webpack": "./node_modules/.bin/webpack -w",
         "test": "mocha --compilers babel-core/register ./test/*test.js",
-        "precommit": "lint-staged",
+        "precommit": "lint-staged"
     },
     "lint-staged": {
         "linters": {
@@ -21,7 +21,7 @@
                 "git add"
             ]
         }
-    }
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/janirapo/puppy-chart.git"
