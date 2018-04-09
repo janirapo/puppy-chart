@@ -16,7 +16,7 @@
 | 6.4  | 2.5  | Ulkoasuparannuksia, refaktorointia, ikonipaketin etsiminen ja asennus, scss-opiskelua |
 | 6.4  | 1    | Konfiguroit webpack ja nodemon käynnistymään yhdellä komennolla |
 | 6.4  | 1    | Yritetty tuloksetta saada sivu latautumaan uudelleen automaattisesti kun tehdään muutoksia koodiin |
-|  |   |  |
+| 7.4  | 0.5  | Pikku korjauksia |
 |  |   |  |
 |  |   |  |
 |  |   |  |
