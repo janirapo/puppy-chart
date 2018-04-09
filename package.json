@@ -40,6 +40,7 @@
         "express": "^4.16.3",
         "moment": "^2.22.0",
         "mysql": "^2.15.0",
+        "mysql2": "^1.5.3",
         "node-mysql": "^0.4.2",
         "npm-run-all": "^4.1.2",
         "openrecord": "^2.0.0-rc10",
@@ -50,7 +51,8 @@
         "react-icons": "^2.2.7",
         "react-redux": "^5.0.7",
         "redux": "^3.7.2",
-        "redux-thunk": "^2.2.0"
+        "redux-thunk": "^2.2.0",
+        "sequelize": "^4.37.6"
     },
     "devDependencies": {
         "babel": "^6.23.0",

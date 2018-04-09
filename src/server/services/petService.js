@@ -1,10 +1,5 @@
-const store = require('../dbStore');
+const Pet = require('../model/Pet');
 
 exports.getAllByUser = function(userId, cb) {
-    store.ready(async () => {
-        store
-            .Model('Pet')
-            .where({ user_id: userId })
-            .then(cb);
-    });
+    Pet.findAll({ where: { user_id: userId } }).then(cb);
 };

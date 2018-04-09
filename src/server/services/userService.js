@@ -1,15 +1,11 @@
-const store = require('../dbStore');
+const User = require('../model/User');
 
 exports.getAllUsers = function(cb) {
-    store.ready(async () => {
-        store.Model('User').then(cb);
-    });
+    User.findAll().then(cb);
 };
 
 exports.getUser = function(userId, cb) {
-    store.ready(async () => {
-        store.Model('User').find(userId).then(cb);
-    });
+    User.findById(userId).then(cb);
 };
 
 exports.addUser = function(cb) {

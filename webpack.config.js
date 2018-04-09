@@ -4,9 +4,6 @@ const localConfig = require('./config/local.config');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const OpenrecordCache = require('openrecord/webpack');
-const myStore = require('./src/server/dbStore');
-
 const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './src/client');
 
@@ -49,7 +46,6 @@ const config = {
         ],
     },
     plugins: [
-        new OpenrecordCache(myStore),
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html',
             filename: 'index.html',
