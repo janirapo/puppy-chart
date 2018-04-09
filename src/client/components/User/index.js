@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActions from '../../actions/userActions';
+import * as petActions from '../../actions/petActions';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import PetList from '../Pet/PetList';
+
+import './User.scss';
 
 function mapStateToProps(state) {
     return state.user;
@@ -12,21 +15,23 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         userActions: bindActionCreators(userActions, dispatch),
+        petActions: bindActionCreators(petActions, dispatch),
     };
 }
 
 class User extends Component {
     componentWillMount() {
+        const { userActions } = this.props;
         // HERE WE ARE TRIGGERING THE ACTION
-        this.props.userActions.fetchUser(1); // TODO: Replace static userID
+        userActions.fetchUser(1); // TODO: Replace static userID
     }
     render() {
-        const { id, name } = this.props;
+        const { id, name, pets, petActions } = this.props;
 
         return (
-            <div className="content-container">
-                {`Welcome ${name ? name : 'Unknown user'}`}
-                {id && <PetList />}
+            <div className="User content-container">
+                <span>{`Welcome ${name ? name : 'Unknown user'}`}</span>
+                {id && <PetList userId={id} pets={pets} petActions={petActions} />}
             </div>
         );
     }
@@ -35,6 +40,9 @@ class User extends Component {
 User.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
+    pets: PropTypes.array,
+    userActions: PropTypes.object.isRequired,
+    petActions: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

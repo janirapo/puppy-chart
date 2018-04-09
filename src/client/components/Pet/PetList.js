@@ -1,27 +1,13 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as petActions from '../../actions/petActions';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Pet from './index';
 
-function mapStateToProps(state) {
-    return {
-        ...state.pet,
-        user: state.user,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        petActions: bindActionCreators(petActions, dispatch),
-    };
-}
-
 class PetList extends Component {
     componentWillMount() {
-        // HERE WE ARE TRIGGERING THE ACTION
-        this.props.petActions.fetchAllPets(this.props.user.id);
+        const { pets, userId, petActions } = this.props;
+        if (pets.length === 0) {
+            petActions.fetchAllPets(userId);
+        }
     }
     render() {
         const { pets } = this.props;
@@ -36,8 +22,9 @@ class PetList extends Component {
 }
 
 PetList.propTypes = {
-    user: PropTypes.object,
+    userId: PropTypes.number.isRequired,
     pets: PropTypes.array,
+    petActions: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PetList);
+export default PetList;
