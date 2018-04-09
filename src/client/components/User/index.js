@@ -30,7 +30,7 @@ class User extends Component {
 
         return (
             <div className="User content-container">
-                <span>{`Welcome ${name ? name : 'Unknown user'}`}</span>
+                <span className="welcome-text">{`Welcome ${name ? name : 'Unknown user'}`}</span>
                 {id && <PetList userId={id} pets={pets} petActions={petActions} />}
             </div>
         );
