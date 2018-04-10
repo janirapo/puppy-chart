@@ -36,6 +36,8 @@ class PetList extends Component {
                 <Button onClick={this.toggleAddPetModal}>Add pet</Button>
                 {addPetModalIsOpen && (
                     <ModalWindow
+                        title="Add pet"
+                        body={`TEST`}
                         handleClose={this.toggleAddPetModal}
                         handleAccept={() => null}
                         acceptText={'Add'}

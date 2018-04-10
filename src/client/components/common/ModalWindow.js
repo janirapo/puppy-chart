@@ -5,7 +5,7 @@ import { Modal, Button } from 'react-bootstrap';
 const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, acceptText }) => {
     return (
         <div className="static-modal">
-            <Modal.Dialog>
+            <Modal show={true} onHide={handleClose}>
                 {title && (
                     <Modal.Header>
                         <Modal.Title>{title}</Modal.Title>
@@ -26,7 +26,7 @@ const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, accept
                         {acceptText}
                     </Button>
                 </Modal.Footer>
-            </Modal.Dialog>
+            </Modal>
         </div>
     );
 };

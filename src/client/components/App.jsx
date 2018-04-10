@@ -6,8 +6,6 @@ import { PageHeader } from 'react-bootstrap';
 // set locale to finnish
 moment.locale('fi');
 
-import 'bootstrap/dist/css/bootstrap.css';
-
 class App extends Component {
     render() {
         return (
