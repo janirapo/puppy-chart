@@ -8,7 +8,7 @@ const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './src/client');
 
 const config = {
-    mode: localConfig.environment,
+    mode: localConfig.environment || 'production',
     entry: APP_DIR + '/index.js',
     output: {
         filename: 'bundle.js',
@@ -46,6 +46,9 @@ const config = {
         ],
     },
     plugins: [
+        new webpack.EnvironmentPlugin({
+            NODE_ENV: localConfig.environment || 'production',
+        }),
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html',
             filename: 'index.html',
