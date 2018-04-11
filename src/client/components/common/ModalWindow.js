@@ -5,9 +5,9 @@ import { Modal, Button } from 'react-bootstrap';
 const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, acceptText }) => {
     return (
         <div className="modal-backdrop">
-            <Modal show={true} onHide={handleClose} backdrop={false}>
+            <Modal show={true} onHide={handleClose} backdrop={false} keyboard={true}>
                 {title && (
-                    <Modal.Header>
+                    <Modal.Header closeButton={true}>
                         <Modal.Title>{title}</Modal.Title>
                     </Modal.Header>
                 )}

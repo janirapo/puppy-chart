@@ -17,7 +17,7 @@ let AddPetForm = props => {
                 <label htmlFor="email">Email</label>
                 <Field name="email" component="input" type="email" />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-default">Submit</button>
         </form>
     );
 };
