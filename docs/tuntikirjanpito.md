@@ -19,7 +19,7 @@
 | 7.4  | 0.5  | Pikku korjauksia |
 | 9.4  | 2.5  | Vaihdettu ORM, refaktorointia ja implementoitu bootstrapin modaali |
 | 10.4 | 0.5  | Bootstrapin tyylitiedostojen importtaustavan vaihto |
-|  |   |  |
+| 11.4 | 3    | Palvelinosion uudelleenjärjestelyä reitityksen osalta ja jwt-autentikoinnin perustan lisäys |
 |  |   |  |
 |  |   |  |
 |  |   |  |
