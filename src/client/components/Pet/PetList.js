@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Pet from './index';
 import ModalWindow from '../common/ModalWindow';
 import { Button } from 'react-bootstrap';
+import AddPetForm from './AddPetForm';
 
 class PetList extends Component {
     constructor(props) {
@@ -28,6 +29,11 @@ class PetList extends Component {
         const { pets } = this.props;
         const { addPetModalIsOpen } = this.state;
 
+        const submit = values => {
+            // print the form values to the console
+            console.log(values);
+        };
+
         return (
             <div className="content-container">
                 <span>Amount of pets: {pets ? pets.length : 0}</span>
@@ -37,7 +43,7 @@ class PetList extends Component {
                 {addPetModalIsOpen && (
                     <ModalWindow
                         title="Add pet"
-                        body={`TEST`}
+                        body={<AddPetForm onSubmit={submit} />}
                         handleClose={this.toggleAddPetModal}
                         handleAccept={() => null}
                         acceptText={'Add'}

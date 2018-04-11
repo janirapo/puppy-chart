@@ -4,8 +4,8 @@ import { Modal, Button } from 'react-bootstrap';
 
 const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, acceptText }) => {
     return (
-        <div className="static-modal">
-            <Modal show={true} onHide={handleClose}>
+        <div className="modal-backdrop">
+            <Modal show={true} onHide={handleClose} backdrop={false}>
                 {title && (
                     <Modal.Header>
                         <Modal.Title>{title}</Modal.Title>

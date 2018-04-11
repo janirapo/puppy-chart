@@ -5,6 +5,7 @@ import App from './components/App.jsx';
 import { Provider } from 'react-redux';
 
 import './scss/application.scss';
+import './scss/bootstrapOverrides.scss';
 
 const store = configureStore();
 
