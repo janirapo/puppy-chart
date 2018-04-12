@@ -45,6 +45,9 @@ const config = {
             },
         ],
     },
+    resolve: {
+        modules: [APP_DIR, path.resolve(__dirname + '/node_modules')],
+    },
     plugins: [
         new webpack.EnvironmentPlugin({
             NODE_ENV: localConfig.environment || 'production',
