@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import configureStore from './store/configureStore';
-import App from './components/App.jsx';
+import configureStore from 'store/configureStore';
+import App from 'components/App.jsx';
 import { Provider } from 'react-redux';
 
-import './scss/application.scss';
-import './scss/bootstrapOverrides.scss';
+import 'scss/application.scss';
+import 'scss/bootstrapOverrides.scss';
 
 const store = configureStore();
 

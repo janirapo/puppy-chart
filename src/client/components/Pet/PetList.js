@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Pet from './index';
-import ModalWindow from '../common/ModalWindow';
+import ModalWindow from 'components/common/ModalWindow';
 import { Button } from 'react-bootstrap';
 import AddPetForm from './AddPetForm';
 

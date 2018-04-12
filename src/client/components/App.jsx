@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import User from './User';
+import User from 'components/User/index';
 import moment from 'moment';
 import { PageHeader } from 'react-bootstrap';
 

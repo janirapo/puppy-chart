@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as userActions from '../../actions/userActions';
-import * as petActions from '../../actions/petActions';
+import * as userActions from 'actions/userActions';
+import * as petActions from 'actions/petActions';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import PetList from '../Pet/PetList';
+import PetList from 'components/Pet/PetList';
 
 import './User.scss';
 

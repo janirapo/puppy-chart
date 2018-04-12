@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import { FETCH_ALL_PETS, FETCH_USER, RECEIVE_ALL_PETS, RECEIVE_USER } from "../actions/actionTypes";
+import { FETCH_ALL_PETS, FETCH_USER, RECEIVE_ALL_PETS, RECEIVE_USER } from "actions/actionTypes";
 
 export default function user(state = initialState.user, action) {
     switch (action.type) {

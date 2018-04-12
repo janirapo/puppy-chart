@@ -3,15 +3,15 @@ const express = require('express'),
     errorhandler = require('errorhandler');
 const app = express();
 const localConfig = require('../../config/local.config');
-const middleWare = require('./middleware');
+const middleware = require('./middleware');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 app.use(express.static(__dirname + './../../build/')); //serves the build/index.html
 
 app.use(cors());
-app.use(middleWare.noCacheHeaders);
-app.use(middleWare.jsonHeader);
+app.use(middleware.noCacheHeaders);
+app.use(middleware.jsonHeader);
 app.use(express.json());
 
 if (!isProduction) {

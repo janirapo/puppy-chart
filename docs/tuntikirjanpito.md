@@ -14,14 +14,14 @@
 | 2.4  | 3    | Asennettu openrecord ORM ja lisätty parametreilla varustettuja tietokantakutsuja  |
 | 3.4  | 1    | Refaktorointia ja Pet-componentin lisäys |
 | 6.4  | 2.5  | Ulkoasuparannuksia, refaktorointia, ikonipaketin etsiminen ja asennus, scss-opiskelua |
-| 6.4  | 1    | Konfiguroit webpack ja nodemon käynnistymään yhdellä komennolla |
+| 6.4  | 1    | Konfiguroitu webpack ja nodemon käynnistymään yhdellä komennolla |
 | 6.4  | 1    | Yritetty tuloksetta saada sivu latautumaan uudelleen automaattisesti kun tehdään muutoksia koodiin |
 | 7.4  | 0.5  | Pikku korjauksia |
 | 9.4  | 2.5  | Vaihdettu ORM, refaktorointia ja implementoitu bootstrapin modaali |
 | 10.4 | 0.5  | Bootstrapin tyylitiedostojen importtaustavan vaihto |
 | 11.4 | 3    | Palvelinosion uudelleenjärjestelyä reitityksen osalta ja jwt-autentikoinnin perustan lisäys |
 | 12.4 | 2    | Leikkimistä Redux-formin kanssa ja eri käyttötapojen tutkiminen |
-|  |   |  |
+| 12.4 | 3.5  | Yritetty taas saada server-koodi toimimaan ES6 syntaksilla ja muokattu client-koodin importteja webpackin muutosten jälkeen |
 |  |   |  |
 |  |   |  |
 |  |   |  |

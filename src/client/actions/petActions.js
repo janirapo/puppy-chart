@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { BASE_URL } from '../constants/appConstants';
-import * as types from './actionTypes';
+import { BASE_URL } from 'constants/appConstants';
+import * as types from 'actions/actionTypes';
 
 const PET_URL = BASE_URL + '/pet';
 
