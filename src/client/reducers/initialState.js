@@ -1,4 +1,4 @@
-import { ALERT_TYPE_NOTIFY } from "constants/appConstants";
+import { NOTIFICATION_TYPE_NOTIFY, noop } from 'constants/appConstants';
 
 export default {
     user: {
@@ -8,8 +8,16 @@ export default {
     },
     notify: {
         showConfirmationDialog: false,
-        confirmationContent: {},
-        alertText: undefined,
-        alertType: ALERT_TYPE_NOTIFY,
-    }
+        confirmationContent: {
+            title: '',
+            text: '',
+            hideReject: false,
+            acceptText: 'Hyväksy',
+            rejectText: 'Peruuta',
+            onAccept: noop,
+            onReject: noop,
+        },
+        notificationText: undefined,
+        notificationType: NOTIFICATION_TYPE_NOTIFY,
+    },
 };
