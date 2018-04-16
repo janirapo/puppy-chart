@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import User from 'components/User/index';
 import moment from 'moment';
-import { PageHeader } from 'react-bootstrap';
 import * as notifyActions from 'actions/notifyActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -35,7 +34,7 @@ class App extends Component {
 
         return (
             <div className="content">
-                <PageHeader>Puppy Chart</PageHeader>
+                <h2>Puppy Chart</h2>
                 <User />
                 <Notification notificationText={notificationText} notificationType={notificationType} />
                 {showConfirmationDialog && <ConfirmationDialog {...confirmationContent} />}

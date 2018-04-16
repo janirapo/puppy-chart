@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Pet from './index';
 import ModalWindow from 'components/common/ModalWindow';
-import { Button } from 'react-bootstrap';
 import AddPetForm from './AddPetForm';
 
 class PetList extends Component {
@@ -39,7 +38,7 @@ class PetList extends Component {
                 <span>Amount of pets: {pets ? pets.length : 0}</span>
                 {pets && pets.map(pet => <Pet key={pet.id} pet={pet} />)}
 
-                <Button onClick={this.toggleAddPetModal}>Add pet</Button>
+                <button onClick={this.toggleAddPetModal}>Add pet</button>
                 {addPetModalIsOpen && (
                     <ModalWindow
                         title="Add pet"

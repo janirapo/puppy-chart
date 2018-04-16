@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
 import ReactModal from 'react-modal';
 import { DEFAULT_MODAL_STYLE } from "constants/appConstants";
 
@@ -17,8 +16,8 @@ const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, accept
                 <div className="modal-body">{body}</div>
 
                 <div className="modal-footer">
-                    <Button onClick={handleClose}>{closeText}</Button>
-                    <Button
+                    <button onClick={handleClose}>{closeText}</button>
+                    <button
                         onClick={() => {
                             handleAccept();
                             handleClose();
@@ -26,7 +25,7 @@ const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, accept
                         bsStyle="primary"
                     >
                         {acceptText}
-                    </Button>
+                    </button>
                 </div>
             </ReactModal>
         </div>
