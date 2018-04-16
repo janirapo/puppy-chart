@@ -11,7 +11,10 @@ export default function notify(state = initialState.notify, action) {
         case OPEN_CONFIRMATION_DIALOG:
             return {
                 ...state,
-                // TODO:
+                confirmationContent: {
+                    ...initialState.notify.confirmationContent,
+                    ...action,
+                },
             };
         case CLOSE_CONFIRMATION_DIALOG:
             return {
