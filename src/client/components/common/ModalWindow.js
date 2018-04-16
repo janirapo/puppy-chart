@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import ReactModal from 'react-modal';
+import { DEFAULT_MODAL_STYLE } from "constants/appConstants";
 
 const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, acceptText }) => {
     return (
-        <div className="modal-backdrop">
-            <Modal show={true} onHide={handleClose} backdrop={false} keyboard={true}>
+        <div className="modal-container">
+            <ReactModal isOpen={true} style={DEFAULT_MODAL_STYLE} contentLabel={title}>
                 {title && (
-                    <Modal.Header closeButton={true}>
-                        <Modal.Title>{title}</Modal.Title>
-                    </Modal.Header>
+                    <div className="modal-header">
+                        <div className="modal-title">{title}</div>
+                    </div>
                 )}
 
-                <Modal.Body>{body}</Modal.Body>
+                <div className="modal-body">{body}</div>
 
-                <Modal.Footer>
+                <div className="modal-footer">
                     <Button onClick={handleClose}>{closeText}</Button>
                     <Button
                         onClick={() => {
@@ -25,8 +27,8 @@ const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, accept
                     >
                         {acceptText}
                     </Button>
-                </Modal.Footer>
-            </Modal>
+                </div>
+            </ReactModal>
         </div>
     );
 };

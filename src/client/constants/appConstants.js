@@ -12,6 +12,9 @@ export const NOTIFICATION_TYPES = [NOTIFICATION_TYPE_NOTIFY, NOTIFICATION_TYPE_D
 export const noop = () => null;
 
 export const DEFAULT_MODAL_STYLE = {
+    overlay: {
+        backgroundColor: "rgba(19,19,19,0.8)",
+    },
     content: {
         top: '50%',
         left: '50%',
