@@ -23,7 +23,7 @@
 | 12.4 | 2    | Leikkimistä Redux-formin kanssa ja eri käyttötapojen tutkiminen |
 | 12.4 | 3.5  | Yritetty taas saada server-koodi toimimaan ES6 syntaksilla ja muokattu client-koodin importteja webpackin muutosten jälkeen |
 | 15.4 | 5.5  | Lisätty tuki ilmoituksia ja custom-varmistusdialoogia varten erillisen reduuserin avulla |
-|  |   |  |
+| 16.4 | 1.5  | Ulkoasumuutoksia ja varmistusdialoogin logiikkaparannuksia |
 |  |   |  |
 |  |   |  |
 |  |   |  |
