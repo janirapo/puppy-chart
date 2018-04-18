@@ -1,13 +1,14 @@
-const Pet = require('../model/Pet');
+const models = require('../models');
 
 /**
  * Get all pets belnging to given user
  *
  * @param userId
  * @param cb
+ * @param next
  */
 exports.getAllByUser = function(userId, cb, next) {
-    Pet.findAll({ where: { user_id: userId } })
+    models.Pet.findAll({ where: { user_id: userId } })
         .then(cb)
         .catch(next);
 };
@@ -18,9 +19,10 @@ exports.getAllByUser = function(userId, cb, next) {
  *
  * @param petData
  * @param cb
+ * @param next
  */
 exports.addPet = function(petData, cb, next) {
-    const newPet = Pet.build(petData);
+    const newPet = models.Pet.build(petData);
 
     newPet
         .save()
