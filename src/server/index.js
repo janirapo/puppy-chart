@@ -18,6 +18,8 @@ if (!isProduction) {
     app.use(errorhandler());
 }
 
+require('./passport');
+
 app.use(require('./routes'));
 
 /// catch 404 and forward to error handler

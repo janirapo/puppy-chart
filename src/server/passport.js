@@ -7,7 +7,7 @@ passport.use(new LocalStrategy({
     passwordField: 'user[password]'
 }, function(email, password, done) {
     userService.findUserByEmail(email, function(user) {
-        if(!user || !user.validPassword(user, password)){
+        if(!user || !userService.validPassword(user.dataValues, password)){
             return done(null, false, {errors: {'email or password': 'is invalid'}});
         }
 
