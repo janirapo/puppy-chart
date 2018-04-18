@@ -10,6 +10,8 @@ import { NOTIFICATION_TYPES } from 'constants/appConstants';
 import ConfirmationDialog from './common/ConfirmationDialog';
 import Modal from 'react-modal';
 
+import { setupAuthorizedRequests } from 'utils/request';
+
 // set locale to finnish
 moment.locale('fi');
 
@@ -29,6 +31,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 class App extends Component {
+    componentWillMount() {
+        setupAuthorizedRequests();
+    }
+
     render() {
         const { notificationText, notificationType, showConfirmationDialog, confirmationContent } = this.props;
 

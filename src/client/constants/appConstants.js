@@ -5,6 +5,8 @@ export const NOTIFICATION_TYPE_DANGER = 'danger';
 
 export const NOTIFICATION_TYPES = [NOTIFICATION_TYPE_NOTIFY, NOTIFICATION_TYPE_DANGER];
 
+export const JWT_KEY = 'puppy-chart-jwt';
+
 /**
  * NO OP function that does nothing, but returns null
  * @returns {null}
