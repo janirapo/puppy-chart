@@ -25,5 +25,5 @@
 | 15.4 | 5.5  | Lisätty tuki ilmoituksia ja custom-varmistusdialoogia varten erillisen reduuserin avulla |
 | 16.4 | 1.5  | Ulkoasumuutoksia ja varmistusdialoogin logiikkaparannuksia |
 | 18.4 | 5.5  | Tietokantamallin refaktorointi, login-toiminnallisuus taustalle ja käyttäjän tunnistus, sekä auto-login |
-|  |   |  |
+| 24.4 | 3    | Luotu login-formi ja fronttipuolen login-toiminnallisuus, tai ainakin hyvä perusta sille |
 |  |   |  |
