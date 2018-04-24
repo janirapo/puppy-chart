@@ -8,7 +8,6 @@ export function setupAuthorizedRequests() {
     const jwt = localStorage.getItem(JWT_KEY);
 
     if (!jwt) {
-
         removeTokenAndRedirectToLogin();
         return;
     }
@@ -56,7 +55,9 @@ export function createGenericReduxErrorHandler(dispatch, type) {
 
         dispatch({
             type: type,
-            error: error.message,
+            error:
+                (error.response.data && error.response.data.errors && JSON.stringify(error.response.data.errors)) ||
+                error.message,
         });
     };
 }

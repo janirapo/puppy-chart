@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
 
 import PetList from 'components/Pet/PetList';
-import Login from "components/common/Login";
+import LoginForm from "components/common/LoginForm";
 import { JWT_KEY } from 'constants/appConstants';
 
 import './User.scss';
@@ -42,10 +42,10 @@ class User extends Component {
         }
     }
     render() {
-        const { id, name, pets, petActions } = this.props;
+        const { id, name, pets, userActions, petActions, error } = this.props;
 
         if (!id) {
-            return <Login />;
+            return <LoginForm onSubmit={userActions.performLogin} loginError={error} />;
         }
 
         return (
@@ -63,6 +63,7 @@ User.propTypes = {
     pets: PropTypes.array,
     userActions: PropTypes.object.isRequired,
     petActions: PropTypes.object.isRequired,
+    error: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

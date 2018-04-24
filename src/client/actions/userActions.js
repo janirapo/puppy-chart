@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from 'constants/appConstants';
 import * as types from 'actions/actionTypes';
+import { createGenericReduxErrorHandler } from '../utils/request';
 
 const USER_URL = BASE_URL + '/user';
 
@@ -10,7 +11,24 @@ export function receiveUser(json) {
 
 export function fetchUser(userId) {
     return dispatch => {
-        return axios.get(`${USER_URL}/${userId}`)
-            .then(response => dispatch(receiveUser(response.data)));
+        return axios
+            .get(`${USER_URL}/${userId}`)
+            .then(response => dispatch(receiveUser(response.data)))
+            .catch(createGenericReduxErrorHandler(dispatch, types.FETCH_USER_FAIL));
+    };
+}
+
+export function performLogin(values) {
+    return dispatch => {
+        const loginObj = {
+            user: {
+                email: values.email,
+                password: values.password,
+            },
+        };
+        return axios
+            .post(`${USER_URL}/login`, loginObj)
+            .then(response => dispatch({ type: types.LOGIN_SUCCESS, user: response.data.user }))
+            .catch(createGenericReduxErrorHandler(dispatch, types.LOGIN_FAIL));
     };
 }

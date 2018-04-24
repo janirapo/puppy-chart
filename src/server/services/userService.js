@@ -52,6 +52,7 @@ exports.generateJWT = function(user) {
 
 exports.toAuthJSON = function(user) {
     return {
+        id: user.id,
         name: user.name,
         email: user.email,
         token: this.generateJWT(user),

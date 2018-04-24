@@ -3,8 +3,9 @@ import { NOTIFICATION_TYPE_NOTIFY, noop } from 'constants/appConstants';
 export default {
     user: {
         id: undefined,
-        userName: undefined,
+        name: undefined,
         pets: [],
+        error: undefined,
     },
     notify: {
         showConfirmationDialog: false,
