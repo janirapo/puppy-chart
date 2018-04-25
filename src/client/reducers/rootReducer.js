@@ -3,7 +3,6 @@ import { reducer as formReducer } from 'redux-form';
 import user from './userReducer';
 import notify from './notifyReducer';
 import { LOG_OUT } from "actions/actionTypes";
-import initialState from "./initialState";
 
 const appReducer = combineReducers({
     user,
