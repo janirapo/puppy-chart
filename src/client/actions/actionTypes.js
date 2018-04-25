@@ -16,3 +16,5 @@ export const HIDE_NOTIFICATION = 'HIDE_NOTIFICATION';
 
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+
+export const LOG_OUT = 'LOG_OUT';

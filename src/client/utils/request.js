@@ -8,13 +8,14 @@ export function setupAuthorizedRequests() {
     const jwt = localStorage.getItem(JWT_KEY);
 
     if (!jwt) {
-        removeTokenAndRedirectToLogin();
+        removeToken();
         return;
     }
 
     // Intercept every request's response/error before it is given to response-handler
     axios.interceptors.response.use(
         response => {
+
             const token = response.data.token;
 
             // In case of successful request, refresh token
@@ -29,7 +30,7 @@ export function setupAuthorizedRequests() {
         error => {
             // In case of 401, remove old token and redirect to login
             if (error && error.response && error.response.status === 401) {
-                removeTokenAndRedirectToLogin();
+                removeToken();
                 return;
             }
 
@@ -71,11 +72,9 @@ function setDefaultRequestAuthorizationToken(token) {
 }
 
 /**
- * If user has no jwt, redirect to login
+ * Remove jwt token from localstorage
  * @returns {void}
  */
-function removeTokenAndRedirectToLogin() {
+export function removeToken() {
     localStorage.removeItem(JWT_KEY);
-
-    // TODO: something
 }

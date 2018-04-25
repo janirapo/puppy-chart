@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { BASE_URL } from 'constants/appConstants';
+import { BASE_URL, JWT_KEY } from 'constants/appConstants';
 import * as types from 'actions/actionTypes';
-import { createGenericReduxErrorHandler } from '../utils/request';
+import { createGenericReduxErrorHandler, setupAuthorizedRequests, removeToken } from '../utils/request';
 
 const USER_URL = BASE_URL + '/user';
 
@@ -28,7 +28,16 @@ export function performLogin(values) {
         };
         return axios
             .post(`${USER_URL}/login`, loginObj)
-            .then(response => dispatch({ type: types.LOGIN_SUCCESS, user: response.data.user }))
+            .then(response => {
+                localStorage.setItem(JWT_KEY, response.data.user.token);
+                setupAuthorizedRequests();
+                dispatch({ type: types.LOGIN_SUCCESS, user: response.data.user });
+            })
             .catch(createGenericReduxErrorHandler(dispatch, types.LOGIN_FAIL));
     };
+}
+
+export function logout() {
+    removeToken();
+    return {type: types.LOG_OUT};
 }
