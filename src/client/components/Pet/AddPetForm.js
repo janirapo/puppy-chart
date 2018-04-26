@@ -1,25 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import { renderField, required, minLength2, alphaNumeric, renderDateTimePicker } from 'utils/reduxFormHelpers';
 
 let AddPetForm = props => {
-    const { handleSubmit } = props;
+    const { handleSubmit, formError } = props;
     return (
         <form onSubmit={handleSubmit}>
+            {formError && <span className="alert">{formError}</span>}
             <div>
-                <label htmlFor="firstName">First Name</label>
-                <Field name="firstName" component="input" type="text" />
+                <Field
+                    name="name"
+                    type="text"
+                    label="Pet name"
+                    component={renderField}
+                    validate={[required, minLength2]}
+                    warn={alphaNumeric}
+                />
+                <Field
+                    name="dateOfBirth"
+                    label="Date of birth"
+                    component={renderDateTimePicker}
+                    validate={[required]}
+                    showTime={false}
+                />
             </div>
-            <div>
-                <label htmlFor="lastName">Last Name</label>
-                <Field name="lastName" component="input" type="text" />
-            </div>
-            <div>
-                <label htmlFor="email">Email</label>
-                <Field name="email" component="input" type="email" />
-            </div>
-            <button type="submit" className="btn btn-default">Submit</button>
+            <button type="submit" className="btn btn-default">
+                Submit
+            </button>
         </form>
     );
+};
+
+AddPetForm.propTypes = {
+    formError: PropTypes.string,
 };
 
 AddPetForm = reduxForm({

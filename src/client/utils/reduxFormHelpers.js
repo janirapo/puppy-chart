@@ -1,4 +1,10 @@
 import React from 'react';
+import DateTimePicker from 'react-widgets/lib/DateTimePicker';
+import momentLocalizer from 'react-widgets-moment';
+import moment from 'moment';
+
+moment.locale('fi');
+momentLocalizer();
 
 /****** Form validators *******/
 export const required = value => (value ? undefined : 'Required');
@@ -30,7 +36,7 @@ export const alphaNumeric = value =>
  * @returns {*}
  * @constructor
  */
-export const RenderField = ({ input, label, type, required, meta: { touched, error, warning } }) => (
+export const renderField = ({ input, label, type, required, meta: { touched, error, warning } }) => (
     <div>
         <label>
             {required && <span className="required-field">*</span>}
@@ -41,4 +47,8 @@ export const RenderField = ({ input, label, type, required, meta: { touched, err
             {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
         </div>
     </div>
+);
+
+export const renderDateTimePicker = ({ input: { onChange, value }, showTime }) => (
+    <DateTimePicker onChange={onChange} format="DD MMM YYYY" time={showTime} value={!value ? null : new Date(value)} />
 );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { RenderField, required, minLength2, email } from 'utils/reduxFormHelpers';
+import { renderField, required, minLength2, email } from 'utils/reduxFormHelpers';
 
 class LoginForm extends Component {
     render() {
@@ -13,11 +13,11 @@ class LoginForm extends Component {
                 <Field
                     name="email"
                     type="text"
-                    component={RenderField}
+                    component={renderField}
                     label="Username"
                     validate={[required, minLength2, email]}
                 />
-                <Field name="password" type="password" component={RenderField} label="Password" validate={[required]} />
+                <Field name="password" type="password" component={renderField} label="Password" validate={[required]} />
                 <div>
                     <button type="submit" disabled={submitting}>
                         Log in

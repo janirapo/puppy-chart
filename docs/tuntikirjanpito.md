@@ -26,4 +26,19 @@
 | 16.4 | 1.5  | Ulkoasumuutoksia ja varmistusdialoogin logiikkaparannuksia |
 | 18.4 | 5.5  | Tietokantamallin refaktorointi, login-toiminnallisuus taustalle ja käyttäjän tunnistus, sekä auto-login |
 | 24.4 | 3    | Luotu login-formi ja fronttipuolen login-toiminnallisuus, tai ainakin hyvä perusta sille |
-| 25.4 | 2   | Kirjautumisen yhteydessä käytettävän JWT:n käsittelyn parannus ja mahdollistettu uloskirjautuminen |
+| 25.4 | 2    | Kirjautumisen yhteydessä käytettävän JWT:n käsittelyn parannus ja mahdollistettu uloskirjautuminen |
+| 26.4 | 3    | Uuden lemmikin lisäämislomakkeen tunkkailua ja datepickerin kanssa taistelua |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
+|   |    |    |
