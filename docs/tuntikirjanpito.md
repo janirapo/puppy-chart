@@ -28,17 +28,17 @@
 | 24.4 | 3    | Luotu login-formi ja fronttipuolen login-toiminnallisuus, tai ainakin hyvä perusta sille |
 | 25.4 | 2    | Kirjautumisen yhteydessä käytettävän JWT:n käsittelyn parannus ja mahdollistettu uloskirjautuminen |
 | 26.4 | 3    | Uuden lemmikin lisäämislomakkeen tunkkailua ja datepickerin kanssa taistelua |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
-|   |    |    |
+| 27.4 | 1.5  | Krovattu react-widgets ja toteutettu datepicker react-day-picker komponentin avulla |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |
+|   |    |   |

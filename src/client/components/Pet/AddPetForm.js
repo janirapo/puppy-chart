@@ -16,13 +16,14 @@ let AddPetForm = props => {
                     component={renderField}
                     validate={[required, minLength2]}
                     warn={alphaNumeric}
+                    required
                 />
                 <Field
                     name="dateOfBirth"
                     label="Date of birth"
                     component={renderDateTimePicker}
                     validate={[required]}
-                    showTime={false}
+                    required
                 />
             </div>
             <button type="submit" className="btn btn-default">

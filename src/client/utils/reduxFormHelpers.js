@@ -1,10 +1,11 @@
 import React from 'react';
-import DateTimePicker from 'react-widgets/lib/DateTimePicker';
-import momentLocalizer from 'react-widgets-moment';
-import moment from 'moment';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+// Include the locale utils designed for moment
+import MomentLocaleUtils, { formatDate, parseDate } from 'react-day-picker/moment';
 
-moment.locale('fi');
-momentLocalizer();
+// Make sure moment.js has the required locale data
+import 'moment/locale/fi';
+import 'react-day-picker/lib/style.css';
 
 /****** Form validators *******/
 export const required = value => (value ? undefined : 'Required');
@@ -49,6 +50,31 @@ export const renderField = ({ input, label, type, required, meta: { touched, err
     </div>
 );
 
-export const renderDateTimePicker = ({ input: { onChange, value }, showTime }) => (
-    <DateTimePicker onChange={onChange} format="DD MMM YYYY" time={showTime} value={!value ? null : new Date(value)} />
+export const renderDateTimePicker = ({
+    input: { onChange },
+    label,
+    type,
+    required,
+    meta: { touched, error, warning },
+}) => (
+    <div>
+        <label>
+            {required && <span className="required-field">*</span>}
+            {label}
+        </label>
+        <div>
+            <DayPickerInput
+                onDayChange={onChange}
+                format="l"
+                formatDate={formatDate}
+                parseDate={parseDate}
+                placeholder={`${formatDate(new Date(), 'l', 'fi')}`}
+                dayPickerProps={{
+                    locale: 'fi',
+                    localeUtils: MomentLocaleUtils,
+                }}
+            />
+            {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+        </div>
+    </div>
 );
