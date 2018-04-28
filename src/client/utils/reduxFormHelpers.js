@@ -34,7 +34,7 @@ export const alphaNumeric = value =>
  * @constructor
  */
 export const renderField = ({ input, label, type, required, meta: { touched, error, warning } }) => (
-    <div>
+    <div className="input-container">
         <label>
             {required && <span className="required-field">*</span>}
             {label}
@@ -53,7 +53,7 @@ export const renderDateTimePicker = ({
     required,
     meta: { touched, error, warning },
 }) => (
-    <div>
+    <div className="input-container">
         <label>
             {required && <span className="required-field">*</span>}
             {label}

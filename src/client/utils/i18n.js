@@ -24,10 +24,11 @@ i18n.init(
                     years: 'vuosia',
                     months: 'kuukausia',
                     weeks: 'viikkoja',
+                    in_years: 'vuosissa',
+                    in_months: 'kuukausissa',
+                    in_weeks: 'viikoissa',
                     name: 'Nimi',
                     log_out: 'Kirjaudu ulos',
-
-
                 },
             },
             en: {

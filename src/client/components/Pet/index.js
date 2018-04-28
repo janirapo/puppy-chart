@@ -9,7 +9,9 @@ import './Pet.scss';
 class Pet extends Component {
     _renderRow = text => (
         <div className="pet-row">
-            <div className="icon-pre"><FaPaw /></div>
+            <div className="icon-pre">
+                <FaPaw />
+            </div>
             <span>{text}</span>
         </div>
     );
@@ -20,9 +22,15 @@ class Pet extends Component {
             <div className="Pet">
                 {this._renderRow(`${t('name')}: ${pet.name}`)}
                 {this._renderRow(`${t('dob')}: ${moment(pet.birth_date).format('Do MMMM')}`)}
-                {this._renderRow(`${t('age_in_unit', { unit: t('years')})}: ${moment().diff(moment(pet.birth_date), 'years')}`)}
-                {this._renderRow(`${t('age_in_unit', { unit: t('months')})}: ${moment().diff(moment(pet.birth_date), 'months')}`)}
-                {this._renderRow(`${t('age_in_unit', { unit: t('weeks')})}: ${moment().diff(moment(pet.birth_date), 'weeks')}`)}
+                {this._renderRow(
+                    `${t('age_in_unit', { unit: t('in_years') })}: ${moment().diff(moment(pet.birth_date), 'years')}`,
+                )}
+                {this._renderRow(
+                    `${t('age_in_unit', { unit: t('in_months') })}: ${moment().diff(moment(pet.birth_date), 'months')}`,
+                )}
+                {this._renderRow(
+                    `${t('age_in_unit', { unit: t('in_weeks') })}: ${moment().diff(moment(pet.birth_date), 'weeks')}`,
+                )}
             </div>
         );
     }
