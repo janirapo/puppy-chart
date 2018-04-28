@@ -5,6 +5,7 @@ import * as userActions from 'actions/userActions';
 import * as petActions from 'actions/petActions';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
+import { t } from 'utils/i18n';
 
 import PetList from 'components/Pet/PetList';
 import LoginForm from "components/common/LoginForm";
@@ -50,7 +51,7 @@ class User extends Component {
 
         return (
             <div className="User content-container">
-                <span className="welcome-text">{`Welcome ${name ? name : 'Unknown user'}`}</span>
+                <span className="welcome-text">{t('welcome', { name: name ? name : t('unknown_user')})}</span>
                 {id && <PetList userId={id} pets={pets} petActions={petActions} />}
             </div>
         );

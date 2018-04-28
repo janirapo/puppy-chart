@@ -2,29 +2,25 @@ import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 // Include the locale utils designed for moment
 import MomentLocaleUtils, { formatDate, parseDate } from 'react-day-picker/moment';
+import i18n, { t } from 'utils/i18n';
 
 // Make sure moment.js has the required locale data
 import 'moment/locale/fi';
 import 'react-day-picker/lib/style.css';
 
 /****** Form validators *******/
-export const required = value => (value ? undefined : 'Required');
+export const required = value => (value ? undefined : t('required'));
 export const maxLength = max => value =>
-    value && value.length > max ? `Must be ${max} characters or less` : undefined;
+    value && value.length > max ? t('max_characters', { max: max}) : undefined;
 export const maxLength15 = maxLength(15);
 export const minLength = min => value =>
-    value && value.length < min ? `Must be ${min} characters or more` : undefined;
+    value && value.length < min ? t('min_characters', { min: min}) : undefined;
 export const minLength2 = minLength(2);
-export const number = value => (value && isNaN(Number(value)) ? 'Must be a number' : undefined);
-export const minValue = min => value => (value && value < min ? `Must be at least ${min}` : undefined);
-export const minValue13 = minValue(13);
+export const number = value => (value && isNaN(Number(value)) ? t('validate_number') : undefined);
 export const email = value =>
-    value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : undefined;
-export const tooYoung = value => (value && value < 13 ? 'You do not meet the minimum age requirement!' : undefined);
-export const aol = value =>
-    value && /.+@aol\.com/.test(value) ? 'Really? You still use AOL for your email?' : undefined;
+    value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? t('invalid_email') : undefined;
 export const alphaNumeric = value =>
-    value && /[^a-zA-Z0-9 ]/i.test(value) ? 'Only alphanumeric characters' : undefined;
+    value && /[^a-zA-Z0-9 ]/i.test(value) ? t('validate_alphanumeric') : undefined;
 /**
  * Component for form input
  * @param input
@@ -68,9 +64,9 @@ export const renderDateTimePicker = ({
                 format="l"
                 formatDate={formatDate}
                 parseDate={parseDate}
-                placeholder={`${formatDate(new Date(), 'l', 'fi')}`}
+                placeholder={`${formatDate(new Date(), 'l', i18n.language)}`}
                 dayPickerProps={{
-                    locale: 'fi',
+                    locale: i18n.language,
                     localeUtils: MomentLocaleUtils,
                 }}
             />

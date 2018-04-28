@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { renderField, required, minLength2, alphaNumeric, renderDateTimePicker } from 'utils/reduxFormHelpers';
+import { t } from 'utils/i18n';
 
 let AddPetForm = props => {
     const { handleSubmit, formError } = props;
@@ -12,7 +13,7 @@ let AddPetForm = props => {
                 <Field
                     name="name"
                     type="text"
-                    label="Pet name"
+                    label={t('pet_name')}
                     component={renderField}
                     validate={[required, minLength2]}
                     warn={alphaNumeric}
@@ -20,14 +21,14 @@ let AddPetForm = props => {
                 />
                 <Field
                     name="dateOfBirth"
-                    label="Date of birth"
+                    label={t('dob')}
                     component={renderDateTimePicker}
                     validate={[required]}
                     required
                 />
             </div>
             <button type="submit" className="btn btn-default">
-                Submit
+                {t('save')}
             </button>
         </form>
     );

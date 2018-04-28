@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Pet from './index';
 import ModalWindow from 'components/common/ModalWindow';
 import AddPetForm from './AddPetForm';
+import { t } from 'utils/i18n';
 
 class PetList extends Component {
     constructor(props) {
@@ -35,18 +36,18 @@ class PetList extends Component {
 
         return (
             <div className="content-container">
-                <span>Amount of pets: {pets ? pets.length : 0}</span>
+                <span>{t('pet_amount', { count: pets ? pets.length : 0})}</span>
                 {pets && pets.map(pet => <Pet key={pet.id} pet={pet} />)}
 
-                <button onClick={this.toggleAddPetModal}>Add pet</button>
+                <button onClick={this.toggleAddPetModal}>{t('add_pet')}</button>
                 {addPetModalIsOpen && (
                     <ModalWindow
-                        title="Add pet"
+                        title={t('add_pet')}
                         body={<AddPetForm onSubmit={submit} />}
                         handleClose={this.toggleAddPetModal}
                         handleAccept={() => null}
-                        acceptText={'Add'}
-                        closeText={'Close'}
+                        acceptText={t('add')}
+                        closeText={t('close')}
                     />
                 )}
             </div>

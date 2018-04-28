@@ -10,13 +10,14 @@ import Notification from './common/Notification';
 import { NOTIFICATION_TYPES } from 'constants/appConstants';
 import ConfirmationDialog from './common/ConfirmationDialog';
 import Modal from 'react-modal';
+import i18n, { t } from 'utils/i18n';
 
 import './App.scss';
 
 import { setupAuthorizedRequests } from 'utils/request';
 
-// set locale to finnish
-moment.locale('fi');
+// set locale to current language
+moment.locale(i18n.language);
 
 // bind Modal to root element
 Modal.setAppElement('#root');
@@ -57,7 +58,7 @@ class App extends Component {
                     {userId && (
                         <div className="logout-container">
                             <button type="button" onClick={handleLogout}>
-                                Logout
+                                {t('log_out')}
                             </button>
                         </div>
                     )}
