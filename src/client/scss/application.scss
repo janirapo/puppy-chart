@@ -33,7 +33,7 @@ body {
     margin-right: 5px;
 }
 
-.input-container {
+.input-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -48,12 +48,29 @@ body {
         color: red;
         margin-right: 3px;
     }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .input-error,
+    .input-warning {
+        font-size: 11px;
+        color: red;
+    }
+
+    button {
+        margin-top: 10px;
+    }
 }
 
 form input {
     padding: 3px 6px;
     border-radius: 4px;
-    margin: 3px 5px;
+    margin: 3px 0px;
 }
 
 button {

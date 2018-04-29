@@ -13,6 +13,7 @@ let AddPetForm = props => {
                 <Field
                     name="name"
                     type="text"
+                    placeholder={t('pet_name')}
                     label={t('pet_name')}
                     component={renderField}
                     validate={[required, minLength2]}
@@ -20,8 +21,9 @@ let AddPetForm = props => {
                     required
                 />
                 <Field
-                    name="dateOfBirth"
+                    name="date_of_birth"
                     label={t('dob')}
+                    placeholder={t('dob')}
                     component={renderDateTimePicker}
                     validate={[required]}
                     required

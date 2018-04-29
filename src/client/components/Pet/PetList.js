@@ -26,13 +26,8 @@ class PetList extends Component {
     };
 
     render() {
-        const { pets } = this.props;
+        const { pets, petActions } = this.props;
         const { addPetModalIsOpen } = this.state;
-
-        const submit = values => {
-            // print the form values to the console
-            console.log(values);
-        };
 
         return (
             <div className="content-container">
@@ -43,7 +38,7 @@ class PetList extends Component {
                 {addPetModalIsOpen && (
                     <ModalWindow
                         title={t('add_pet')}
-                        body={<AddPetForm onSubmit={submit} />}
+                        body={<AddPetForm onSubmit={petActions.addPet} />}
                         handleClose={this.toggleAddPetModal}
                         handleAccept={() => null}
                         acceptText={t('add')}

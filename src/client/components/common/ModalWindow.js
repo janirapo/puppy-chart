@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
-import { DEFAULT_MODAL_STYLE } from "constants/appConstants";
+import { DEFAULT_MODAL_STYLE } from 'constants/appConstants';
+
+import './ModalWindow.scss';
 
 const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, acceptText }) => {
     return (
@@ -9,7 +11,7 @@ const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, accept
             <ReactModal isOpen={true} style={DEFAULT_MODAL_STYLE} contentLabel={title}>
                 {title && (
                     <div className="modal-header">
-                        <div className="modal-title">{title}</div>
+                        <div className="modal-header__title">{title}</div>
                     </div>
                 )}
 

@@ -25,6 +25,10 @@ export const DEFAULT_MODAL_STYLE = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         minHeight: '300px',
-        minWidth: '250px',
+        minWidth: '400px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        overflow: 'auto',
     },
 };
