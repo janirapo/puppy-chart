@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as userActions from 'actions/userActions';
-import * as petActions from 'actions/petActions';
+import { fetchUser, performLogin } from 'actions/userActions';
+
+import { fetchPet, fetchAllPets } from 'actions/petActions';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
 import { t } from 'utils/i18n';
 
 import PetList from 'components/Pet/PetList';
-import LoginForm from "components/common/LoginForm";
+import LoginForm from 'components/common/LoginForm';
 import { JWT_KEY } from 'constants/appConstants';
 
 import './User.scss';
-
 
 function mapStateToProps(state) {
     return state.user;
@@ -20,8 +20,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        userActions: bindActionCreators(userActions, dispatch),
-        petActions: bindActionCreators(petActions, dispatch),
+        userActions: bindActionCreators({ fetchUser, performLogin }, dispatch),
+        petActions: bindActionCreators({ fetchPet, fetchAllPets }, dispatch),
     };
 }
 
@@ -51,7 +51,7 @@ class User extends Component {
 
         return (
             <div className="User content-container">
-                <span className="welcome-text">{t('welcome', { name: name ? name : t('unknown_user')})}</span>
+                <span className="welcome-text">{t('welcome', { name: name ? name : t('unknown_user') })}</span>
                 {id && <PetList userId={id} pets={pets} petActions={petActions} />}
             </div>
         );
