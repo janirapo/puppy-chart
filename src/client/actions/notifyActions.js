@@ -1,10 +1,12 @@
 import { NOTIFICATION_TYPE_NOTIFY, NOTIFICATION_TYPES } from 'constants/appConstants';
-import {
-    SHOW_NOTIFICATION,
-    HIDE_NOTIFICATION,
-    CLOSE_CONFIRMATION_DIALOG,
-    OPEN_CONFIRMATION_DIALOG,
-} from './actionTypes';
+
+const ACTION_BASE = 'NOTIFY/';
+
+export const OPEN_CONFIRMATION_DIALOG = ACTION_BASE + 'OPEN_CONFIRMATION_DIALOG';
+export const CLOSE_CONFIRMATION_DIALOG = ACTION_BASE + 'CLOSE_CONFIRMATION_DIALOG';
+
+export const SHOW_NOTIFICATION = ACTION_BASE + 'SHOW_NOTIFICATION';
+export const HIDE_NOTIFICATION = ACTION_BASE + 'HIDE_NOTIFICATION';
 
 export function openConfirmationDialog(confirmationContent) {
     return {

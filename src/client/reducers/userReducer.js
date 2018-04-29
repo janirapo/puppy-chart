@@ -1,43 +1,59 @@
 import initialState from './initialState';
 import {
-    FETCH_ALL_PETS,
-    FETCH_USER,
-    RECEIVE_ALL_PETS,
-    RECEIVE_USER,
+    FETCH_USER_START,
+    FETCH_USER_SUCCESS,
     FETCH_USER_FAIL,
+    LOGIN_START,
     LOGIN_FAIL,
     LOGIN_SUCCESS,
-} from 'actions/actionTypes';
+} from 'actions/userActions';
+import { FETCH_ALL_PETS_FAIL, FETCH_ALL_PETS_START, FETCH_ALL_PETS_SUCCESS } from '../actions/petActions';
 
 export default function user(state = initialState.user, action) {
     switch (action.type) {
-        case FETCH_USER:
+        case LOGIN_START:
+        case FETCH_USER_START:
+            return {
+                ...initialState.user,
+                loading: true,
+            };
         case LOGIN_SUCCESS:
             return {
                 ...initialState.user,
                 id: action.user.id,
                 name: action.user.name,
+                loading: false,
             };
-        case FETCH_ALL_PETS:
+        case FETCH_ALL_PETS_START:
             return {
                 ...state,
+                loading: true,
             };
-        case RECEIVE_USER:
+        case FETCH_USER_SUCCESS:
             return {
                 ...state,
                 id: action.user.id,
                 name: action.user.name,
+                loading: false,
             };
-        case RECEIVE_ALL_PETS:
+        case FETCH_ALL_PETS_SUCCESS:
             return {
                 ...state,
                 pets: action.pets,
+                loading: false,
+            };
+        case FETCH_ALL_PETS_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.error,
             };
         case FETCH_USER_FAIL:
         case LOGIN_FAIL:
             return {
                 ...initialState.user,
                 error: action.error,
+                loading: false,
             };
         default:
             return state;

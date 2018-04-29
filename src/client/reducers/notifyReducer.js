@@ -4,7 +4,7 @@ import {
     CLOSE_CONFIRMATION_DIALOG,
     SHOW_NOTIFICATION,
     HIDE_NOTIFICATION,
-} from 'actions/actionTypes';
+} from 'actions/notifyActions';
 
 export default function notify(state = initialState.notify, action) {
     switch (action.type) {

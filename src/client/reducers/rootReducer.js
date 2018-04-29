@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import user from './userReducer';
 import notify from './notifyReducer';
-import { LOG_OUT } from "actions/actionTypes";
+import { LOG_OUT } from "actions/userActions";
 
 const appReducer = combineReducers({
     user,
