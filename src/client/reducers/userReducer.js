@@ -7,7 +7,14 @@ import {
     LOGIN_FAIL,
     LOGIN_SUCCESS,
 } from 'actions/userActions';
-import { FETCH_ALL_PETS_FAIL, FETCH_ALL_PETS_START, FETCH_ALL_PETS_SUCCESS } from '../actions/petActions';
+import {
+    FETCH_ALL_PETS_FAIL,
+    FETCH_ALL_PETS_START,
+    FETCH_ALL_PETS_SUCCESS,
+    ADD_PET_START,
+    ADD_PET_SUCCESS,
+    ADD_PET_FAIL,
+} from "../actions/petActions";
 
 export default function user(state = initialState.user, action) {
     switch (action.type) {
@@ -24,6 +31,7 @@ export default function user(state = initialState.user, action) {
                 name: action.user.name,
                 loading: false,
             };
+        case ADD_PET_START:
         case FETCH_ALL_PETS_START:
             return {
                 ...state,
@@ -42,6 +50,7 @@ export default function user(state = initialState.user, action) {
                 pets: action.pets,
                 loading: false,
             };
+        case ADD_PET_FAIL:
         case FETCH_ALL_PETS_FAIL:
             return {
                 ...state,
@@ -54,6 +63,11 @@ export default function user(state = initialState.user, action) {
                 ...initialState.user,
                 error: action.error,
                 loading: false,
+            };
+        case ADD_PET_SUCCESS:
+            return {
+                ...state,
+                pets: state.pets.concat(action.newPet),
             };
         default:
             return state;

@@ -12,13 +12,16 @@ router.get('/get-all-by-user/:userId', auth.optional, function(req, res, next) {
     );
 });
 
-router.post('/', auth.optional, function(req, res, next) {
-    console.log(req.body, req.params);
+router.post('/', auth.required, function(req, res, next) {
+
+    const petData = Object.assign(req.body, {user_id: req.payload.id});
+
+    // TODO: Validate that all values are set!!
 
     petService.addPet(
-        req.body,
+        petData,
         dbResult => {
-            res.send(JSON.stringify({ pets: dbResult }));
+            res.send(JSON.stringify(dbResult));
         },
         next,
     );

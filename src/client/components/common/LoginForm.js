@@ -9,7 +9,7 @@ class LoginForm extends Component {
 
         return (
             <form onSubmit={handleSubmit}>
-                {loginError && <span className="alert">{loginError}</span>}
+                {loginError && <div className="alert-box">{loginError}</div>}
                 <Field
                     name="email"
                     type="text"

@@ -3,6 +3,7 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 // Include the locale utils designed for moment
 import MomentLocaleUtils, { formatDate, parseDate } from 'react-day-picker/moment';
 import i18n, { t } from 'utils/i18n';
+import moment from 'moment';
 
 // Make sure moment.js has the required locale data
 import 'moment/locale/fi';
@@ -18,6 +19,8 @@ export const number = value => (value && isNaN(Number(value)) ? t('validate_numb
 export const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? t('invalid_email') : undefined;
 export const alphaNumeric = value => (value && /[^a-zA-Z0-9 ]/i.test(value) ? t('validate_alphanumeric') : undefined);
+export const date = value => (value && !moment(value).isValid() ? t('validate_date') : undefined);
+
 /**
  * Component for form input
  * @param input
@@ -69,6 +72,7 @@ export const renderDateTimePicker = ({
                     locale: i18n.language,
                     localeUtils: MomentLocaleUtils,
                 }}
+                inputProps={{ onChange: onChange }}
             />
             {touched &&
                 ((error && <span className="input-error">{error}</span>) ||

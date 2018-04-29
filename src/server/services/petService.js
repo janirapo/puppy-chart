@@ -22,6 +22,9 @@ exports.getAllByUser = function(userId, cb, next) {
  * @param next
  */
 exports.addPet = function(petData, cb, next) {
+
+    // TODO: Validate values?
+
     const newPet = models.Pet.build(petData);
 
     newPet

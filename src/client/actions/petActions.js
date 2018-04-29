@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { BASE_URL } from 'constants/appConstants';
 import { createGenericReduxErrorHandler } from '../utils/request';
+import moment from 'moment';
+import { notify } from "./notifyActions";
 
 const ACTION_BASE = 'PET/';
 
@@ -46,12 +48,15 @@ export function addPet(values) {
 
         const petObj = {
             ...values,
-            date_of_birth: values.date_of_birth.format('YYYY-MM-DD'),
+            birth_date: moment(values.dateOfBirth).format('YYYY-MM-DD'),
         };
 
         return axios
             .post(`${PET_URL}`, petObj)
-            .then(response => dispatch({ type: ADD_PET_SUCCESS, pet: response.data.pet }))
+            .then(response => {
+                dispatch({ type: ADD_PET_SUCCESS, newPet: response.data });
+                dispatch(notify(t('pet_added')));
+            })
             .catch(createGenericReduxErrorHandler(dispatch, ADD_PET_FAIL));
     };
 }

@@ -9,7 +9,7 @@ const Notification = props => {
     const { notificationText, notificationType } = props;
 
     const styleClass = cx('Notification', {
-        danger: notificationType === NOTIFICATION_TYPE_DANGER,
+        'Notification--danger': notificationType === NOTIFICATION_TYPE_DANGER,
         show: notificationText && notificationText.length > 0,
     });
 

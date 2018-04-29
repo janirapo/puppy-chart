@@ -45,7 +45,7 @@ body {
     }
 
     .required-field {
-        color: red;
+        color: #cc4f40;
         margin-right: 3px;
     }
 
@@ -59,7 +59,7 @@ body {
     .input-error,
     .input-warning {
         font-size: 11px;
-        color: red;
+        color: #cc4f40;
     }
 
     button {
@@ -79,4 +79,11 @@ button {
     padding: 10px 25px;
     cursor: pointer;
     border-radius: 6px;
+}
+
+.alert-box {
+    background-color: #cc4f40;
+    color: #fafafa;
+    border-radius: 5px;
+    padding: 15px;
 }

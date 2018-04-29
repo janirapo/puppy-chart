@@ -15,8 +15,9 @@ $positionFromBottom: 30px;
     bottom: $positionFromBottom; /* position from the bottom */
 }
 
-.Notification.danger {
-    background-color: red;
+.Notification--danger{
+    color: #fafafa;
+    background-color: #cc4f40;
 }
 
 .Notification.show {

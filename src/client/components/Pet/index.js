@@ -21,7 +21,7 @@ class Pet extends Component {
         return (
             <div className="Pet">
                 {this._renderRow(`${t('name')}: ${pet.name}`)}
-                {this._renderRow(`${t('dob')}: ${moment(pet.birth_date).format('Do MMMM')}`)}
+                {this._renderRow(`${t('dob')}: ${moment(pet.birth_date).format('LL')}`)}
                 {this._renderRow(
                     `${t('age_in_unit', { unit: t('in_years') })}: ${moment().diff(moment(pet.birth_date), 'years')}`,
                 )}

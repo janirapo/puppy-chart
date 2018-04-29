@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { JWT_KEY } from 'constants/appConstants';
+import { notify } from '../actions/notifyActions';
+import { NOTIFICATION_TYPE_DANGER } from '../constants/appConstants';
 
 /**
  * @returns {void}
@@ -15,7 +17,6 @@ export function setupAuthorizedRequests() {
     // Intercept every request's response/error before it is given to response-handler
     axios.interceptors.response.use(
         response => {
-
             const token = response.data.token;
 
             // In case of successful request, refresh token
@@ -54,11 +55,15 @@ export function createGenericReduxErrorHandler(dispatch, type) {
             return;
         }
 
+        const errorMsg =
+            (error.response.data && error.response.data.errors && JSON.stringify(error.response.data.errors)) ||
+            error.message;
+
+        dispatch(notify(errorMsg, NOTIFICATION_TYPE_DANGER));
+
         dispatch({
             type: type,
-            error:
-                (error.response.data && error.response.data.errors && JSON.stringify(error.response.data.errors)) ||
-                error.message,
+            error: errorMsg,
         });
     };
 }

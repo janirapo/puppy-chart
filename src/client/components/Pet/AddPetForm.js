@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { renderField, required, minLength2, alphaNumeric, renderDateTimePicker } from 'utils/reduxFormHelpers';
+import { renderField, required, minLength2, alphaNumeric, renderDateTimePicker, date } from 'utils/reduxFormHelpers';
 import { t } from 'utils/i18n';
 
 let AddPetForm = props => {
@@ -21,11 +21,12 @@ let AddPetForm = props => {
                     required
                 />
                 <Field
-                    name="date_of_birth"
+                    name="dateOfBirth"
                     label={t('dob')}
                     placeholder={t('dob')}
                     component={renderDateTimePicker}
-                    validate={[required]}
+                    validate={[required, date]}
+                    warn={date}
                     required
                 />
             </div>
