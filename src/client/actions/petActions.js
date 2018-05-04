@@ -2,7 +2,8 @@ import axios from 'axios';
 import { BASE_URL } from 'constants/appConstants';
 import { createGenericReduxErrorHandler } from '../utils/request';
 import moment from 'moment';
-import { notify } from "./notifyActions";
+import { notify } from './notifyActions';
+import { t } from '../utils/i18n';
 
 const ACTION_BASE = 'PET/';
 
@@ -20,6 +21,11 @@ export const ADD_PET_FAIL = ACTION_BASE + 'ADD_PET_FAIL';
 
 const PET_URL = BASE_URL + '/pet';
 
+/**
+ *
+ * @param petId
+ * @returns {function(*=): Promise<AxiosResponse<any>>}
+ */
 export function fetchPet(petId) {
     return dispatch => {
         dispatch({ type: FETCH_PET_START });
@@ -31,6 +37,11 @@ export function fetchPet(petId) {
     };
 }
 
+/**
+ *
+ * @param userId
+ * @returns {function(*=): Promise<AxiosResponse<any>>}
+ */
 export function fetchAllPets(userId) {
     return dispatch => {
         dispatch({ type: FETCH_ALL_PETS_START });
@@ -42,7 +53,13 @@ export function fetchAllPets(userId) {
     };
 }
 
-export function addPet(values) {
+/**
+ *
+ * @param values
+ * @param onSuccess
+ * @returns {function(*=): Promise<AxiosResponse<any>>}
+ */
+export function addPet(values, onSuccess) {
     return dispatch => {
         dispatch({ type: ADD_PET_START });
 
@@ -56,6 +73,7 @@ export function addPet(values) {
             .then(response => {
                 dispatch({ type: ADD_PET_SUCCESS, newPet: response.data });
                 dispatch(notify(t('pet_added')));
+                onSuccess && onSuccess();
             })
             .catch(createGenericReduxErrorHandler(dispatch, ADD_PET_FAIL));
     };

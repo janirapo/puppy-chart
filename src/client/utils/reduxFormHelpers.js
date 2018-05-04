@@ -26,6 +26,7 @@ export const date = value => (value && !moment(value).isValid() ? t('validate_da
  * @param input
  * @param label
  * @param type
+ * @param placeholder
  * @param required
  * @param touched
  * @param error
@@ -34,16 +35,16 @@ export const date = value => (value && !moment(value).isValid() ? t('validate_da
  * @constructor
  */
 export const renderField = ({ input, label, type, required, placeholder, meta: { touched, error, warning } }) => (
-    <div className="input-wrapper">
-        <label>
-            {required && <span className="required-field">*</span>}
+    <div className="input-form__wrapper">
+        <label className="input__label">
+            {required && <span className="label__icon label__icon--required">*</span>}
             {label}
         </label>
-        <div className="input-container">
-            <input {...input} placeholder={placeholder} type={type} />
+        <div className="input__container">
+            <input className="input__field" {...input} placeholder={placeholder} type={type} />
             {touched &&
-                ((error && <span className="input-error">{error}</span>) ||
-                    (warning && <span className="input-warning">{warning}</span>))}
+                ((error && <span className="input__notice input__notice--error">{error}</span>) ||
+                    (warning && <span className="input__notice input__noticewarning">{warning}</span>))}
         </div>
     </div>
 );
@@ -56,12 +57,12 @@ export const renderDateTimePicker = ({
     placeholder,
     meta: { touched, error, warning },
 }) => (
-    <div className="input-wrapper">
-        <label>
-            {required && <span className="required-field">*</span>}
+    <div className="input-form__wrapper">
+        <label className="input__label">
+            {required && <span className="label__icon label__icon--required">*</span>}
             {label}
         </label>
-        <div className="input-container">
+        <div className="input__container">
             <DayPickerInput
                 onDayChange={onChange}
                 format="l"
@@ -75,8 +76,8 @@ export const renderDateTimePicker = ({
                 inputProps={{ onChange: onChange }}
             />
             {touched &&
-                ((error && <span className="input-error">{error}</span>) ||
-                    (warning && <span className="input-warning">{warning}</span>))}
+                ((error && <span className="input__notice input__notice--error">{error}</span>) ||
+                    (warning && <span className="input__notice input__noticewarning">{warning}</span>))}
         </div>
     </div>
 );

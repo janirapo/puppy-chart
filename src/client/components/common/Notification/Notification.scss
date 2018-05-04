@@ -13,11 +13,13 @@ $positionFromBottom: 30px;
     z-index: 1; /* Add a z-index if needed */
     left: 50%; /* Center the snackbar */
     bottom: $positionFromBottom; /* position from the bottom */
+    border: 1px solid #b3b3b3;
 }
 
 .Notification--danger{
     color: #fafafa;
     background-color: #cc4f40;
+    border: none;
 }
 
 .Notification.show {

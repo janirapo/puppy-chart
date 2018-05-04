@@ -31,6 +31,7 @@ i18n.init(
                     log_out: 'Kirjaudu ulos',
                     validate_date: 'Virheellinen päivämäärä',
                     pet_added: 'Uusi lemmikki lisätty',
+                    cancel: 'Peruuta',
                 },
             },
             en: {

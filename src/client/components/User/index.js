@@ -43,7 +43,7 @@ class User extends Component {
         }
     }
     render() {
-        const { id, name, pets, userActions, petActions, error } = this.props;
+        const { id, name, pets, userActions, petActions, error, remoteSubmit } = this.props;
 
         if (!id) {
             return <LoginForm onSubmit={userActions.performLogin} loginError={error} />;

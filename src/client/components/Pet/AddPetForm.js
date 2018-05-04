@@ -5,11 +5,11 @@ import { renderField, required, minLength2, alphaNumeric, renderDateTimePicker, 
 import { t } from 'utils/i18n';
 
 let AddPetForm = props => {
-    const { handleSubmit, formError } = props;
+    const { handleSubmit, formError, handleCloseModal } = props;
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="input-form" onSubmit={handleSubmit}>
             {formError && <span className="alert">{formError}</span>}
-            <div>
+            <div className="input-form__inputs">
                 <Field
                     name="name"
                     type="text"
@@ -30,15 +30,21 @@ let AddPetForm = props => {
                     required
                 />
             </div>
-            <button type="submit" className="btn btn-default">
-                {t('save')}
-            </button>
+            <div className="input-form__actions">
+                <button type="button" className="button button-cancel" onClick={handleCloseModal}>
+                    {t('cancel')}
+                </button>
+                <button type="submit" className="button button-accept">
+                    {t('save')}
+                </button>
+            </div>
         </form>
     );
 };
 
 AddPetForm.propTypes = {
     formError: PropTypes.string,
+    handleCloseModal: PropTypes.func.isRequired,
 };
 
 AddPetForm = reduxForm({

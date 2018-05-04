@@ -1,29 +1,33 @@
 $padding: 10px;
 
-.modal-header {
-    padding-top: $padding;
-    padding-bottom: $padding;
-    border-bottom: 1px solid #b3b3b3;
+.modal {
+    &__header {
+        padding-top: $padding;
+        padding-bottom: $padding;
+        border-bottom: 1px solid #b3b3b3;
 
-    .modal-header__title {
-        font-size: 16px;
-        color: #333333;
-        font-weight: bold;
+        header__title {
+            font-size: 16px;
+            color: #333333;
+            font-weight: bold;
+        }
     }
-}
 
-.modal-body {
-    flex: 1 0 100%;
-    padding-top: $padding;
-    padding-bottom: $padding;
-}
+    &__body {
+        flex: 1 0 100%;
+        padding-top: $padding;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
 
-.modal-footer {
-    margin-top: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: $padding;
-    padding-bottom: $padding;
+    &__footer {
+        margin-top: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: $padding;
+        padding-bottom: $padding;
+    }
 }

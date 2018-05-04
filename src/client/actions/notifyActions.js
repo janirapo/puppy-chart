@@ -25,8 +25,6 @@ export function closeConfirmationDialog() {
 export function notify(notificationText = '', notificationType = NOTIFICATION_TYPE_NOTIFY, duration = 3000) {
     return dispatch => {
 
-        console.log("qetetqeq", notificationText, notificationType);
-
         if (NOTIFICATION_TYPES.indexOf(notificationType) === -1) {
             notificationType = NOTIFICATION_TYPE_NOTIFY;
         }
@@ -36,8 +34,6 @@ export function notify(notificationText = '', notificationType = NOTIFICATION_TY
             notificationText: notificationText,
             notificationType: notificationType,
         });
-
-        console.log(notificationText, notificationType);
 
         // call hide after given duration
         setTimeout(() => {

@@ -56,7 +56,7 @@ export function createGenericReduxErrorHandler(dispatch, type) {
         }
 
         const errorMsg =
-            (error.response.data && error.response.data.errors && JSON.stringify(error.response.data.errors)) ||
+            (error.response && error.response.data && error.response.data.errors && JSON.stringify(error.response.data.errors)) ||
             error.message;
 
         dispatch(notify(errorMsg, NOTIFICATION_TYPE_DANGER));

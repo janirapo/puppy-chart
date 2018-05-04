@@ -33,31 +33,57 @@ body {
     margin-right: 5px;
 }
 
-.input-wrapper {
+.input-form {
+    flex: 1 0 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 5px 0px;
+    height: 100%;
 
-    label {
+    &__inputs {
+        flex: 1 0 100%;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+
+    .input__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 5px 0px;
+    }
+
+    .input__label {
         font-size: 12px;
     }
 
-    .required-field {
-        color: #cc4f40;
+    .label__icon {
         margin-right: 3px;
     }
 
-    .input-container {
+    .label__icon--required {
+        color: #cc4f40;
+    }
+
+    .input__field--full-width {
+        width: 100%;
+    }
+
+    .input__container {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
     }
 
-    .input-error,
-    .input-warning {
+    .input__notice--error,
+    .input__notice--warning {
         font-size: 11px;
         color: #cc4f40;
     }

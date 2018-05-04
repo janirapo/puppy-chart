@@ -6,39 +6,43 @@ import { DEFAULT_MODAL_STYLE } from 'constants/appConstants';
 import './ModalWindow.scss';
 
 const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, acceptText }) => {
+    const showFooter = handleAccept || handleClose || closeText || acceptText;
+
     return (
-        <div className="modal-container">
+        <div className="modal">
             <ReactModal isOpen={true} style={DEFAULT_MODAL_STYLE} contentLabel={title}>
                 {title && (
-                    <div className="modal-header">
-                        <div className="modal-header__title">{title}</div>
+                    <div className="modal__header">
+                        <div className="header__title">{title}</div>
                     </div>
                 )}
 
-                <div className="modal-body">{body}</div>
+                <div className="modal__body">{body}</div>
 
-                <div className="modal-footer">
-                    <button onClick={handleClose}>{closeText}</button>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            handleAccept();
-                            handleClose();
-                        }}
-                    >
-                        {acceptText}
-                    </button>
-                </div>
+                {showFooter && (
+                    <div className="modal__footer">
+                        <button onClick={handleClose}>{closeText}</button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                handleAccept();
+                                handleClose();
+                            }}
+                        >
+                            {acceptText}
+                        </button>
+                    </div>
+                )}
             </ReactModal>
         </div>
     );
 };
 
 ModalWindow.propTypes = {
-    handleClose: PropTypes.func.isRequired,
-    handleAccept: PropTypes.func.isRequired,
-    acceptText: PropTypes.string.isRequired,
-    closeText: PropTypes.string.isRequired,
+    handleClose: PropTypes.func,
+    handleAccept: PropTypes.func,
+    acceptText: PropTypes.string,
+    closeText: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 };
