@@ -29,6 +29,10 @@ module.exports = function(sequelize, DataTypes) {
             // don't use camelcase for automatically added attributes but underscore style
             // so updatedAt will be updated_at
             underscored: true,
+            name: {
+                singular: 'pet',
+                plural: 'pets',
+            }
         },
     );
 
@@ -39,6 +43,8 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false,
             },
         });
+
+        models.Pet.hasMany(models.Measurement);
     };
 
     return Pet;

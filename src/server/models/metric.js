@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-    let User = sequelize.define(
-        'User',
+    let Metric = sequelize.define(
+        'Metric',
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -12,13 +12,7 @@ module.exports = function(sequelize, DataTypes) {
             name: {
                 type: DataTypes.STRING,
             },
-            email: {
-                type: DataTypes.STRING,
-            },
-            password: {
-                type: DataTypes.STRING,
-            },
-            salt: {
+            unit: {
                 type: DataTypes.STRING,
             },
         },
@@ -27,16 +21,15 @@ module.exports = function(sequelize, DataTypes) {
             // so updatedAt will be updated_at
             underscored: true,
             name: {
-                singular: 'user',
-                plural: 'users',
+                singular: 'metric',
+                plural: 'metrics',
             }
         },
     );
 
-    User.associate = function(models) {
-        models.User.hasMany(models.Pet);
-        models.User.hasMany(models.Measurement);
+    Metric.associate = function(models) {
+        models.Metric.hasMany(models.Measurement);
     };
 
-    return User;
+    return Metric;
 };

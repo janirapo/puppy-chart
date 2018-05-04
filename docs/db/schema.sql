@@ -48,12 +48,15 @@ CREATE TABLE `measurements` (
   `metric_id` int(11) unsigned DEFAULT NULL,
   `value` float DEFAULT NULL,
   `measurement_dt` datetime DEFAULT NULL,
-  `added_by_user_id` int(11) unsigned DEFAULT NULL,
+  `user_id` int(11) unsigned DEFAULT NULL,
+  `pet_id` int(11) unsigned DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `metric_id` (`metric_id`),
-  KEY `added_by_user_id` (`added_by_user_id`),
+  KEY `user_id` (`user_id`),
+  KEY `pet_id` (`pet_id`),
   CONSTRAINT `measurements_ibfk_1` FOREIGN KEY (`metric_id`) REFERENCES `metrics` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `measurements_ibfk_2` FOREIGN KEY (`added_by_user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `measurements_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `measurements_ibfk_3` FOREIGN KEY (`pet_id`) REFERENCES `pets` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
