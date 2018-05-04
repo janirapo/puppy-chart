@@ -31,7 +31,7 @@
 | 27.4 | 1.5  | Krovattu react-widgets ja toteutettu datepicker react-day-picker komponentin avulla |
 | 28.4 | 3    | Lisätty kielikäännöskomponentti ja suomenkieliset kielikäännökset. Samalla päivitetty npm paketit |
 | 29.4 | 3.5  | Lemmikin lisäystoiminnallisuus MVP, refaktorointia ja ulkoasukorjauksia |
-|   |    |  |
+| 4.5  | 3.5  | Uusien tietokantataulujen luonti. Uuden lemmikin lisäyksen tallennuksen käsittely. Tyyliparannuksia. |
 |   |    |  |
 |   |    |  |
 |   |    |  |
