@@ -1,52 +1,59 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Host: 127.0.0.1 (MySQL 5.7.21)
-# Database: puppy-chart
-# Generation Time: 2018-03-31 09:44:39 +0000
-# ************************************************************
 
+# Dump of table users
+# ------------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
+CREATE TABLE `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `email` mediumtext COLLATE utf8_swedish_ci,
+  `name` mediumtext COLLATE utf8_swedish_ci NOT NULL,
+  `password` text COLLATE utf8_swedish_ci,
+  `salt` mediumtext COLLATE utf8_swedish_ci,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 # Dump of table pets
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pets`;
 
 CREATE TABLE `pets` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` mediumtext COLLATE utf8_swedish_ci NOT NULL,
   `birth_date` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `user_id` int(11) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `fk_user_id` (`user_id`),
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
-
-# Dump of table users
+# Dump of table metrics
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
+CREATE TABLE `metrics` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` mediumtext COLLATE utf8_swedish_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
+  `unit` varchar(16) COLLATE utf8_swedish_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+# Dump of table measurements
+# ------------------------------------------------------------
+
+CREATE TABLE `measurements` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `metric_id` int(11) unsigned DEFAULT NULL,
+  `value` float DEFAULT NULL,
+  `measurement_dt` datetime DEFAULT NULL,
+  `added_by_user_id` int(11) unsigned DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `metric_id` (`metric_id`),
+  KEY `added_by_user_id` (`added_by_user_id`),
+  CONSTRAINT `measurements_ibfk_1` FOREIGN KEY (`metric_id`) REFERENCES `metrics` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `measurements_ibfk_2` FOREIGN KEY (`added_by_user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
