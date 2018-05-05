@@ -82,10 +82,16 @@ body {
         align-items: flex-start;
     }
 
-    .input__notice--error,
-    .input__notice--warning {
+    .input__notice {
         font-size: 11px;
-        color: #cc4f40;
+
+        &--error {
+            color: #cc4f40;
+        }
+
+        &--warning {
+            color: #cc753e;
+        }
     }
 
     button {
