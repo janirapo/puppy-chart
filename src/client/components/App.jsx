@@ -7,6 +7,7 @@ import { logout } from 'actions/userActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Notification from './common/Notification';
+import PetModal from './Pet/PetModal/index';
 import { NOTIFICATION_TYPES } from 'constants/appConstants';
 import ConfirmationDialog from './common/ConfirmationDialog';
 import Modal from 'react-modal';
@@ -64,6 +65,7 @@ class App extends Component {
                     )}
                 </div>
                 <User />
+                <PetModal />
                 <Notification notificationText={notificationText} notificationType={notificationType} />
                 {showConfirmationDialog && <ConfirmationDialog {...confirmationContent} />}
             </div>

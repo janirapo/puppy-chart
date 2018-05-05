@@ -21,4 +21,10 @@ export default {
         notificationText: undefined,
         notificationType: NOTIFICATION_TYPE_NOTIFY,
     },
+    petModal: {
+        isOpen: false,
+        pet: {},
+        loading: false,
+        error: undefined,
+    }
 };

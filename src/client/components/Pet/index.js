@@ -3,10 +3,16 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { FaPaw } from 'react-icons/lib/fa';
 import { t } from 'utils/i18n';
+import { openPetModal} from "actions/petModalActions";
 
 import './Pet.scss';
 
 class Pet extends Component {
+    // Using store dispatch from context to skip connecting to Redux
+    static contextTypes = {
+        store: PropTypes.object.isRequired,
+    };
+
     _renderRow = content => (
         <div className="pet__row">
             <div className="row__icon row__icon--pre">
@@ -16,8 +22,8 @@ class Pet extends Component {
         </div>
     );
 
-    _handleOpenPetCard = () => {
-        return null;
+    _handleOpenPetModal = () => {
+        this.context.store.dispatch(openPetModal(this.props.pet));
     };
 
     _getPetAge = birthDate => (
@@ -43,7 +49,7 @@ class Pet extends Component {
     render() {
         const { pet } = this.props;
         return (
-            <div className="pet" title={t('open')} onClick={this._handleOpenPetCard}>
+            <div className="pet" title={t('open')} onClick={this._handleOpenPetModal}>
                 {this._renderRow(`${t('name')}: ${pet.name}`)}
                 {this._renderRow(`${t('dob')}: ${moment(pet.birth_date).format('LL')}`)}
                 {this._renderRow(this._getPetAge(pet.birth_date))}

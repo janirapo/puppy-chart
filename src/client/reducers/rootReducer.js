@@ -2,10 +2,12 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import user from './userReducer';
 import notify from './notifyReducer';
+import petModal from './petModalReducer';
 import { LOG_OUT } from "actions/userActions";
 
 const appReducer = combineReducers({
     user,
+    petModal,
     notify,
     form: formReducer,
 });

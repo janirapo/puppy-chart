@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUser, performLogin } from 'actions/userActions';
-
 import { fetchPet, fetchAllPets, addPet } from 'actions/petActions';
 import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
