@@ -35,6 +35,8 @@ i18n.init(
                     cancel: 'Peruuta',
                     open: 'Avaa',
                     age: 'Ikä',
+                    height: 'Korkeus',
+                    weight: 'Paino',
                 },
             },
             en: {

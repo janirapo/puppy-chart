@@ -32,3 +32,6 @@ export const DEFAULT_MODAL_STYLE = {
         overflow: 'auto',
     },
 };
+
+export const METRIC_KEY_WEIGHT = 'weight';
+export const METRIC_KEY_HEIGHT = 'height';
