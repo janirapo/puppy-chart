@@ -7,30 +7,46 @@ import { t } from 'utils/i18n';
 import './Pet.scss';
 
 class Pet extends Component {
-    _renderRow = text => (
-        <div className="pet-row">
-            <div className="icon-pre">
+    _renderRow = content => (
+        <div className="pet__row">
+            <div className="row__icon row__icon--pre">
                 <FaPaw />
             </div>
-            <span>{text}</span>
+            <div className="row__content">{content}</div>
+        </div>
+    );
+
+    _handleOpenPetCard = () => {
+        return null;
+    };
+
+    _getPetAge = birthDate => (
+        <div className="pet__age-container">
+            <div className="age-container__title">{`${t('age')}:`}</div>
+            <div className="age-container__content">
+                <div className="content__row">
+                    {`${t('in_years') }: ${moment().diff(moment(birthDate), 'years')}`}
+                </div>
+                <div className="content__row">
+                    {`${t('in_months') }: ${moment().diff(moment(birthDate), 'months')}`}
+                </div>
+                <div className="content__row">
+                    {`${t('in_weeks') }: ${moment().diff(moment(birthDate), 'weeks')}`}
+                </div>
+                <div className="content__row">
+                    {`${t('in_days') }: ${moment().diff(moment(birthDate), 'days')}`}
+                </div>
+            </div>
         </div>
     );
 
     render() {
         const { pet } = this.props;
         return (
-            <div className="Pet">
+            <div className="pet" title={t('open')} onClick={this._handleOpenPetCard}>
                 {this._renderRow(`${t('name')}: ${pet.name}`)}
                 {this._renderRow(`${t('dob')}: ${moment(pet.birth_date).format('LL')}`)}
-                {this._renderRow(
-                    `${t('age_in_unit', { unit: t('in_years') })}: ${moment().diff(moment(pet.birth_date), 'years')}`,
-                )}
-                {this._renderRow(
-                    `${t('age_in_unit', { unit: t('in_months') })}: ${moment().diff(moment(pet.birth_date), 'months')}`,
-                )}
-                {this._renderRow(
-                    `${t('age_in_unit', { unit: t('in_weeks') })}: ${moment().diff(moment(pet.birth_date), 'weeks')}`,
-                )}
+                {this._renderRow(this._getPetAge(pet.birth_date))}
             </div>
         );
     }

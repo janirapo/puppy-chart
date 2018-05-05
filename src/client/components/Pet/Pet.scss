@@ -1,16 +1,59 @@
-.Pet {
-    margin: 10px 20px;
+.pet {
+    padding: 12px 20px;
 
-    .pet-row {
+    &:first-of-type {
+        margin-top: 10px;
+    }
+
+    &:hover {
+        border-radius: 6px;
+        background-color: #ebebeb;
+        box-shadow: 2px  2px #b3b3b3;
+        cursor: pointer;
+    }
+
+    &:not(:hover) {
+        border-bottom: 1px solid #efefef;
+    }
+
+    &__row {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         font-size: 14px;
-        line-height: 18px;
+        line-height: 20px;
+        margin-top: 3px;
 
-        .icon-pre {
+        .row__icon {
             color: tan;
+            font-size: 16px;
+
+            &--pre {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    &__age-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .age-container__title {
+            margin-right: 10px;
+        }
+
+        .age-container__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .content__row {
+                text-transform: capitalize;
+            }
         }
     }
 }
