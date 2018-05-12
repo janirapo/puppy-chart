@@ -4,8 +4,13 @@ const express = require('express'),
 const app = express();
 const localConfig = require('../../config/local.config');
 const middleware = require('./middleware');
+const compression = require('compression');
+const helmet = require('helmet');
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+app.use(compression());
+app.use(helmet());
 
 app.use(express.static(__dirname + './../../build/')); //serves the build/index.html
 
@@ -39,10 +44,12 @@ if (!isProduction) {
 
         res.status(err.status || 500);
 
-        res.json({'errors': {
+        res.json({
+            errors: {
                 message: err.message,
                 error: err,
-            }});
+            },
+        });
     });
 }
 
@@ -50,12 +57,14 @@ if (!isProduction) {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.json({'errors': {
+    res.json({
+        errors: {
             message: err.message,
-            error: {}
-        }});
+            error: {},
+        },
+    });
 });
 
-const server = app.listen(localConfig.port || 3000, function() {
+const server = app.listen(process.env.NODE_ENV || localConfig.port || 3000, function() {
     console.log('Listening on port ' + server.address().port);
 }); //listens on port 3000 -> http://localhost:3000/
