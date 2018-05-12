@@ -33,7 +33,7 @@
 | 29.4 | 3.5  | Lemmikin lisäystoiminnallisuus MVP, refaktorointia ja ulkoasukorjauksia |
 | 4.5  | 3.5  | Uusien tietokantataulujen luonti. Uuden lemmikin lisäyksen tallennuksen käsittely. Tyyliparannuksia. |
 | 5.5  | 3    | Ulkoasukorjauksia. Lisätty mahdollisuus tarkastella lemmikin tietoja erillisellä "kortilla". Alustava toiminnallisuus mittauksen lisäämistä varten luotu. |
-|   |    |  |
+| 12.5 | 2    | Valmisteluja, jotta sovelluksen saisi pyörimään julkisessa verkossa Herokun avulla |
 |   |    |  |
 |   |    |  |
 |   |    |  |
