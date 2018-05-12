@@ -1,5 +1,5 @@
 const jwt = require('express-jwt');
-const secret = require('../../../config/local.config').secret;
+const secret = process.env.SECRET || require('../../../config/local.config').secret;
 
 function getTokenFromHeader(req){
     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Token' ||

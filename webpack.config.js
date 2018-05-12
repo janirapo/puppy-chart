@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const localConfig = require('./config/local.config');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -8,7 +7,7 @@ const BUILD_DIR = path.resolve(__dirname, './build');
 const APP_DIR = path.resolve(__dirname, './src/client');
 
 const config = {
-    mode: localConfig.environment || 'production',
+    mode: process.env.NODE_ENV || 'development',
     entry: APP_DIR + '/index.js',
     output: {
         filename: 'bundle.js',
@@ -50,7 +49,7 @@ const config = {
     },
     plugins: [
         new webpack.EnvironmentPlugin({
-            NODE_ENV: localConfig.environment || 'production',
+            NODE_ENV: process.env.NODE_ENV || 'development',
         }),
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html',

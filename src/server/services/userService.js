@@ -1,7 +1,7 @@
 const models = require('../models');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const secret = require('../../../config/local.config').secret;
+const secret = process.env.SECRET || require('../../../config/local.config').secret;
 
 exports.getAllUsers = function(cb, next) {
     return models.User.findAll()

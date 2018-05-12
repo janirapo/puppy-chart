@@ -5,13 +5,13 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
-const dbConfig = require('../../../config/local.config').mysql;
+const dbConfig = process.env.USE_ENV_DB_CONFIG || require('../../../config/local.config').mysql;
 
 const sequelize = new Sequelize({
-    host: dbConfig.host,
-    username: dbConfig.user,
-    password: dbConfig.password,
-    database: dbConfig.database,
+    host: dbConfig.host && dbConfig.host || '127.0.0.1',
+    username: dbConfig.user && dbConfig.user || '',
+    password: dbConfig.password && dbConfig.password || '',
+    database: dbConfig.database && dbConfig.database || '',
     dialect: 'mysql',
     operatorsAliases: false,
     pool: {
