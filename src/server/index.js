@@ -2,7 +2,6 @@ const express = require('express'),
     cors = require('cors'),
     errorhandler = require('errorhandler');
 const app = express();
-const localConfig = require('../../config/local.config');
 const middleware = require('./middleware');
 const compression = require('compression');
 const helmet = require('helmet');
