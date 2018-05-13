@@ -9,7 +9,7 @@ CREATE TABLE `users` (
   `password` text COLLATE utf8_swedish_ci,
   `salt` mediumtext COLLATE utf8_swedish_ci,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
@@ -22,7 +22,7 @@ CREATE TABLE `pets` (
   `birth_date` date DEFAULT NULL,
   `user_id` int(11) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`user_id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
@@ -36,7 +36,7 @@ CREATE TABLE `metrics` (
   `name` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
   `unit` varchar(16) COLLATE utf8_swedish_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
@@ -51,7 +51,7 @@ CREATE TABLE `measurements` (
   `user_id` int(11) unsigned DEFAULT NULL,
   `pet_id` int(11) unsigned DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `metric_id` (`metric_id`),
   KEY `user_id` (`user_id`),
