@@ -1,4 +1,4 @@
-# puppy-chart
+# Puppy Chart
 This is a project for a school course called Full stack-websovelluskehitys at University of Helsinki
 
 The final application will be, as the name implies, a full stack web application for tracking random stuff about puppies or actually anything you want, but I got the idea from a puppy we're getting in a few months.
@@ -18,3 +18,24 @@ The specifications might live a bit during development, but this would be the in
 5. Run server and client using
 ```npm start```
 6. Navigate to `localhost:3000`
+
+### Deployment (Heroku in this case)
+In case you want to deploy the project for instance on a service like Heroku,
+then it is not advised to use a separate config file that is a part of the project.
+Instead, you should take use of `process.env`-variables.
+
+You might also need to create a separate database that is publicly accessible and then 
+add the required configurations to access it. Or at least that's what I did.
+
+Here is a list of minimum variables that need to be set for Heroku deployment:
+```
+NODE_ENV //'deployment' or 'production'
+SECRET //secret, that is used for JWT
+USE_ENV_DB_CONFIG //true or false - if true, then local.config.js is not loaded for db conf
+DB_HOST //database hostname
+DB_NAME //database name
+DB_USER //database username
+DB_PASSWD //database password
+```
+
+Webpack is run using the `heroku-postbuild` script found in `package.json`
