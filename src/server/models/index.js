@@ -8,10 +8,10 @@ const db = {};
 const dbConfig = process.env.USE_ENV_DB_CONFIG || require('../../../config/local.config').mysql;
 
 const sequelize = new Sequelize({
-    host: dbConfig.host && dbConfig.host || '127.0.0.1',
-    username: dbConfig.user && dbConfig.user || '',
-    password: dbConfig.password && dbConfig.password || '',
-    database: dbConfig.database && dbConfig.database || '',
+    host: process.env.DB_HOST || dbConfig.host,
+    username: process.env.DB_USER || dbConfig.user,
+    password: process.env.DB_PASSWD || dbConfig.password,
+    database: process.env.DB_NAME || dbConfig.database,
     dialect: 'mysql',
     operatorsAliases: false,
     pool: {
