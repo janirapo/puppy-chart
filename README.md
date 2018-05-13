@@ -9,7 +9,7 @@ For example you could add the weight of the puppy a couple times a week by setti
 
 The specifications might live a bit during development, but this would be the initial idea.
 
-### Install and run
+### Install and run (development)
 1. Copy `config/local.config.js.dist` into `config/local.config.js`
 2. Fill in the configuration settings that you want
 3. Database creation queries are located in `docs/db/schema.sql` (only tested with mysql)
@@ -39,3 +39,7 @@ DB_PASSWD //database password
 ```
 
 Webpack is run using the `heroku-postbuild` script found in `package.json`
+
+Thank you to this awesome tutorial for helping me with the Heroku deployment,
+when I had no idea what I was doing...
+`https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment`
