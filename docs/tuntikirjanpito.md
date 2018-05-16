@@ -36,6 +36,7 @@
 | 12.5 | 2    | Valmisteluja, jotta sovelluksen saisi pyörimään julkisessa verkossa Herokun avulla |
 | 13.5 | 1    | Korjauksia Heroku-julkaisuun liittyen ja readmen päivitys |
 | 16.6 | 1.5  | Ulkoasuparannuksia ja lemmikkimodaalin jatkokehitystä |
+| 16.6 | 2    | Asetettu palvelinkoodi tukemaan ES6 syntaksia ja tehty sen mukaista refaktorointia |
 |   |    |  |
 |   |    |  |
 |   |    |  |
