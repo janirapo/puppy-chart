@@ -35,7 +35,7 @@
 | 5.5  | 3    | Ulkoasukorjauksia. Lisätty mahdollisuus tarkastella lemmikin tietoja erillisellä "kortilla". Alustava toiminnallisuus mittauksen lisäämistä varten luotu. |
 | 12.5 | 2    | Valmisteluja, jotta sovelluksen saisi pyörimään julkisessa verkossa Herokun avulla |
 | 13.5 | 1    | Korjauksia Heroku-julkaisuun liittyen ja readmen päivitys |
-|   |    |  |
+| 16.6 | 1.5  | Ulkoasuparannuksia ja lemmikkimodaalin jatkokehitystä |
 |   |    |  |
 |   |    |  |
 |   |    |  |
