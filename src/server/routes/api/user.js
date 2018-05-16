@@ -1,15 +1,17 @@
-const router = require('express').Router();
-const passport = require('passport');
-const auth = require('../auth');
-const userService = require('../../services/userService');
+import express from 'express';
+import passport from 'passport';
+import auth from '../auth';
+import * as userService from '../../services/userService';
 
-router.get('/all', auth.optional, function(req, res, next) {
+let router = express.Router();
+
+router.get('/all', auth.optional, (req, res, next) => {
     userService.getAllUsers(dbResult => {
         res.send(JSON.stringify({ users: dbResult }));
     }, next);
 });
 
-router.post('/login', function(req, res, next) {
+router.post('/login', (req, res, next) => {
     if (!req.body.user.email) {
         return res.status(422).json({ errors: { email: "can't be blank" } });
     }
@@ -18,7 +20,7 @@ router.post('/login', function(req, res, next) {
         return res.status(422).json({ errors: { password: "can't be blank" } });
     }
 
-    passport.authenticate('local', { session: false }, function(err, user, info) {
+    passport.authenticate('local', { session: false }, (err, user, info) => {
         if (err) {
             return next(err);
         }
@@ -32,7 +34,7 @@ router.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
-router.get('/:userId(\\d+)/', auth.required, function(req, res, next) {
+router.get('/:userId(\\d+)/', auth.required, (req, res, next) => {
     userService.getUser(
         req.params.userId,
         dbResult => {

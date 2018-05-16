@@ -1,27 +1,29 @@
-const jwt = require('express-jwt');
-const secret = process.env.SECRET || require('../../../config/local.config').secret;
+import jwt from 'express-jwt';
+const secret = process.env.SECRET || require('~/config/local.config').secret;
 
-function getTokenFromHeader(req){
-    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Token' ||
-        req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+const getTokenFromHeader = req => {
+    if (
+        (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Token') ||
+        (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer')
+    ) {
         return req.headers.authorization.split(' ')[1];
     }
 
     return null;
-}
+};
 
 const auth = {
     required: jwt({
         secret: secret,
         userProperty: 'payload',
-        getToken: getTokenFromHeader
+        getToken: getTokenFromHeader,
     }),
     optional: jwt({
         secret: secret,
         userProperty: 'payload',
         credentialsRequired: false,
-        getToken: getTokenFromHeader
-    })
+        getToken: getTokenFromHeader,
+    }),
 };
 
-module.exports = auth;
+export default auth;

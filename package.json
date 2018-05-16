@@ -5,8 +5,7 @@
         "node": "8.9.1"
     },
     "private": true,
-    "description":
-        "This is a project for a school course called Full stack-websovelluskehitys at University of Helsinki",
+    "description": "This is a project for a school course called Full stack-websovelluskehitys at University of Helsinki",
     "directories": {
         "doc": "docs"
     },
@@ -14,7 +13,7 @@
     "scripts": {
         "start": "npm-run-all --parallel watch:server watch:build",
         "watch:build": "./node_modules/.bin/webpack -w",
-        "watch:server": "nodemon src/server/index.js",
+        "watch:server": "nodemon src/server/index.js --exec babel-node",
         "webpack": "./node_modules/.bin/webpack -w",
         "test": "mocha --compilers babel-core/register ./test/*test.js",
         "precommit": "lint-staged",
@@ -77,8 +76,10 @@
     },
     "devDependencies": {
         "babel": "^6.23.0",
+        "babel-cli": "^6.26.0",
         "babel-core": "^6.26.0",
         "babel-loader": "^7.1.4",
+        "babel-plugin-root-import": "^5.1.0",
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-react": "^6.24.1",
         "chai": "^4.1.2",

@@ -1,12 +1,14 @@
-const router = require('express').Router();
+import express from 'express';
+
+let router = express.Router();
 
 router.use('/user', require('./user'));
 router.use('/pet', require('./pet'));
 
-router.use(function(err, req, res, next){
+router.use((err, req, res, next) => {
     if(err.name === 'ValidationError'){
         return res.status(422).json({
-            errors: Object.keys(err.errors).reduce(function(errors, key){
+            errors: Object.keys(err.errors).reduce((errors, key) => {
                 errors[key] = err.errors[key].message;
 
                 return errors;

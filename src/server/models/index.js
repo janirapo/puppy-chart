@@ -5,7 +5,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
-const dbConfig = process.env.USE_ENV_DB_CONFIG || require('../../../config/local.config').mysql;
+const dbConfig = process.env.USE_ENV_DB_CONFIG || require('~/config/local.config').mysql;
 
 const sequelize = new Sequelize({
     host: process.env.DB_HOST || dbConfig.host,

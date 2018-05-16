@@ -1,8 +1,10 @@
-const router = require('express').Router();
-const auth = require('../auth');
-const petService = require('../../services/petService');
+import express from 'express';
+import * as petService from '../../services/petService';
+import auth from '../auth';
 
-router.get('/get-all-by-user/:userId', auth.optional, function(req, res, next) {
+let router = express.Router();
+
+router.get('/get-all-by-user/:userId', auth.optional, (req, res, next) => {
     petService.getAllByUser(
         req.params.userId,
         dbResult => {
@@ -12,9 +14,12 @@ router.get('/get-all-by-user/:userId', auth.optional, function(req, res, next) {
     );
 });
 
-router.post('/', auth.required, function(req, res, next) {
+router.post('/', auth.required, (req, res, next) => {
 
-    const petData = Object.assign(req.body, {user_id: req.payload.id});
+    const petData = {
+        ...req.body,
+        user_id: req.payload.id
+    };
 
     // TODO: Validate that all values are set!!
 

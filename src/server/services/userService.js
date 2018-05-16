@@ -1,32 +1,32 @@
-const models = require('../models');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
-const secret = process.env.SECRET || require('../../../config/local.config').secret;
+import models from '../models';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+const secret = process.env.SECRET || require('~/config/local.config').secret;
 
-exports.getAllUsers = function(cb, next) {
+export const getAllUsers = (cb, next) => {
     return models.User.findAll()
         .then(cb)
         .catch(next);
 };
 
-exports.getUser = function(userId, cb, next) {
+export const getUser = (userId, cb, next) => {
     return models.User.findById(userId)
         .then(cb)
         .catch(next);
 };
 
-exports.findUserByEmail = function(email, cb, next) {
+export const findUserByEmail = (email, cb, next) => {
     return models.User.findOne({ where: { email: email } })
         .then(cb)
         .catch(next);
 };
 
-exports.validPassword = function(user, password) {
+export const validPassword = (user, password) => {
     const hash = crypto.pbkdf2Sync(password, user.salt, 10000, 512, 'sha512').toString('hex');
     return user.password === hash;
 };
 
-_getPasswordHashAndSalt = function(password) {
+const _getPasswordHashAndSalt = (password) => {
     const salt = crypto.randomBytes(16).toString('hex');
     return {
         password: crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex'),
@@ -34,7 +34,7 @@ _getPasswordHashAndSalt = function(password) {
     };
 };
 
-exports.generateJWT = function(user) {
+export const generateJWT = (user) => {
     const today = new Date();
     const exp = new Date(today);
     exp.setDate(today.getDate() + 60);
@@ -50,7 +50,7 @@ exports.generateJWT = function(user) {
     );
 };
 
-exports.toAuthJSON = function(user) {
+export const toAuthJSON = (user) => {
     return {
         id: user.id,
         name: user.name,
@@ -59,14 +59,14 @@ exports.toAuthJSON = function(user) {
     };
 };
 
-exports.addUser = function(cb, next) {
+export const addUser = (cb, next) => {
     // TODO
     // store.ready(async () => {
     //     store.Model('User').then(cb).catch(next);
     // });
 };
 
-exports.updateUser = function(cb, next) {
+export const updateUser = (cb, next) => {
     // TODO
     // store.ready(async () => {
     //     store.Model('User').then(cb).catch(next);

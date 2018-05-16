@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function(sequelize, DataTypes) {
+const User = (sequelize, DataTypes) => {
     let User = sequelize.define(
         'User',
         {
@@ -29,14 +27,16 @@ module.exports = function(sequelize, DataTypes) {
             name: {
                 singular: 'user',
                 plural: 'users',
-            }
+            },
         },
     );
 
-    User.associate = function(models) {
+    User.associate = models => {
         models.User.hasMany(models.Pet);
         models.User.hasMany(models.Measurement);
     };
 
     return User;
 };
+
+export default User;

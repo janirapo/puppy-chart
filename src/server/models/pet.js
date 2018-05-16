@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function(sequelize, DataTypes) {
+const Pet = (sequelize, DataTypes) => {
     let Pet = sequelize.define(
         'Pet',
         {
@@ -17,12 +15,12 @@ module.exports = function(sequelize, DataTypes) {
             },
             user_id: {
                 type: DataTypes.INTEGER,
-                onDelete: "CASCADE",
+                onDelete: 'CASCADE',
                 allowNull: false,
                 references: {
                     model: 'User',
-                    key: 'id'
-                }
+                    key: 'id',
+                },
             },
         },
         {
@@ -32,11 +30,11 @@ module.exports = function(sequelize, DataTypes) {
             name: {
                 singular: 'pet',
                 plural: 'pets',
-            }
+            },
         },
     );
 
-    Pet.associate = function(models) {
+    Pet.associate = models => {
         models.Pet.belongsTo(models.User, {
             onDelete: 'CASCADE',
             foreignKey: {
@@ -49,3 +47,5 @@ module.exports = function(sequelize, DataTypes) {
 
     return Pet;
 };
+
+export default Pet;

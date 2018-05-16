@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function(sequelize, DataTypes) {
+const Metric = (sequelize, DataTypes) => {
     let Metric = sequelize.define(
         'Metric',
         {
@@ -23,13 +21,15 @@ module.exports = function(sequelize, DataTypes) {
             name: {
                 singular: 'metric',
                 plural: 'metrics',
-            }
+            },
         },
     );
 
-    Metric.associate = function(models) {
+    Metric.associate = models => {
         models.Metric.hasMany(models.Measurement);
     };
 
     return Metric;
 };
+
+export default Metric;

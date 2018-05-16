@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function(sequelize, DataTypes) {
+const Measurement = (sequelize, DataTypes) => {
     let Measurement = sequelize.define(
         'Measurement',
         {
@@ -17,30 +15,30 @@ module.exports = function(sequelize, DataTypes) {
             },
             user_id: {
                 type: DataTypes.INTEGER,
-                onDelete: "NO ACTION",
+                onDelete: 'NO ACTION',
                 allowNull: false,
                 references: {
                     model: 'User',
-                    key: 'id'
-                }
+                    key: 'id',
+                },
             },
             metric_id: {
                 type: DataTypes.INTEGER,
-                onDelete: "NO ACTION",
+                onDelete: 'NO ACTION',
                 allowNull: false,
                 references: {
                     model: 'Metric',
-                    key: 'id'
-                }
+                    key: 'id',
+                },
             },
             pet_id: {
                 type: DataTypes.INTEGER,
-                onDelete: "NO ACTION",
+                onDelete: 'NO ACTION',
                 allowNull: false,
                 references: {
                     model: 'Pet',
-                    key: 'id'
-                }
+                    key: 'id',
+                },
             },
         },
         {
@@ -50,11 +48,11 @@ module.exports = function(sequelize, DataTypes) {
             name: {
                 singular: 'measurement',
                 plural: 'measurements',
-            }
+            },
         },
     );
 
-    Measurement.associate = function(models) {
+    Measurement.associate = models => {
         models.Measurement.belongsTo(models.Metric, {
             onDelete: 'NO ACTION',
             foreignKey: {
@@ -79,3 +77,5 @@ module.exports = function(sequelize, DataTypes) {
 
     return Measurement;
 };
+
+export default Measurement;
