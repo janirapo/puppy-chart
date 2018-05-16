@@ -1,22 +1,22 @@
-import models from '../models';
+import { User } from '../models';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 const secret = process.env.SECRET || require('~/config/local.config').secret;
 
 export const getAllUsers = (cb, next) => {
-    return models.User.findAll()
+    return User.findAll()
         .then(cb)
         .catch(next);
 };
 
 export const getUser = (userId, cb, next) => {
-    return models.User.findById(userId)
+    return User.findById(userId)
         .then(cb)
         .catch(next);
 };
 
 export const findUserByEmail = (email, cb, next) => {
-    return models.User.findOne({ where: { email: email } })
+    return User.findOne({ where: { email: email } })
         .then(cb)
         .catch(next);
 };
@@ -55,7 +55,7 @@ export const toAuthJSON = (user) => {
         id: user.id,
         name: user.name,
         email: user.email,
-        token: this.generateJWT(user),
+        token: generateJWT(user),
     };
 };
 
