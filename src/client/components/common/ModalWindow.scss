@@ -6,10 +6,11 @@ $padding: 10px;
         padding-bottom: $padding;
         border-bottom: 1px solid #b3b3b3;
 
-        header__title {
-            font-size: 16px;
+        .header__title {
+            text-transform: capitalize;
+            font-size: 20px;
             color: #333333;
-            font-weight: bold;
+            font-weight: 600;
         }
     }
 

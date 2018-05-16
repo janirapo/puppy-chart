@@ -37,6 +37,9 @@ i18n.init(
                     age: 'Ikä',
                     height: 'Korkeus',
                     weight: 'Paino',
+                    owner: 'Omistaja',
+                    no_results: 'Ei tuloksia',
+                    add_measurement: 'Lisää uusi mittaustulos',
                 },
             },
             en: {
@@ -49,7 +52,7 @@ i18n.init(
         },
         lng: 'fi',
         fallbackLng: 'fi',
-        debug: true,
+        debug: process.env.NODE_ENV !== 'production',
         ns: ['translations'],
         defaultNS: 'translations',
         keySeparator: true,

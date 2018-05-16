@@ -23,8 +23,10 @@ export default {
     },
     petModal: {
         isOpen: false,
-        pet: {},
+        pet: {
+            user: {},
+        },
         loading: false,
         error: undefined,
-    }
+    },
 };

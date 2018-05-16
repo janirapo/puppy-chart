@@ -15,7 +15,7 @@ export const noop = () => null;
 
 export const DEFAULT_MODAL_STYLE = {
     overlay: {
-        backgroundColor: "rgba(19,19,19,0.8)",
+        backgroundColor: 'rgba(19,19,19,0.8)',
     },
     content: {
         top: '50%',
@@ -35,3 +35,5 @@ export const DEFAULT_MODAL_STYLE = {
 
 export const METRIC_KEY_WEIGHT = 'weight';
 export const METRIC_KEY_HEIGHT = 'height';
+
+export const METRIC_TYPES = [METRIC_KEY_WEIGHT, METRIC_KEY_HEIGHT];
