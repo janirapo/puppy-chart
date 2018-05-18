@@ -37,9 +37,9 @@
 | 13.5 | 1    | Korjauksia Heroku-julkaisuun liittyen ja readmen päivitys |
 | 16.6 | 1.5  | Ulkoasuparannuksia ja lemmikkimodaalin jatkokehitystä |
 | 16.6 | 2    | Asetettu palvelinkoodi tukemaan ES6 syntaksia ja tehty sen mukaista refaktorointia |
-|   |    |  |
-|   |    |  |
-|   |    |  |
-|   |    |  |
-|   |    |  |
-|   |    |  |
+| 18.6 | 2.5  | Lisää ES6 refaktorointia ja kokeilua graafien kanssa HighCharts-kirjaston avulla |
+|  |    |  |
+|  |    |  |
+|  |    |  |
+|  |    |  |
+|  |    |  |
