@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { FaPaw } from 'react-icons/lib/fa';
 import { t } from 'utils/i18n';
-import { openPetModal} from "actions/petModalActions";
+import { openPetModal } from 'actions/petModalActions';
 
 import './Pet.scss';
 
@@ -26,25 +26,30 @@ class Pet extends Component {
         this.context.store.dispatch(openPetModal(this.props.pet));
     };
 
-    _getPetAge = birthDate => (
-        <div className="pet__age-container">
-            <div className="age-container__title">{`${t('age')}:`}</div>
-            <div className="age-container__content">
-                <div className="content__row">
-                    {`${t('in_years') }: ${moment().diff(moment(birthDate), 'years')}`}
-                </div>
-                <div className="content__row">
-                    {`${t('in_months') }: ${moment().diff(moment(birthDate), 'months')}`}
-                </div>
-                <div className="content__row">
-                    {`${t('in_weeks') }: ${moment().diff(moment(birthDate), 'weeks')}`}
-                </div>
-                <div className="content__row">
-                    {`${t('in_days') }: ${moment().diff(moment(birthDate), 'days')}`}
+    _getPetAge = birthDate => {
+        const now = moment();
+        const dob = moment(birthDate);
+
+        const years = now.diff(dob, 'year');
+        dob.add(years, 'years');
+        const months = now.diff(dob, 'months');
+        dob.add(months, 'months');
+        const days = now.diff(dob, 'days');
+
+        return (
+            <div className="pet__age-container">
+                <div className="age-container__title">{`${t('age')}:`}</div>
+                <div className="age-container__content">
+                    <div className="content__row">
+                        {`${years} ${t('years')}, ${months} ${t('months')}, ${days} ${t('days')}`}
+                    </div>
+                    <div className="content__row">
+                        {`(${t('in_weeks')}: ${moment().diff(moment(birthDate), 'weeks')})`}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     render() {
         const { pet } = this.props;

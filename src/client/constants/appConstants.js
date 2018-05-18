@@ -25,11 +25,12 @@ export const DEFAULT_MODAL_STYLE = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         minHeight: '300px',
-        minWidth: '400px',
+        minWidth: '450px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        overflow: 'auto',
+        maxHeight: '90vh', // <-- This sets the height
+        overlfow: 'scroll' // <-- This tells the modal to scrol
     },
 };
 
