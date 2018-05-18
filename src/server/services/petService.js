@@ -1,4 +1,4 @@
-const models = require('../models');
+import { Pet, User, Metric, Measurement } from '../models';
 
 /**
  * Get all pets belnging to given user
@@ -7,14 +7,14 @@ const models = require('../models');
  * @param cb
  * @param next
  */
-exports.getAllByUser = function(userId, cb, next) {
-    models.Pet.findAll({
+export const getAllByUser = (userId, cb, next) => {
+    Pet.findAll({
         where: {
             user_id: userId,
         },
         include: [
-            { model: models.Measurement, as: 'measurements', include: [{ model: models.Metric, as: 'metric' }] },
-            { model: models.User, as: 'user' },
+            { model: Measurement, as: 'measurements', include: [{ model: Metric, as: 'metric' }] },
+            { model: User, as: 'user' },
         ],
     })
         .then(cb)
@@ -28,8 +28,8 @@ exports.getAllByUser = function(userId, cb, next) {
  * @param cb
  * @param next
  */
-exports.getPet = function(petId, userId, cb, next) {
-    models.Pet.findOne({ where: { id: petId, user_id: userId } })
+export const getPet = (petId, userId, cb, next) => {
+    Pet.findOne({ where: { id: petId, user_id: userId } })
         .then(cb)
         .catch(next);
 };
@@ -42,10 +42,10 @@ exports.getPet = function(petId, userId, cb, next) {
  * @param cb
  * @param next
  */
-exports.addPet = function(petData, cb, next) {
+export const addPet = (petData, cb, next) => {
     // TODO: Validate values?
 
-    const newPet = models.Pet.build(petData);
+    const newPet = Pet.build(petData);
 
     newPet
         .save()

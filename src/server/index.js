@@ -1,21 +1,22 @@
-const express = require('express'),
-    cors = require('cors'),
-    errorhandler = require('errorhandler');
-const app = express();
-const middleware = require('./middleware');
-const compression = require('compression');
-const helmet = require('helmet');
+import express from 'express';
+import { noCacheHeaders, jsonHeader } from './middleware';
+import cors from 'cors';
+import errorhandler from 'errorhandler';
+import compression from 'compression';
+import helmet from 'helmet';
+import routes from './routes';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const app = express();
 app.use(compression());
 app.use(helmet());
 
 app.use(express.static(__dirname + './../../build/')); //serves the build/index.html
 
 app.use(cors());
-app.use(middleware.noCacheHeaders);
-app.use(middleware.jsonHeader);
+app.use(noCacheHeaders);
+app.use(jsonHeader);
 app.use(express.json());
 
 if (!isProduction) {
@@ -24,7 +25,7 @@ if (!isProduction) {
 
 require('./passport');
 
-app.use(require('./routes'));
+app.use(routes);
 
 /// catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 // development error handler
 // will print stacktrace
 if (!isProduction) {
-    app.use(function(err, req, res, next) {
+    app.use((err, req, res, next) => {
         console.log(err.stack);
 
         res.status(err.status || 500);
@@ -54,7 +55,7 @@ if (!isProduction) {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({
         errors: {
@@ -64,6 +65,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-const server = app.listen(process.env.PORT || 3000, function() {
+const server = app.listen(process.env.PORT || 3000, () => {
     console.log('Listening on port ' + server.address().port);
-}); //listens on port 3000 -> http://localhost:3000/
+});

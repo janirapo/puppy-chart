@@ -1,12 +1,12 @@
-'use strict';
+import fs from 'fs';
+import path from 'path';
+import Sequelize from 'sequelize';
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
 const dbConfig = process.env.USE_ENV_DB_CONFIG || require('~/config/local.config').mysql;
 
+// orm configuration
 const sequelize = new Sequelize({
     host: process.env.DB_HOST || dbConfig.host,
     username: process.env.DB_USER || dbConfig.user,
@@ -22,6 +22,7 @@ const sequelize = new Sequelize({
     },
 });
 
+// read all files in same folder and create model objects of them
 fs
     .readdirSync(__dirname)
     .filter(file => {
