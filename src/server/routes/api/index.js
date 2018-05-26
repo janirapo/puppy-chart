@@ -1,11 +1,13 @@
 import express from 'express';
 import userRoutes from './user';
 import petRoutes from './pet';
+import measurementRoutes from './measurement';
 
 let router = express.Router();
 
 router.use('/user', userRoutes);
 router.use('/pet', petRoutes);
+router.use('/measurement', measurementRoutes);
 
 router.use((err, req, res, next) => {
     if (err.name === 'ValidationError') {

@@ -55,6 +55,7 @@
         "i18next": "^11.2.3",
         "jsonwebtoken": "^8.2.1",
         "jwt-decode": "^2.2.0",
+        "lodash": "^4.17.10",
         "moment": "^2.22.1",
         "mysql2": "^1.5.3",
         "node-mysql": "^0.4.2",

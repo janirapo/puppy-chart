@@ -12,6 +12,7 @@ import { NOTIFICATION_TYPES } from 'constants/appConstants';
 import ConfirmationDialog from './common/ConfirmationDialog';
 import Modal from 'react-modal';
 import i18n, { t } from 'utils/i18n';
+import ReactHighcharts from "react-highcharts";
 
 import './App.scss';
 
@@ -19,6 +20,14 @@ import { setupAuthorizedRequests } from 'utils/request';
 
 // set locale to current language
 moment.locale(i18n.language);
+
+ReactHighcharts.Highcharts.setOptions({
+    lang: {
+        shortMonths: moment.monthsShort(),
+        months: moment.months(),
+        weekdays: moment.weekdays(),
+    },
+});
 
 // bind Modal to root element
 Modal.setAppElement('#root');

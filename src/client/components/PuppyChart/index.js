@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 
 class PuppyChart extends Component {
     render() {
-        const chartConfig = {
-            ...this.props.data,
-        };
-
-        return <ReactHighcharts config={chartConfig} />;
+        return <ReactHighcharts config={this.props.data} />;
     }
 }
 

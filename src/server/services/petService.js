@@ -1,5 +1,10 @@
 import { Pet, User, Metric, Measurement } from '../models';
 
+const includedModels = [
+    { model: Measurement, as: 'measurements', include: [{ model: Metric, as: 'metric' }] },
+    { model: User, as: 'user' },
+];
+
 /**
  * Get all pets belnging to given user
  *
@@ -12,10 +17,7 @@ export const getAllByUser = (userId, cb, next) => {
         where: {
             user_id: userId,
         },
-        include: [
-            { model: Measurement, as: 'measurements', include: [{ model: Metric, as: 'metric' }] },
-            { model: User, as: 'user' },
-        ],
+        include: includedModels,
     })
         .then(cb)
         .catch(next);
@@ -29,7 +31,7 @@ export const getAllByUser = (userId, cb, next) => {
  * @param next
  */
 export const getPet = (petId, userId, cb, next) => {
-    Pet.findOne({ where: { id: petId, user_id: userId } })
+    Pet.findOne({ where: { id: petId, user_id: userId }, include: includedModels })
         .then(cb)
         .catch(next);
 };

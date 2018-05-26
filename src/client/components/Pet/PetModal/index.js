@@ -4,15 +4,15 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import { DEFAULT_MODAL_STYLE } from 'constants/appConstants';
-import { closePetModal } from 'actions/petModalActions';
+import { closePetModal, addMeasurement, removeMeasurement } from 'actions/petModalActions';
 import { t } from 'utils/i18n';
 import moment from 'moment';
 
 import { METRIC_TYPES } from 'constants/appConstants';
+import MeasurementList from '../../Measurement/index';
 
 import 'components/common/ModalWindow.scss';
 import './PetModal.scss';
-import PuppyChart from '../../PuppyChart';
 
 function mapStateToProps(state) {
     return {
@@ -22,83 +22,43 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({ closePetModal }, dispatch),
+        actions: bindActionCreators({ closePetModal, addMeasurement, removeMeasurement }, dispatch),
     };
 }
 
-const MetricContainer = ({ metricType, measurements, unit, onAdd }) => {
+const MetricContainer = ({ metricType, measurements, onAdd, onRemove }) => {
+    const metricMeasurements = measurements
+        ? measurements.filter(measurement => measurement.metric.name === metricType)
+        : undefined;
+
     return (
         <div className="metric-container">
             <div className="metric-container__title">{t(metricType)}</div>
             <div className="metric-container__chart">
-                {!measurements || measurements.length === 0 ? (
-                    <div>{t('no_results')}</div>
-                ) : (
-                    <PuppyChart
-                        data={{
-                            chart: {
-                                type: 'line',
-                            },
-                            title: {
-                                text: 'Monthly Average Temperature',
-                            },
-                            subtitle: {
-                                text: 'Source: WorldClimate.com',
-                            },
-                            xAxis: {
-                                categories: [
-                                    'Jan',
-                                    'Feb',
-                                    'Mar',
-                                    'Apr',
-                                    'May',
-                                    'Jun',
-                                    'Jul',
-                                    'Aug',
-                                    'Sep',
-                                    'Oct',
-                                    'Nov',
-                                    'Dec',
-                                ],
-                            },
-                            yAxis: {
-                                title: {
-                                    text: 'Temperature (°C)',
-                                },
-                            },
-                            plotOptions: {
-                                line: {
-                                    dataLabels: {
-                                        enabled: true,
-                                    },
-                                    enableMouseTracking: false,
-                                },
-                            },
-                            series: [
-                                {
-                                    name: 'Tokyo',
-                                    data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
-                                },
-                                {
-                                    name: 'London',
-                                    data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
-                                },
-                            ],
-                            credits: false,
-                        }}
-                    />
-                )}
-            </div>
-            <div className="metric-container__actions">
-                <button type="button" onClick={onAdd}>
-                    {t('add_measurement')}
-                </button>
+                <MeasurementList
+                    metricType={metricType}
+                    measurements={metricMeasurements}
+                    onAddMeasurement={onAdd}
+                    onRemoveMeasurement={onRemove}
+                />
             </div>
         </div>
     );
 };
 
+MetricContainer.propTypes = {
+    metricType: PropTypes.string.isRequired,
+    measurements: PropTypes.array,
+    onAdd: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
+};
+
 class PetModal extends Component {
+    _handleAddMeasurement = (values, metricType) => {
+        const { actions, pet } = this.props;
+        actions.addMeasurement(pet.id, values, metricType);
+    };
+
     render() {
         const { isOpen, pet, loading, error, actions } = this.props;
 
@@ -117,7 +77,15 @@ class PetModal extends Component {
                             <div className="modal__body">
                                 <span>{`${t('dob')}: ${moment().format('LL')}`}</span>
                                 <span>{`${t('owner')}: ${pet.user.name}`}</span>
-                                {METRIC_TYPES.map(type => <MetricContainer key={type} metricType={type} />)}
+                                {METRIC_TYPES.map(type => (
+                                    <MetricContainer
+                                        key={type}
+                                        metricType={type}
+                                        measurements={pet.measurements}
+                                        onAdd={values => this._handleAddMeasurement(values, type)}
+                                        onRemove={actions.removeMeasurement}
+                                    />
+                                ))}
                             </div>
 
                             <div className="modal__footer">
