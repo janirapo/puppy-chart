@@ -6,6 +6,7 @@ import PuppyChart from '../PuppyChart';
 import { t } from '../../utils/i18n';
 import sortBy from 'lodash/sortBy';
 import AddMeasurementForm from './AddMeasurementForm';
+import { FaPlus, FaCaretUp, FaCaretRight } from 'react-icons/lib/fa';
 
 const MeasurementRow = ({ measurement, removeAction }) => (
     <tr>
@@ -119,7 +120,10 @@ class MeasurementList extends Component {
                 <div className="Measurement__actions">
                     {hasMeasurements && (
                         <button type="button" className="button" onClick={this._toggleMeasurementRows}>
-                            {t(showMeasurementRows ? 'hide_measurement_rows' : 'show_measurement_rows')}
+                            <div className="flx flx--space-between flx-align-center">
+                                {showMeasurementRows ? <FaCaretUp /> : <FaCaretRight />}
+                                {t(showMeasurementRows ? 'hide_measurement_rows' : 'show_measurement_rows')}
+                            </div>
                         </button>
                     )}
                     {showMeasurementForm ? (
@@ -134,7 +138,10 @@ class MeasurementList extends Component {
                             className="button button--success"
                             onClick={this._toggleAddMeasurementForm}
                         >
-                            {t('add_measurement')}
+                            <div className="flx flx--space-between flx-align-center">
+                                <FaPlus />
+                                {t('add_measurement')}
+                            </div>
                         </button>
                     )}
                 </div>

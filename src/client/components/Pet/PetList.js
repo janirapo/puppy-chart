@@ -4,6 +4,7 @@ import Pet from './index';
 import ModalWindow from 'components/common/ModalWindow';
 import AddPetForm from './AddPetForm';
 import { t } from 'utils/i18n';
+import { FaPlus } from 'react-icons/lib/fa';
 
 class PetList extends Component {
     constructor(props) {
@@ -41,7 +42,12 @@ class PetList extends Component {
                 <span>{t('pet_amount', { count: pets ? pets.length : 0 })}</span>
                 {pets && pets.map(pet => <Pet key={pet.id} pet={pet} />)}
 
-                <button type="button" className="button button--success" onClick={this._toggleAddPetModal}>{t('add_pet')}</button>
+                <button type="button" className="button button--success" onClick={this._toggleAddPetModal}>
+                    <div className="flx flx--space-between flx-align-center">
+                        <FaPlus />
+                        {t('add_pet')}
+                    </div>
+                </button>
                 {addPetModalIsOpen && (
                     <ModalWindow
                         title={t('add_pet')}
