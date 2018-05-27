@@ -19,6 +19,10 @@ export const ADD_PET_START = ACTION_BASE + 'ADD_PET_START';
 export const ADD_PET_SUCCESS = ACTION_BASE + 'ADD_PET_SUCCESS';
 export const ADD_PET_FAIL = ACTION_BASE + 'ADD_PET_FAIL';
 
+export const REMOVE_PET_START = ACTION_BASE + 'REMOVE_PET_START';
+export const REMOVE_PET_SUCCESS = ACTION_BASE + 'REMOVE_PET_SUCCESS';
+export const REMOVE_PET_FAIL = ACTION_BASE + 'REMOVE_PET_FAIL';
+
 const PET_URL = BASE_URL + '/pet';
 
 /**
@@ -76,5 +80,24 @@ export function addPet(values, onSuccess) {
                 onSuccess && onSuccess();
             })
             .catch(createGenericReduxErrorHandler(dispatch, ADD_PET_FAIL));
+    };
+}
+
+/**
+ *
+ * @param petId
+ * @returns {function(*=): Promise<AxiosResponse<any>>}
+ */
+export function removePet(petId) {
+    return dispatch => {
+        dispatch({ type: REMOVE_PET_START });
+
+        return axios
+            .delete(`${PET_URL}/${petId}`)
+            .then(() => {
+                dispatch({ type: REMOVE_PET_SUCCESS, petId: petId });
+                dispatch(notify(t('pet_removed')));
+            })
+            .catch(createGenericReduxErrorHandler(dispatch, REMOVE_PET_FAIL));
     };
 }

@@ -16,6 +16,7 @@ export const getAllByUser = (userId, cb, next) => {
     Pet.findAll({
         where: {
             user_id: userId,
+            active_flag: true,
         },
         include: includedModels,
     })
@@ -53,4 +54,24 @@ export const addPet = (petData, cb, next) => {
         .save()
         .then(cb)
         .catch(next);
+};
+
+/**
+ * Deactivate pet with given ID
+ *
+ * @param petData
+ * @param cb
+ * @param next
+ */
+export const deactivatePet = (petData, cb, next) => {
+    getPet(
+        petData.petId,
+        petData.userId,
+        dbResult => {
+            Pet.update({ active_flag: false }, { where: { id: dbResult.id } })
+                .then(cb)
+                .catch(next);
+        },
+        next,
+    );
 };

@@ -32,4 +32,19 @@ router.post('/', auth.required, (req, res, next) => {
     );
 });
 
+router.delete('/:petId', auth.required, (req, res, next) => {
+    const data = {
+        userId: req.payload.id,
+        petId: req.params.petId,
+    };
+
+    petService.deactivatePet(
+        data,
+        () => {
+            res.send(JSON.stringify({ success: true }));
+        },
+        next,
+    );
+});
+
 export default router;

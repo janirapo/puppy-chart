@@ -22,6 +22,9 @@ const Pet = (sequelize, DataTypes) => {
                     key: 'id',
                 },
             },
+            active_flag: {
+                type: DataTypes.BOOLEAN,
+            },
         },
         {
             // don't use camelcase for automatically added attributes but underscore style
