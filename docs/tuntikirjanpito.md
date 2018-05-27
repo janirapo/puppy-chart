@@ -41,5 +41,5 @@
 | 25.5 | 6    | Mittaustulosten listaukse, lisäämisen ja poistamisen implementointia. Myös graafin ulkoasukorjauksia ja muita parannuksia. |
 | 26.5 | 1    | Eilen aloitetun toiminnallisuuden viimeistely ja kirjaus. |
 | 27.5 | 2    | Ulkoasuparannuksia (asettelu & värimaailma) |
-|  |    |  |
+| 27.5 | 2    | Lemmikin poistamisen toiminnallisuutta, ulkoasuparannuksia ja uloskirjautumisen varmistuskysymyksen toteutus |
 |  |    |  |
