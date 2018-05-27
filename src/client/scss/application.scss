@@ -1,4 +1,4 @@
-@import "colors";
+@import 'colors';
 
 body {
     background: $color-primary-light;
@@ -101,10 +101,11 @@ body {
     }
 }
 
-form input {
-    padding: 3px 6px;
+input {
     border-radius: 4px;
     margin: 3px 0px;
+    padding: 6px 6px;
+    width: 200px;
 }
 
 .button {
@@ -123,12 +124,12 @@ form input {
 
     &--danger {
         background-color: $color-danger;
-        color: $color-danger-white
+        color: $color-danger-white;
     }
 
     &--success {
         background-color: $color-success;
-        color: $color-success-white
+        color: $color-success-white;
     }
 }
 
@@ -150,4 +151,8 @@ form input {
 
 .flx--space-between {
     justify-content: space-between;
+}
+
+.flx-align-center {
+    align-items: center;
 }
