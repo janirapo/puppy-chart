@@ -20,16 +20,18 @@ const ConfirmationDialog = props => {
     return (
         <div className="ConfirmationDialog">
             <ReactModal isOpen={true} style={DEFAULT_MODAL_STYLE} contentLabel={title}>
-                <h2>{title}</h2>
-                <div>{text}</div>
-                {!hideReject && (
+                <div className="ConfirmationDialog__title">{title}</div>
+                <div className="ConfirmationDialog__text">{text}</div>
+                <div className="ConfirmationDialog__actions">
+                    {!hideReject && (
+                        <button type="button" className="button button--danger" onClick={handleReject}>
+                            {rejectText}
+                        </button>
+                    )}
                     <button type="button" className="button button--success" onClick={handleAccept}>
-                        {rejectText}
+                        {acceptText}
                     </button>
-                )}
-                <button type="button" className="button button--success" onClick={handleReject}>
-                    {acceptText}
-                </button>
+                </div>
             </ReactModal>
         </div>
     );

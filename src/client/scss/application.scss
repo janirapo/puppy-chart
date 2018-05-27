@@ -145,6 +145,10 @@ input {
     flex: 1 0 100%;
 }
 
+.flx--row {
+    flex-direction: row;
+}
+
 .flx--column {
     flex-direction: column;
 }

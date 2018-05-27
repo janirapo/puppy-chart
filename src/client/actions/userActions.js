@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { BASE_URL, JWT_KEY } from 'constants/appConstants';
 import { createGenericReduxErrorHandler, setupAuthorizedRequests, removeToken } from '../utils/request';
+import { openConfirmationDialog } from './notifyActions';
+import { t } from '../utils/i18n';
 
 const USER_URL = BASE_URL + '/user';
 
@@ -49,6 +51,19 @@ export function performLogin(values) {
 }
 
 export function logout() {
-    removeToken();
-    return { type: LOG_OUT };
+    return dispatch => {
+        dispatch(
+            openConfirmationDialog({
+                title: t('log_out'),
+                text: t('log_out_confirmation'),
+                hideReject: false,
+                acceptText: t('log_out'),
+                rejectText: t('cancel'),
+                onAccept: () => {
+                    removeToken();
+                    return dispatch({ type: LOG_OUT });
+                },
+            }),
+        );
+    };
 }

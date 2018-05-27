@@ -54,6 +54,7 @@ i18n.init(
                     log_in: 'Kirjaudu sisään',
                     clear_values: 'Tyhjennä',
                     invalid_email_or_password: 'Virheellinen käyttäjätunnus tai salasana',
+                    log_out_confirmation: 'Haluatko varmasti kirjautua ulos?'
                 },
             },
             en: {

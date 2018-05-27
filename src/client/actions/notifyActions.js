@@ -9,10 +9,12 @@ export const SHOW_NOTIFICATION = ACTION_BASE + 'SHOW_NOTIFICATION';
 export const HIDE_NOTIFICATION = ACTION_BASE + 'HIDE_NOTIFICATION';
 
 export function openConfirmationDialog(confirmationContent) {
-    return {
-        type: OPEN_CONFIRMATION_DIALOG,
-        ...confirmationContent,
-        handleClose: () => dispatch(closeConfirmationDialog()),
+    return dispatch => {
+        return dispatch({
+            type: OPEN_CONFIRMATION_DIALOG,
+            ...confirmationContent,
+            handleClose: () => dispatch(closeConfirmationDialog()),
+        });
     };
 }
 
@@ -24,7 +26,6 @@ export function closeConfirmationDialog() {
 
 export function notify(notificationText = '', notificationType = NOTIFICATION_TYPE_NOTIFY, duration = 3000) {
     return dispatch => {
-
         if (NOTIFICATION_TYPES.indexOf(notificationType) === -1) {
             notificationType = NOTIFICATION_TYPE_NOTIFY;
         }
