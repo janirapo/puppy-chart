@@ -43,7 +43,7 @@ class PetList extends Component {
                 {pets && pets.map(pet => <Pet key={pet.id} pet={pet} />)}
 
                 <button type="button" className="button button--success" onClick={this._toggleAddPetModal}>
-                    <div className="flx flx--space-between flx-align-center">
+                    <div className="flx flx--space-evenly flx-align-center">
                         <FaPlus />
                         {t('add_pet')}
                     </div>

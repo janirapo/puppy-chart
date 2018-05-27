@@ -120,7 +120,7 @@ class MeasurementList extends Component {
                 <div className="Measurement__actions">
                     {hasMeasurements && (
                         <button type="button" className="button" onClick={this._toggleMeasurementRows}>
-                            <div className="flx flx--space-between flx-align-center">
+                            <div className="flx flx--space-evenly flx-align-center">
                                 {showMeasurementRows ? <FaCaretUp /> : <FaCaretRight />}
                                 {t(showMeasurementRows ? 'hide_measurement_rows' : 'show_measurement_rows')}
                             </div>
