@@ -2,6 +2,7 @@ import axios from 'axios';
 import { JWT_KEY } from 'constants/appConstants';
 import { notify } from '../actions/notifyActions';
 import { NOTIFICATION_TYPE_DANGER } from '../constants/appConstants';
+import { t } from './i18n';
 
 /**
  * @returns {void}
@@ -56,7 +57,11 @@ export function createGenericReduxErrorHandler(dispatch, type) {
         }
 
         const errorMsg =
-            (error.response && error.response.data && error.response.data.errors && JSON.stringify(error.response.data.errors)) ||
+            (error.response &&
+                error.response.data &&
+                error.response.data.errors &&
+                error.response.data.errors.message &&
+                t(error.response.data.errors.message)) ||
             error.message;
 
         dispatch(notify(errorMsg, NOTIFICATION_TYPE_DANGER));
