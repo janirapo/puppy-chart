@@ -49,6 +49,11 @@ i18n.init(
                     remove: 'Poista',
                     measurement_added: 'Mittaustulos lisätty',
                     measurement_removed: 'Mittaustulos poistettu',
+                    username: 'Käyttäjätunnus',
+                    password: 'Salasana',
+                    log_in: 'Kirjaudu sisään',
+                    clear_values: 'Tyhjennä',
+                    invalid_email_or_password: 'Virheellinen käyttäjätunnus tai salasana',
                 },
             },
             en: {
