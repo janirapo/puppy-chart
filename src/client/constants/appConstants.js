@@ -20,6 +20,8 @@ export const DEFAULT_MODAL_STYLE = {
         backgroundColor: 'rgba(19,19,19,0.8)',
     },
     content: {
+        backgroundColor: '#fff4e6',
+        color: '#140b00',
         top: '50%',
         left: '50%',
         right: 'auto',
@@ -46,7 +48,7 @@ export const DEFAULT_METRIC_UNITS = { [METRIC_KEY_WEIGHT]: 'kg', [METRIC_KEY_HEI
 export const DEFAULT_CHART_CONFIG = {
     chart: {
         type: 'line',
-        backgroundColor: 'rgba(217, 238, 250, 0.85)',
+        backgroundColor: 'rgba(255, 251, 246, 0.85)',
     },
     title: {
         text: '',

@@ -1,6 +1,8 @@
+@import "colors";
+
 body {
-    background: #ebebeb;
-    font-family: arial, sans-serif;
+    background: $color-primary-light;
+    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
 }
 
 #root {
@@ -12,8 +14,8 @@ body {
 
 .content {
     text-align: left;
-    background-color: #fafafa;
-    color: black;
+    background-color: $color-primary-white;
+    color: $color-primary-text;
     max-width: 768px;
     min-height: 200px;
     border-radius: 6px;
@@ -68,7 +70,7 @@ body {
     }
 
     .label__icon--required {
-        color: #cc4f40;
+        color: $color-error;
     }
 
     .input__field--full-width {
@@ -86,15 +88,15 @@ body {
         font-size: 11px;
 
         &--error {
-            color: #cc4f40;
+            color: $color-error;
         }
 
         &--warning {
-            color: #cc753e;
+            color: $color-warning;
         }
     }
 
-    button {
+    .button {
         margin-top: 10px;
     }
 }
@@ -105,7 +107,7 @@ form input {
     margin: 3px 0px;
 }
 
-button {
+.button {
     max-width: 200px;
     min-width: 40px;
     padding: 10px 25px;
@@ -113,11 +115,26 @@ button {
     border-radius: 6px;
     margin-top: 5px;
     margin-bottom: 5px;
+    background-color: $color-primary-light;
+
+    &:not(:last-of-type) {
+        margin-right: 5px;
+    }
+
+    &--danger {
+        background-color: $color-danger;
+        color: $color-danger-white
+    }
+
+    &--success {
+        background-color: $color-success;
+        color: $color-success-white
+    }
 }
 
 .alert-box {
-    background-color: #cc4f40;
-    color: #fafafa;
+    background-color: $color-error;
+    color: $color-primary-white;
     border-radius: 5px;
     padding: 15px;
 }

@@ -41,7 +41,7 @@ class PetList extends Component {
                 <span>{t('pet_amount', { count: pets ? pets.length : 0 })}</span>
                 {pets && pets.map(pet => <Pet key={pet.id} pet={pet} />)}
 
-                <button onClick={this._toggleAddPetModal}>{t('add_pet')}</button>
+                <button type="button" className="button button--success" onClick={this._toggleAddPetModal}>{t('add_pet')}</button>
                 {addPetModalIsOpen && (
                     <ModalWindow
                         title={t('add_pet')}

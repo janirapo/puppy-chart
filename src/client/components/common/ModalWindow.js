@@ -21,9 +21,10 @@ const ModalWindow = ({ handleAccept, handleClose, title, body, closeText, accept
 
                 {showFooter && (
                     <div className="modal__footer">
-                        <button onClick={handleClose}>{closeText}</button>
+                        <button className="button" onClick={handleClose}>{closeText}</button>
                         <button
                             type="button"
+                            className="button"
                             onClick={() => {
                                 handleAccept();
                                 handleClose();

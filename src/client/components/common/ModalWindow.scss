@@ -1,15 +1,17 @@
+@import "../../scss/colors";
+
 $padding: 10px;
 
 .modal {
     &__header {
         padding-top: $padding;
         padding-bottom: $padding;
-        border-bottom: 1px solid #b3b3b3;
+        border-bottom: 1px solid $color-primary-darker;
 
         .header__title {
             text-transform: capitalize;
             font-size: 20px;
-            color: #333333;
+            color: $color-primary-text;
             font-weight: 600;
         }
     }

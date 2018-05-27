@@ -4,7 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import { renderField, required, minLength2, renderDateTimePicker, date } from 'utils/reduxFormHelpers';
 import { t } from 'utils/i18n';
 import moment from 'moment';
-import { METRIC_TYPES } from '../../constants/appConstants';
 
 let AddMeasurementForm = props => {
     const { handleSubmit, formError, onCancel, unit } = props;
@@ -33,10 +32,10 @@ let AddMeasurementForm = props => {
                 />
             </div>
             <div className="input-form__actions">
-                <button type="button" className="button button-cancel" onClick={onCancel}>
+                <button type="button" className="button button--danger" onClick={onCancel}>
                     {t('cancel')}
                 </button>
-                <button type="submit" className="button button-accept">
+                <button type="submit" className="button button--success">
                     {t('save')}
                 </button>
             </div>

@@ -31,10 +31,10 @@ let AddPetForm = props => {
                 />
             </div>
             <div className="input-form__actions">
-                <button type="button" className="button button-cancel" onClick={handleCloseModal}>
+                <button type="button" className="button button--danger" onClick={handleCloseModal}>
                     {t('cancel')}
                 </button>
-                <button type="submit" className="button button-accept">
+                <button type="submit" className="button button--success">
                     {t('save')}
                 </button>
             </div>

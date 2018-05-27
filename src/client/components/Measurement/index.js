@@ -13,7 +13,7 @@ const MeasurementRow = ({ measurement, removeAction }) => (
         <td>{`${measurement.value} ${measurement.metric.unit}`}</td>
         <td>{moment(measurement.created_at).format('ll')}</td>
         <td>
-            <button type="button button--danger" onClick={() => removeAction(measurement.id)}>
+            <button type="button" className="button button--danger" onClick={() => removeAction(measurement.id)}>
                 {t('remove')}
             </button>
         </td>
@@ -70,7 +70,7 @@ class MeasurementList extends Component {
                             series: [
                                 {
                                     type: 'line',
-                                    color: '#009fda',
+                                    color: '#b18d5e',
                                     width: '2px',
                                     data: sortBy(
                                         measurements.map(measurement => [
@@ -95,7 +95,7 @@ class MeasurementList extends Component {
                 )}
                 {showMeasurementRows && (
                     <div className="Measurement__rows">
-                        <table>
+                        <table className="measurement-table">
                             <thead>
                                 <tr>
                                     <th>{t('date')}</th>
@@ -116,22 +116,28 @@ class MeasurementList extends Component {
                         </table>
                     </div>
                 )}
-                {hasMeasurements && (
-                    <button type="button" onClick={this._toggleMeasurementRows}>
-                        {t(showMeasurementRows ? 'hide_measurement_rows' : 'show_measurement_rows')}
-                    </button>
-                )}
-                {showMeasurementForm ? (
-                    <AddMeasurementForm
-                        onSubmit={this._handleAddMeasurement}
-                        onCancel={this._toggleAddMeasurementForm}
-                        unit={unitText}
-                    />
-                ) : (
-                    <button type="button" onClick={this._toggleAddMeasurementForm}>
-                        {t('add_measurement')}
-                    </button>
-                )}
+                <div className="Measurement__actions">
+                    {hasMeasurements && (
+                        <button type="button" className="button" onClick={this._toggleMeasurementRows}>
+                            {t(showMeasurementRows ? 'hide_measurement_rows' : 'show_measurement_rows')}
+                        </button>
+                    )}
+                    {showMeasurementForm ? (
+                        <AddMeasurementForm
+                            onSubmit={this._handleAddMeasurement}
+                            onCancel={this._toggleAddMeasurementForm}
+                            unit={unitText}
+                        />
+                    ) : (
+                        <button
+                            type="button"
+                            className="button button--success"
+                            onClick={this._toggleAddMeasurementForm}
+                        >
+                            {t('add_measurement')}
+                        </button>
+                    )}
+                </div>
             </div>
         );
     }

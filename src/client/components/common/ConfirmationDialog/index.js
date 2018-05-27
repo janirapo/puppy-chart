@@ -23,11 +23,11 @@ const ConfirmationDialog = props => {
                 <h2>{title}</h2>
                 <div>{text}</div>
                 {!hideReject && (
-                    <button className="btn btn-default btn-danger" onClick={handleAccept}>
+                    <button type="button" className="button button--success" onClick={handleAccept}>
                         {rejectText}
                     </button>
                 )}
-                <button className="btn btn-default" onClick={handleReject}>
+                <button type="button" className="button button--success" onClick={handleReject}>
                     {acceptText}
                 </button>
             </ReactModal>

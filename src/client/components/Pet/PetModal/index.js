@@ -89,7 +89,7 @@ class PetModal extends Component {
                             </div>
 
                             <div className="modal__footer">
-                                <button type="button" onClick={actions.closePetModal}>
+                                <button type="button" className="button button--danger" onClick={actions.closePetModal}>
                                     {t('close')}
                                 </button>
                             </div>

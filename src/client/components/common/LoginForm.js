@@ -22,7 +22,7 @@ class LoginForm extends Component {
                     <button type="submit" disabled={submitting}>
                         Log in
                     </button>
-                    <button type="button" disabled={pristine || submitting} onClick={reset}>
+                    <button type="button" className="button button--danger" disabled={pristine || submitting} onClick={reset}>
                         Clear Values
                     </button>
                 </div>

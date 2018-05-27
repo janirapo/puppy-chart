@@ -67,7 +67,7 @@ class App extends Component {
                     <h2>Puppy Chart</h2>
                     {userId && (
                         <div className="logout-container">
-                            <button type="button" onClick={handleLogout}>
+                            <button type="button" className="button" onClick={handleLogout}>
                                 {t('log_out')}
                             </button>
                         </div>
