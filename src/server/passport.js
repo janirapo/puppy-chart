@@ -1,6 +1,6 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import userService from './services/userService';
+import { findUserByEmail, validPassword } from './services/userService';
 
 passport.use(
     new LocalStrategy(
@@ -9,11 +9,16 @@ passport.use(
             passwordField: 'user[password]',
         },
         (email, password, done) => {
-            userService.findUserByEmail(
+            findUserByEmail(
                 email,
                 user => {
-                    if (!user || !userService.validPassword(user.dataValues, password)) {
-                        return done(null, false, { errors: 'invalid email or password' });
+                    if (!user || !validPassword(user.dataValues, password)) {
+                        return done(null, false, {
+                            errors: {
+                                message: 'invalid_email_or_password',
+                                error: {},
+                            },
+                        });
                     }
 
                     return done(null, user);
