@@ -59,6 +59,9 @@ i18n.init(
                     remove_pet_confirmation:
                         'Halutko varmasti poistaa valitun lemmikin? Tietoja ei voida enää palauttaa.',
                     pet_removed: 'Lemmikki poistettu',
+                    remove_measurement_confirmation: 'Haluatko varmasti poistaa valitun mittaustuloksen?',
+                    remove_measurement: 'Poista mittaustulos',
+                    validate_contains_comma: 'Käytä pistettä erotinmerkkinä pilkun sijaan',
                 },
             },
             en: {

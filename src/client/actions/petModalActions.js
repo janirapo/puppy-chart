@@ -1,5 +1,5 @@
 import { createGenericReduxErrorHandler } from '../utils/request';
-import { notify } from './notifyActions';
+import { notify, openConfirmationDialog } from './notifyActions';
 import { t } from '../utils/i18n';
 import { BASE_URL } from 'constants/appConstants';
 import moment from 'moment';
@@ -73,13 +73,24 @@ export function removeMeasurement(measurementId) {
     return dispatch => {
         dispatch({ type: REMOVE_MEASUREMENT_START });
 
-        axios
-            .delete(`${BASE_URL}/measurement/${measurementId}`)
-            .then(response => {
-                console.log(response.data);
-                dispatch({ type: REMOVE_MEASUREMENT_SUCCESS, measurementId: measurementId });
-                dispatch(notify(t('measurement_removed')));
-            })
-            .catch(createGenericReduxErrorHandler(dispatch, REMOVE_MEASUREMENT_FAIL));
+        dispatch(
+            openConfirmationDialog({
+                title: `${t('remove_measurement')}?`,
+                text: t('remove_measurement_confirmation'),
+                hideReject: false,
+                acceptText: t('remove'),
+                rejectText: t('cancel'),
+                onAccept: () => {
+                    axios
+                        .delete(`${BASE_URL}/measurement/${measurementId}`)
+                        .then(response => {
+                            console.log(response.data);
+                            dispatch({ type: REMOVE_MEASUREMENT_SUCCESS, measurementId: measurementId });
+                            dispatch(notify(t('measurement_removed')));
+                        })
+                        .catch(createGenericReduxErrorHandler(dispatch, REMOVE_MEASUREMENT_FAIL));
+                },
+            }),
+        );
     };
 }

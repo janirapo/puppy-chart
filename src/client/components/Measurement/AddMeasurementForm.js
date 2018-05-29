@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { renderField, required, minLength2, renderDateTimePicker, date } from 'utils/reduxFormHelpers';
+import { renderField, required, number, renderDateTimePicker, date } from 'utils/reduxFormHelpers';
 import { t } from 'utils/i18n';
 import moment from 'moment';
 
@@ -15,16 +15,16 @@ let AddMeasurementForm = props => {
                     name="value"
                     type="number"
                     placeholder={t('value')}
-                    defaultValue={moment().toDate()}
                     label={`${t('value')} (${unit})`}
                     component={renderField}
-                    validate={[required, minLength2]}
+                    validate={[required, number]}
                     required
                 />
                 <Field
                     name="measurementDate"
                     label={t('date')}
                     placeholder={t('date')}
+                    defaultValue={moment().toDate()}
                     component={renderDateTimePicker}
                     validate={[required, date]}
                     warn={date}

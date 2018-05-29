@@ -94,29 +94,30 @@ class MeasurementList extends Component {
                         }}
                     />
                 )}
-                {showMeasurementRows && (
-                    <div className="Measurement__rows">
-                        <table className="measurement-table">
-                            <thead>
-                                <tr>
-                                    <th>{t('date')}</th>
-                                    <th>{t('value')}</th>
-                                    <th>{t('created')}</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {measurements.map(measurement => (
-                                    <MeasurementRow
-                                        key={measurement.id}
-                                        measurement={measurement}
-                                        removeAction={onRemoveMeasurement}
-                                    />
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
+                {hasMeasurements &&
+                    showMeasurementRows && (
+                        <div className="Measurement__rows">
+                            <table className="measurement-table">
+                                <thead>
+                                    <tr>
+                                        <th>{t('date')}</th>
+                                        <th>{t('value')}</th>
+                                        <th>{t('created')}</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {measurements.map(measurement => (
+                                        <MeasurementRow
+                                            key={measurement.id}
+                                            measurement={measurement}
+                                            removeAction={onRemoveMeasurement}
+                                        />
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
                 <div className="Measurement__actions">
                     {hasMeasurements && (
                         <button type="button" className="button" onClick={this._toggleMeasurementRows}>
