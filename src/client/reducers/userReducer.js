@@ -14,7 +14,10 @@ import {
     ADD_PET_START,
     ADD_PET_SUCCESS,
     ADD_PET_FAIL,
-} from "../actions/petActions";
+    REMOVE_PET_START,
+    REMOVE_PET_SUCCESS,
+    REMOVE_PET_FAIL,
+} from '../actions/petActions';
 
 export default function user(state = initialState.user, action) {
     switch (action.type) {
@@ -32,6 +35,7 @@ export default function user(state = initialState.user, action) {
                 loading: false,
             };
         case ADD_PET_START:
+        case REMOVE_PET_START:
         case FETCH_ALL_PETS_START:
             return {
                 ...state,
@@ -50,6 +54,12 @@ export default function user(state = initialState.user, action) {
                 pets: action.pets,
                 loading: false,
             };
+        case REMOVE_PET_SUCCESS:
+            return {
+                ...state,
+                pets: (state.pets || []).filter(pet => pet.id !== action.petId),
+            };
+        case REMOVE_PET_FAIL:
         case ADD_PET_FAIL:
         case FETCH_ALL_PETS_FAIL:
             return {

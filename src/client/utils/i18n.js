@@ -54,7 +54,11 @@ i18n.init(
                     log_in: 'Kirjaudu sisään',
                     clear_values: 'Tyhjennä',
                     invalid_email_or_password: 'Virheellinen käyttäjätunnus tai salasana',
-                    log_out_confirmation: 'Haluatko varmasti kirjautua ulos?'
+                    log_out_confirmation: 'Haluatko varmasti kirjautua ulos?',
+                    remove_pet: 'Poista lemmikki',
+                    remove_pet_confirmation:
+                        'Halutko varmasti poistaa valitun lemmikin? Tietoja ei voida enää palauttaa.',
+                    pet_removed: 'Lemmikki poistettu',
                 },
             },
             en: {

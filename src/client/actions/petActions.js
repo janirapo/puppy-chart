@@ -2,7 +2,7 @@ import axios from 'axios';
 import { BASE_URL } from 'constants/appConstants';
 import { createGenericReduxErrorHandler } from '../utils/request';
 import moment from 'moment';
-import { notify } from './notifyActions';
+import { notify, openConfirmationDialog } from './notifyActions';
 import { t } from '../utils/i18n';
 
 const ACTION_BASE = 'PET/';
@@ -92,12 +92,23 @@ export function removePet(petId) {
     return dispatch => {
         dispatch({ type: REMOVE_PET_START });
 
-        return axios
-            .delete(`${PET_URL}/${petId}`)
-            .then(() => {
-                dispatch({ type: REMOVE_PET_SUCCESS, petId: petId });
-                dispatch(notify(t('pet_removed')));
-            })
-            .catch(createGenericReduxErrorHandler(dispatch, REMOVE_PET_FAIL));
+        dispatch(
+            openConfirmationDialog({
+                title: `${t('remove_pet')}?`,
+                text: t('remove_pet_confirmation'),
+                hideReject: false,
+                acceptText: t('remove'),
+                rejectText: t('cancel'),
+                onAccept: () => {
+                    axios
+                        .delete(`${PET_URL}/${petId}`)
+                        .then(() => {
+                            dispatch({ type: REMOVE_PET_SUCCESS, petId: petId });
+                            dispatch(notify(t('pet_removed')));
+                        })
+                        .catch(createGenericReduxErrorHandler(dispatch, REMOVE_PET_FAIL));
+                },
+            }),
+        );
     };
 }

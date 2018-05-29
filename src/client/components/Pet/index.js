@@ -4,6 +4,7 @@ import moment from 'moment';
 import { FaPaw } from 'react-icons/lib/fa';
 import { t } from 'utils/i18n';
 import { openPetModal } from 'actions/petModalActions';
+import { removePet } from 'actions/petActions';
 
 import './Pet.scss';
 
@@ -24,6 +25,11 @@ class Pet extends Component {
 
     _handleOpenPetModal = () => {
         this.context.store.dispatch(openPetModal(this.props.pet));
+    };
+
+    _handleRemovePet = event => {
+        event.stopPropagation();
+        this.context.store.dispatch(removePet(this.props.pet.id));
     };
 
     _getPetAge = birthDate => {
@@ -54,10 +60,26 @@ class Pet extends Component {
     render() {
         const { pet } = this.props;
         return (
-            <div className="pet" title={t('open')} onClick={this._handleOpenPetModal}>
-                {this._renderRow(`${t('name')}: ${pet.name}`)}
-                {this._renderRow(`${t('dob')}: ${moment(pet.birth_date).format('LL')}`)}
-                {this._renderRow(this._getPetAge(pet.birth_date))}
+            <div
+                className="pet flx flx--row flx--space-between flx-align-center"
+                title={t('open')}
+                onClick={this._handleOpenPetModal}
+            >
+                <div>
+                    {this._renderRow(`${t('name')}: ${pet.name}`)}
+                    {this._renderRow(`${t('dob')}: ${moment(pet.birth_date).format('LL')}`)}
+                    {this._renderRow(this._getPetAge(pet.birth_date))}
+                </div>
+                <div>
+                    <button
+                        type="button"
+                        className="button button--danger"
+                        onClick={this._handleRemovePet}
+                        title={t('remove')}
+                    >
+                        {t('remove')}
+                    </button>
+                </div>
             </div>
         );
     }
