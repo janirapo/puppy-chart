@@ -42,4 +42,4 @@
 | 26.5 | 1    | Eilen aloitetun toiminnallisuuden viimeistely ja kirjaus. |
 | 27.5 | 2    | Ulkoasuparannuksia (asettelu & värimaailma) |
 | 27.5 | 2    | Lemmikin poistamisen toiminnallisuutta, ulkoasuparannuksia ja uloskirjautumisen varmistuskysymyksen toteutus |
-|  |    |  |
+| 29.5 | 4    | Tietokantamallin hiomista, eri poistotoiminnallisuuksien varmistuskysymystoimintoja |
