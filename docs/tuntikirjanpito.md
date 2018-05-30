@@ -43,3 +43,4 @@
 | 27.5 | 2    | Ulkoasuparannuksia (asettelu & värimaailma) |
 | 27.5 | 2    | Lemmikin poistamisen toiminnallisuutta, ulkoasuparannuksia ja uloskirjautumisen varmistuskysymyksen toteutus |
 | 29.5 | 4    | Tietokantamallin hiomista, eri poistotoiminnallisuuksien varmistuskysymystoimintoja |
+| 30.5 | 6    | Uuden käyttäjän rekisteröintimahdollisuus ja virhekäsittelyn parannusta, sekä muutama tyylimuutos |
