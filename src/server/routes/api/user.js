@@ -2,15 +2,18 @@ import express from 'express';
 import passport from 'passport';
 import auth from '../auth';
 import * as userService from '../../services/userService';
+import * as petService from '../../services/petService';
 
 let router = express.Router();
 
-router.get('/all', auth.optional, (req, res, next) => {
+// get all users
+router.get('/all', auth.required, (req, res, next) => {
     userService.getAllUsers(dbResult => {
         res.send(JSON.stringify({ users: dbResult }));
     }, next);
 });
 
+// handle login
 router.post('/login', (req, res, next) => {
     if (!req.body.user.email) {
         return res.status(422).json({ errors: { email: "can't be blank" } });
@@ -34,6 +37,18 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
+// register new user
+router.post('/', auth.optional, (req, res, next) => {
+    userService.addUser(
+        req.body,
+        dbResult => {
+            res.send(JSON.stringify({ user: dbResult }));
+        },
+        next,
+    );
+});
+
+// get user
 router.get('/:userId(\\d+)/', auth.required, (req, res, next) => {
     userService.getUser(
         req.params.userId,

@@ -62,6 +62,14 @@ i18n.init(
                     remove_measurement_confirmation: 'Haluatko varmasti poistaa valitun mittaustuloksen?',
                     remove_measurement: 'Poista mittaustulos',
                     validate_contains_comma: 'Käytä pistettä erotinmerkkinä pilkun sijaan',
+                    register_error: 'Virhe rekisteröinnissä, tarkista tiedot!',
+                    register_new_user: 'Rekisteröi uusi käyttäjä',
+                    re_type_password: 'Salasana uudelleen',
+                    passwords_dont_match_error: 'Salasanat eivät täsmää!',
+                    register: 'Rekisteröi',
+                    not_found: 'Reittiä ei löytynyt, ota yhtettyä järjestelmän ylläpitoon!',
+                    username_already_in_use:
+                        'Valittu käyttäjätunnus on jo olemassa! Valitse toinen tai kirjaudu sisään',
                 },
             },
             en: {

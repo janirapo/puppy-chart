@@ -1,6 +1,8 @@
 import { User } from '../models';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
+import { camelToUnderscore } from '../constants';
+
 const secret = process.env.SECRET || require('~/config/local.config').secret;
 
 export const getAllUsers = (cb, next) => {
@@ -26,15 +28,15 @@ export const validPassword = (user, password) => {
     return user.password === hash;
 };
 
-const _getPasswordHashAndSalt = (password) => {
+const _getPasswordHashAndSalt = password => {
     const salt = crypto.randomBytes(16).toString('hex');
     return {
-        password: crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex'),
+        password: crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512').toString('hex'),
         salt: salt,
     };
 };
 
-export const generateJWT = (user) => {
+export const generateJWT = user => {
     const today = new Date();
     const exp = new Date(today);
     exp.setDate(today.getDate() + 60);
@@ -50,7 +52,7 @@ export const generateJWT = (user) => {
     );
 };
 
-export const toAuthJSON = (user) => {
+export const toAuthJSON = user => {
     return {
         id: user.id,
         name: user.name,
@@ -59,16 +61,32 @@ export const toAuthJSON = (user) => {
     };
 };
 
-export const addUser = (cb, next) => {
-    // TODO
-    // store.ready(async () => {
-    //     store.Model('User').then(cb).catch(next);
-    // });
-};
+/**
+ * Add new user to database
+ *
+ * @param userData
+ * @param cb
+ * @param next
+ */
+export const addUser = (userData, cb, next) => {
+    // first check if user is found
+    User.count({ where: { email: userData.email } })
+        .then(c => {
+            if (c > 0) {
+                next({ message: 'username_already_in_use', status: 403 });
+            } else {
+                const { password: passwordHash, salt } = _getPasswordHashAndSalt(userData.password);
+                const newUser = User.build({
+                    ...userData,
+                    password: passwordHash,
+                    salt: salt,
+                });
 
-export const updateUser = (cb, next) => {
-    // TODO
-    // store.ready(async () => {
-    //     store.Model('User').then(cb).catch(next);
-    // });
+                newUser
+                    .save()
+                    .then(cb)
+                    .catch(next);
+            }
+        })
+        .catch(next);
 };

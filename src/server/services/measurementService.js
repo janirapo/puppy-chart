@@ -1,15 +1,8 @@
 import { Measurement } from '../models';
 import { getPet } from './petService';
+import { camelToUnderscore } from "../constants";
 
-/**
- * Convert camelCase to underscore_case
- * @param str
- * @returns {*}
- */
-const camelToUnderscore = str =>
-    str
-        .replace(/(^[A-Z])/, ([first]) => first.toLowerCase())
-        .replace(/([A-Z])/g, ([letter]) => `_${letter.toLowerCase()}`);
+
 
 /**
  * Add new measurement to database with the values defined in

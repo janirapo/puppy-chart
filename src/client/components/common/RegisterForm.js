@@ -1,52 +1,56 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { renderField, required, minLength2, email } from 'utils/reduxFormHelpers';
+import { renderField, required, minLength2, email, minLength5 } from 'utils/reduxFormHelpers';
 import { t } from 'utils/i18n';
 
 class RegisterForm extends Component {
     render() {
-        const { handleSubmit, submitting, onCancel, formError } = this.props;
+        const { handleSubmit, submitting, onCancel, error, formError } = this.props;
 
         return (
-            <form onSubmit={handleSubmit}>
-                {formError && <div className="alert-box">{formError}</div>}
+            <form className="input-form" onSubmit={handleSubmit} autoComplete="off">
+                <h3>{t('register_new_user')}</h3>
+                {(error || formError) && <div className="alert-box">{error || formError}</div>}
+                <Field
+                    name="name"
+                    type="text"
+                    component={renderField}
+                    label={t('name')}
+                    validate={[required, minLength2]}
+                    autoComplete="off"
+                />
                 <Field
                     name="email"
                     type="text"
                     component={renderField}
                     label={t('username')}
                     validate={[required, minLength2, email]}
-                    autocomplete="off"
+                    autoComplete="off"
                 />
                 <Field
                     name="password"
                     type="password"
                     component={renderField}
                     label={t('password')}
-                    validate={[required]}
-                    autocomplete="off"
+                    validate={[required, minLength5]}
+                    autoComplete="off"
                 />
                 <Field
                     name="confirmPassword"
                     type="password"
                     component={renderField}
                     label={t('re_type_password')}
-                    validate={[required]}
-                    autocomplete="off"
+                    validate={[required, minLength5]}
+                    autoComplete="off"
                 />
-                <div className="flx flx--row flx--space-between">
-                    <button
-                        type="button"
-                        className="button button--danger"
-                        onClick={onCancel}
-                    >
-                        {t('clear_values')}
+                <div className="input-form__actions">
+                    <button type="button" className="button button--danger" onClick={onCancel}>
+                        {t('cancel')}
                     </button>
                     <button type="submit" className="button button--success" disabled={submitting}>
                         {t('register')}
                     </button>
-
                 </div>
             </form>
         );
@@ -54,6 +58,8 @@ class RegisterForm extends Component {
 }
 
 RegisterForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
     formError: PropTypes.string,
 };
 

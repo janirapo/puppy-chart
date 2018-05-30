@@ -9,7 +9,8 @@ class LoginForm extends Component {
         const { handleSubmit, submitting, pristine, reset, loginError } = this.props;
 
         return (
-            <form onSubmit={handleSubmit}>
+            <form className="input-form" onSubmit={handleSubmit}>
+                <h3>{t('log_in')}</h3>
                 {loginError && <div className="alert-box">{loginError}</div>}
                 <Field
                     name="email"
@@ -44,6 +45,7 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
     loginError: PropTypes.string,
 };
 

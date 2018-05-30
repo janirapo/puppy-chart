@@ -15,6 +15,7 @@ export const maxLength = max => value => (value && value.length > max ? t('max_c
 export const maxLength15 = maxLength(15);
 export const minLength = min => value => (value && value.length < min ? t('min_characters', { min: min }) : undefined);
 export const minLength2 = minLength(2);
+export const minLength5 = minLength(5);
 export const number = value => (value && isNaN(Number(value)) ? t('validate_number') : undefined);
 export const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? t('invalid_email') : undefined;

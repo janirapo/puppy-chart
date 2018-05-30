@@ -6,6 +6,7 @@ export default {
         name: undefined,
         pets: [],
         error: undefined,
+        registerFormVisible: false,
     },
     notify: {
         showConfirmationDialog: false,

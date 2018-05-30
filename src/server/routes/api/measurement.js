@@ -1,7 +1,6 @@
 import express from 'express';
 import * as measurementService from '../../services/measurementService';
 import { getMetricByName } from '../../services/metricService';
-import { getPet } from '../../services/petService';
 import auth from '../auth';
 
 let router = express.Router();

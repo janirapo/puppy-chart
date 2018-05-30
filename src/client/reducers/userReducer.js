@@ -6,6 +6,11 @@ import {
     LOGIN_START,
     LOGIN_FAIL,
     LOGIN_SUCCESS,
+    REGISTER_NEW_USER_FAIL,
+    REGISTER_NEW_USER_SUCCESS,
+    REGISTER_NEW_USER_START,
+    SHOW_REGISTER_FORM,
+    HIDE_REGISTER_FORM,
 } from 'actions/userActions';
 import {
     FETCH_ALL_PETS_FAIL,
@@ -26,6 +31,7 @@ export default function user(state = initialState.user, action) {
             return {
                 ...initialState.user,
                 loading: true,
+                error: undefined,
             };
         case LOGIN_SUCCESS:
             return {
@@ -33,13 +39,16 @@ export default function user(state = initialState.user, action) {
                 id: action.user.id,
                 name: action.user.name,
                 loading: false,
+                error: undefined,
             };
+        case REGISTER_NEW_USER_START:
         case ADD_PET_START:
         case REMOVE_PET_START:
         case FETCH_ALL_PETS_START:
             return {
                 ...state,
                 loading: true,
+                error: undefined,
             };
         case FETCH_USER_SUCCESS:
             return {
@@ -47,17 +56,20 @@ export default function user(state = initialState.user, action) {
                 id: action.user.id,
                 name: action.user.name,
                 loading: false,
+                error: undefined,
             };
         case FETCH_ALL_PETS_SUCCESS:
             return {
                 ...state,
                 pets: action.pets,
                 loading: false,
+                error: undefined,
             };
         case REMOVE_PET_SUCCESS:
             return {
                 ...state,
                 pets: (state.pets || []).filter(pet => pet.id !== action.petId),
+                error: undefined,
             };
         case REMOVE_PET_FAIL:
         case ADD_PET_FAIL:
@@ -66,6 +78,13 @@ export default function user(state = initialState.user, action) {
                 ...state,
                 loading: false,
                 error: action.error,
+            };
+        case REGISTER_NEW_USER_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.error,
+                registerFormVisible: false,
             };
         case FETCH_USER_FAIL:
         case LOGIN_FAIL:
@@ -78,6 +97,20 @@ export default function user(state = initialState.user, action) {
             return {
                 ...state,
                 pets: state.pets.concat(action.newPet),
+                error: undefined,
+            };
+        case SHOW_REGISTER_FORM:
+            return {
+                ...state,
+                registerFormVisible: true,
+                error: undefined,
+            };
+        case REGISTER_NEW_USER_SUCCESS:
+        case HIDE_REGISTER_FORM:
+            return {
+                ...state,
+                registerFormVisible: false,
+                error: undefined,
             };
         default:
             return state;
