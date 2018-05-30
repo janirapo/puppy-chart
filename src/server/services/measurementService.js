@@ -1,4 +1,5 @@
 import { Measurement } from '../models';
+import { getPet } from './petService';
 
 /**
  * Convert camelCase to underscore_case
@@ -31,7 +32,7 @@ export const addMeasurement = (measurementData, cb, next) => {
 
     newMeasurement
         .save()
-        .then(cb)
+        .then(dbResult => getPet(dbResult.pet_id, dbResult.user_id, cb, next))
         .catch(next);
 };
 

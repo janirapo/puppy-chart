@@ -38,9 +38,7 @@ router.post('/', auth.required, (req, res, next) => {
             // call add measurement
             measurementService.addMeasurement(
                 measurementData,
-                // use result to fetch updated pet
-                dbResult =>
-                    getPet(dbResult.pet_id, dbResult.user_id, updatedPet => res.send(JSON.stringify(updatedPet)), next),
+                result => res.send(JSON.stringify(result)),
                 next,
             );
         },

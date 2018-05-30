@@ -75,7 +75,7 @@ class PetModal extends Component {
                             </div>
 
                             <div className="modal__body">
-                                <span>{`${t('dob')}: ${moment().format('LL')}`}</span>
+                                <span>{`${t('dob')}: ${moment(pet.birth_date).format('LL')}`}</span>
                                 <span>{`${t('owner')}: ${pet.user.name}`}</span>
                                 {METRIC_TYPES.map(type => (
                                     <MetricContainer

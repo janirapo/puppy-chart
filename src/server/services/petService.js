@@ -52,7 +52,7 @@ export const addPet = (petData, cb, next) => {
 
     newPet
         .save()
-        .then(cb)
+        .then(addedPet => getPet(addedPet.id, addedPet.user_id, cb, next))
         .catch(next);
 };
 
