@@ -12,6 +12,12 @@ For example you could add the weight of the puppy a couple times a week by setti
 app would then produce a graph showing the development. One could also add the height once a week and the app 
 should be able to produce separate graphs showing both height and weight curves based on entered data.
 
+Work log can be found in finnish in `docs/tuntikirjanpito.md` and the app is running on
+`https://whispering-river-14205.herokuapp.com/`
+
+Notice that it's running on Heroku, so the first load might take a while, since Heroku
+puts the app to sleep if it hasn't been accessed in 30min.
+
 #### Brief user manual
 You can register new users on the login page and after that sign in to the app. **Be sure to save your password used
 in registering process, because at the moment there is no way to recover/reset passwords!!!**
