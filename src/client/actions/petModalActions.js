@@ -83,8 +83,7 @@ export function removeMeasurement(measurementId) {
                 onAccept: () => {
                     axios
                         .delete(`${BASE_URL}/measurement/${measurementId}`)
-                        .then(response => {
-                            console.log(response.data);
+                        .then(() => {
                             dispatch({ type: REMOVE_MEASUREMENT_SUCCESS, measurementId: measurementId });
                             dispatch(notify(t('measurement_removed')));
                         })

@@ -23,6 +23,7 @@ import {
     REMOVE_PET_SUCCESS,
     REMOVE_PET_FAIL,
 } from '../actions/petActions';
+import { ADD_MEASUREMENT_SUCCESS, REMOVE_MEASUREMENT_SUCCESS } from '../actions/petModalActions';
 
 export default function user(state = initialState.user, action) {
     switch (action.type) {
@@ -111,6 +112,21 @@ export default function user(state = initialState.user, action) {
                 ...state,
                 registerFormVisible: false,
                 error: undefined,
+            };
+        case ADD_MEASUREMENT_SUCCESS:
+            return {
+                ...state,
+                pets: (state.pets || []).map(pet => (pet.id === action.pet.id ? action.pet : pet)),
+            };
+        case REMOVE_MEASUREMENT_SUCCESS:
+            return {
+                ...state,
+                pets: (state.pets || []).map(pet => ({
+                    ...pet,
+                    measurements: (pet.measurements || []).filter(
+                        measurement => measurement.id !== action.measurementId,
+                    ),
+                })),
             };
         default:
             return state;
