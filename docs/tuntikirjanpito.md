@@ -44,3 +44,5 @@
 | 27.5 | 2    | Lemmikin poistamisen toiminnallisuutta, ulkoasuparannuksia ja uloskirjautumisen varmistuskysymyksen toteutus |
 | 29.5 | 4    | Tietokantamallin hiomista, eri poistotoiminnallisuuksien varmistuskysymystoimintoja |
 | 30.5 | 6    | Uuden käyttäjän rekisteröintimahdollisuus ja virhekäsittelyn parannusta, sekä muutama tyylimuutos |
+| 31.5 | 4    | Viimeiset korjaukset ja loppuhiomiset, sekä testausta tuotantoonsiirtymisen yhteydessä ja tuotannon lopullinen deploy |
+| X    | 10   | Yllä kirjattujen tuntien lisäksi laskisin, että olen noin 10h edestä tehnyt tutkivaa työtä projektin edetessä ja testailuja sekä korjauksia aina päivän viimeisen commitin ja työaikaseurantakirjanpidon jälkeen
