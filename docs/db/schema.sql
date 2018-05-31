@@ -42,7 +42,7 @@ CREATE TABLE `Pets` (
   `birth_date` date DEFAULT NULL,
   `user_id` int(11) unsigned NOT NULL,
   `active_flag` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` datetime NOT NULL DEFAULT NOW(),
+  `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`user_id`),
