@@ -13,7 +13,7 @@ app would then produce a graph showing the development. One could also add the h
 should be able to produce separate graphs showing both height and weight curves based on entered data.
 
 Work log can be found in finnish in `docs/tuntikirjanpito.md` and the app is running on
-`https://whispering-river-14205.herokuapp.com/`
+https://whispering-river-14205.herokuapp.com
 
 Notice that it's running on Heroku, so the first load might take a while, since Heroku
 puts the app to sleep if it hasn't been accessed in 30min.
