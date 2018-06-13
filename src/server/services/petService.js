@@ -9,32 +9,24 @@ const includedModels = [
  * Get all pets belnging to given user
  *
  * @param userId
- * @param cb
- * @param next
  */
-export const getAllByUser = (userId, cb, next) => {
-    Pet.findAll({
+export const getAllByUser = userId => {
+    return Pet.findAll({
         where: {
             user_id: userId,
             active_flag: true,
         },
         include: includedModels,
-    })
-        .then(cb)
-        .catch(next);
+    });
 };
 
 /**
  *
  * @param petId
  * @param userId
- * @param cb
- * @param next
  */
-export const getPet = (petId, userId, cb, next) => {
-    Pet.findOne({ where: { id: petId, user_id: userId }, include: includedModels })
-        .then(cb)
-        .catch(next);
+export const getPet = (petId, userId) => {
+    return Pet.findOne({ where: { id: petId, user_id: userId }, include: includedModels });
 };
 
 /**
@@ -42,36 +34,22 @@ export const getPet = (petId, userId, cb, next) => {
  * given petData object
  *
  * @param petData
- * @param cb
- * @param next
  */
-export const addPet = (petData, cb, next) => {
+export const addPet = petData => {
     // TODO: Validate values?
 
     const newPet = Pet.build(petData);
 
-    newPet
-        .save()
-        .then(addedPet => getPet(addedPet.id, addedPet.user_id, cb, next))
-        .catch(next);
+    return newPet.save();
 };
 
 /**
  * Deactivate pet with given ID
  *
  * @param petData
- * @param cb
- * @param next
  */
-export const deactivatePet = (petData, cb, next) => {
-    getPet(
-        petData.petId,
-        petData.userId,
-        dbResult => {
-            Pet.update({ active_flag: false }, { where: { id: dbResult.id } })
-                .then(cb)
-                .catch(next);
-        },
-        next,
-    );
+export const deactivatePet = petData => {
+    return getPet(petData.petId, petData.userId).then(dbResult => {
+        Pet.update({ active_flag: false }, { where: { id: dbResult.id } });
+    });
 };

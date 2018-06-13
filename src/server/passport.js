@@ -9,9 +9,8 @@ passport.use(
             passwordField: 'user[password]',
         },
         (email, password, done) => {
-            findUserByEmail(
-                email,
-                user => {
+            findUserByEmail(email)
+                .then(user => {
                     if (!user || !validPassword(user.dataValues, password)) {
                         return done(null, false, {
                             errors: {
@@ -22,9 +21,8 @@ passport.use(
                     }
 
                     return done(null, user);
-                },
-                done,
-            );
+                })
+                .catch(done);
         },
     ),
 );

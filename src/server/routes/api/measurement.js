@@ -2,6 +2,7 @@ import express from 'express';
 import * as measurementService from '../../services/measurementService';
 import { getMetricByName } from '../../services/metricService';
 import auth from '../auth';
+import { getPet } from '../../services/petService';
 
 let router = express.Router();
 
@@ -11,13 +12,10 @@ router.delete('/:measurementId', auth.required, (req, res, next) => {
         measurementId: req.params.measurementId,
     };
 
-    measurementService.deleteMeasurement(
-        data,
-        () => {
-            res.send(JSON.stringify({ success: true }));
-        },
-        next,
-    );
+    measurementService
+        .deleteMeasurement(data)
+        .then(() => res.send(JSON.stringify({ success: true })))
+        .catch(next);
 });
 
 /**
@@ -25,9 +23,8 @@ router.delete('/:measurementId', auth.required, (req, res, next) => {
  */
 router.post('/', auth.required, (req, res, next) => {
     // first we need to retrieve correct metric based on given metric name
-    getMetricByName(
-        req.body.metricName,
-        metricResult => {
+    getMetricByName(req.body.metricName)
+        .then(metricResult => {
             // after metric is retrieved, build measurement object to be inserted into db
             const measurementData = {
                 ...req.body,
@@ -35,14 +32,12 @@ router.post('/', auth.required, (req, res, next) => {
                 metric_id: metricResult.id,
             };
             // call add measurement
-            measurementService.addMeasurement(
-                measurementData,
-                result => res.send(JSON.stringify(result)),
-                next,
-            );
-        },
-        next,
-    );
+            measurementService
+                .addMeasurement(measurementData)
+                .then(result => res.send(JSON.stringify(result)))
+                .catch(next);
+        })
+        .catch(next);
 });
 
 export default router;

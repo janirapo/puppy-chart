@@ -1,12 +1,9 @@
 import { Metric } from '../models';
 
 /**
+ * Get metric by name
  * @param name
- * @param cb
- * @param next
  */
-export const getMetricByName = (name, cb, next) => {
-    Metric.findOne({ where: { name: name } })
-        .then(cb)
-        .catch(next);
+export const getMetricByName = (name) => {
+    return Metric.findOne({ where: { name: name } });
 };

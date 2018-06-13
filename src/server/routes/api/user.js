@@ -2,15 +2,17 @@ import express from 'express';
 import passport from 'passport';
 import auth from '../auth';
 import * as userService from '../../services/userService';
-import * as petService from '../../services/petService';
 
 let router = express.Router();
 
 // get all users
 router.get('/all', auth.required, (req, res, next) => {
-    userService.getAllUsers(dbResult => {
-        res.send(JSON.stringify({ users: dbResult }));
-    }, next);
+    userService
+        .getAllUsers()
+        .then(dbResult => {
+            res.send(JSON.stringify({ users: dbResult }));
+        })
+        .catch(next);
 });
 
 // handle login
@@ -50,13 +52,12 @@ router.post('/', auth.optional, (req, res, next) => {
 
 // get user
 router.get('/:userId(\\d+)/', auth.required, (req, res, next) => {
-    userService.getUser(
-        req.params.userId,
-        dbResult => {
+    userService
+        .getUser(req.params.userId)
+        .then(dbResult => {
             res.send(JSON.stringify({ user: dbResult }));
-        },
-        next,
-    );
+        })
+        .catch(next);
 });
 
 export default router;

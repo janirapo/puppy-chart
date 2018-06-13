@@ -5,10 +5,8 @@ import { camelToUnderscore } from '../constants';
 
 const secret = process.env.SECRET || require('~/config/local.config').secret;
 
-export const getAllUsers = (cb, next) => {
-    return User.findAll()
-        .then(cb)
-        .catch(next);
+export const getAllUsers = () => {
+    return User.findAll();
 };
 
 export const getUser = (userId, cb, next) => {
@@ -17,10 +15,8 @@ export const getUser = (userId, cb, next) => {
         .catch(next);
 };
 
-export const findUserByEmail = (email, cb, next) => {
-    return User.findOne({ where: { email: email } })
-        .then(cb)
-        .catch(next);
+export const findUserByEmail = (email) => {
+    return User.findOne({ where: { email: email } });
 };
 
 export const validPassword = (user, password) => {
@@ -65,15 +61,15 @@ export const toAuthJSON = user => {
  * Add new user to database
  *
  * @param userData
- * @param cb
- * @param next
+ * @param onSuccess
+ * @param onFailure
  */
-export const addUser = (userData, cb, next) => {
+export const addUser = (userData, onSuccess, onFailure) => {
     // first check if user is found
     User.count({ where: { email: userData.email } })
         .then(c => {
             if (c > 0) {
-                next({ message: 'username_already_in_use', status: 403 });
+                onFailure({ message: 'username_already_in_use', status: 403 });
             } else {
                 const { password: passwordHash, salt } = _getPasswordHashAndSalt(userData.password);
                 const newUser = User.build({
@@ -84,9 +80,9 @@ export const addUser = (userData, cb, next) => {
 
                 newUser
                     .save()
-                    .then(cb)
-                    .catch(next);
+                    .then(onSuccess)
+                    .catch(onFailure);
             }
         })
-        .catch(next);
+        .catch(onFailure);
 };
