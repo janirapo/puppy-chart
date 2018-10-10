@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { renderField, required, number, renderDateTimePicker, date } from 'utils/reduxFormHelpers';
 import { t } from 'utils/i18n';
-import moment from 'moment';
 
 let AddMeasurementForm = props => {
     const { handleSubmit, formError, onCancel, unit } = props;
@@ -24,7 +23,7 @@ let AddMeasurementForm = props => {
                     name="measurementDate"
                     label={t('date')}
                     placeholder={t('date')}
-                    defaultValue={moment().toDate()}
+                    defaultValue={new Date()}
                     component={renderDateTimePicker}
                     validate={[required, date]}
                     warn={date}
@@ -52,6 +51,8 @@ AddMeasurementForm.propTypes = {
 AddMeasurementForm = reduxForm({
     // a unique name for the form
     form: 'add-measurement',
+    initialValues: { measurementDate: new Date() },
+    enableReinitialize: true,
 })(AddMeasurementForm);
 
 export default AddMeasurementForm;
