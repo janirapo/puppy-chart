@@ -34,9 +34,9 @@ and you can also remove existing pets.
 2. Fill in the configuration settings that you want
 3. Database creation queries are located in `docs/db/schema.sql` (only tested with mysql)
 4. Install dependencies using
-   `npm install`
+   `yarn install`
 5. Run server and client using
-   `npm start`
+   `yarn start`
 6. Navigate to `localhost:3000`
 
 ### Deployment (Heroku in this case)
